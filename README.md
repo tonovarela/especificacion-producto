@@ -1,27 +1,53 @@
-# EspecificacionProducto
+# Especificacion de Producto para Litoprocess
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.0.0.
 
-## Development server
+## Tabla de Contenidos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. [Descripción](#descripción)
+2. [Requisitos Previos](#requisitos-previos)
+3. [Instalación](#instalación)
+4. [Servidor de Desarrollo](#servidor-de-desarrollo)
+5. [Estructura del Proyecto](#estructura-del-proyecto)
+6. [Generación de Código](#generación-de-código)
+7. [Construcción](#construcción)
+8. [Pruebas Unitarias](#pruebas-unitarias)
+9. [Pruebas End-to-End](#pruebas-end-to-end)
+10. [Ayuda Adicional](#ayuda-adicional)
 
-## Code scaffolding
+## Descripción
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`EspecificacionProducto` es una aplicación web desarrollada con Angular. Esta aplicación permite a los usuarios gestionar especificaciones de productos de manera eficiente.
 
-## Build
+## Requisitos Previos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
-## Running unit tests
+- [Node.js](https://nodejs.org/) (versión 14.x o superior)
+- [Angular CLI](https://angular.io/cli) (versión 17.0.0)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación
 
-## Running end-to-end tests
+Sigue estos pasos para instalar y configurar el proyecto:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/tonovarela/EspecificacionProducto.git
+    ```
+2. Navega al directorio del proyecto:
+    ```bash
+    cd EspecificacionProducto
+    ```
+3. Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-## Further help
+## Servidor de Desarrollo
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para iniciar el servidor de desarrollo, ejecuta:
+
+```bash
+ng serve
+
+```
