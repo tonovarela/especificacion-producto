@@ -1,8 +1,33 @@
 
-    <div class="w-full h-full bg-gray-200 py-2  sm:py-12">
-      <div class="py-3  max-w-full sm:max-w-6xl sm:mx-auto">
-        <div class=" px-4 py-10 bg-white mx-10 md:mx-0 shadow rounded-3xl sm:p-10">
-          <div class="mx-auto">
+    <div class="w-full h-screen   bg-gray-400  ">
+      <div class="py-5  max-w-full sm:max-w-6xl sm:mx-auto">
+        
+        <div class="relative ">
+          <div class=" flex justify-between bg-gray-100   gap-4  border rounded-t border-gray-200 shadow-xl px-4  absolute w-full ">
+            <button type="button" class=" text-gray-500  hover:text-gray-800 p-3 rounded-md focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg> 
+            </button>
+           
+          <div >
+          </div>
+          <div class="flex gap-2">            
+            <button type="submit" class=" text-gray-500 hover:text-blue-700  px-4 py-3 rounded-md focus:outline-none">
+              <svg  class="w-6 h-6"  viewBox="0 0 32 32" 
+              version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="currentColor"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>save-floppy</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-152.000000, -515.000000)" fill="currentColor"> <path d="M171,525 C171.552,525 172,524.553 172,524 L172,520 C172,519.447 171.552,519 171,519 C170.448,519 170,519.447 170,520 L170,524 C170,524.553 170.448,525 171,525 L171,525 Z M182,543 C182,544.104 181.104,545 180,545 L156,545 C154.896,545 154,544.104 154,543 L154,519 C154,517.896 154.896,517 156,517 L158,517 L158,527 C158,528.104 158.896,529 160,529 L176,529 C177.104,529 178,528.104 178,527 L178,517 L180,517 C181.104,517 182,517.896 182,519 L182,543 L182,543 Z M160,517 L176,517 L176,526 C176,526.553 175.552,527 175,527 L161,527 C160.448,527 160,526.553 160,526 L160,517 L160,517 Z M180,515 L156,515 C153.791,515 152,516.791 152,519 L152,543 C152,545.209 153.791,547 156,547 L180,547 C182.209,547 184,545.209 184,543 L184,519 C184,516.791 182.209,515 180,515 L180,515 Z" id="save-floppy" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+              
+              
+            </button>
+          </div>
+          
+        </div>  
+          
+        </div>  
+        <div class="h-[95vh] px-4 py-10  overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
+          
+          <div class="mx-auto pt-5">
+            
+           
+            
             <app-titulo-seccion titulo="Descripción del producto" numero="1" departamento="Customer" ></app-titulo-seccion>
             <form class="divide-y divide-gray-200">
               <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -40,21 +65,21 @@
                   
                 </div>
                 <app-titulo-seccion  titulo="Dimensiones" numero="2" departamento="Diseño Estructural" ></app-titulo-seccion>
-                <div class="grid grid-cols-1 sm:grid-cols-2   ">
-                    <div class="flex flex-col sm:ml-5  sm:mt-4 gap-1 ">                        
-                          <label class="leading-loose block">Frente</label>
-                          <input type="text"  name="frente"  class="w-full sm:w-2/3"  />                                                
-                          <label class="leading-loose block">Fondo</label>
-                          <input type="text" name="fondo"  class="w-full sm:w-2/3"  />                                                
-                          <label class="leading-loose">Altura</label>
-                          <input type="text" name="altura" class="w-full sm:w-2/3"/>
+                <div class="grid grid-cols-1 sm:grid-cols-2  gap-2 ">
+                    <div class="grid grid-cols-1 sm:grid-cols-2  sm:ml-5 space-y-2  md:w-[80%] ">                                              
+                          <label class="leading-loose block self-center ">Frente</label>
+                          <input type="text"  name="frente "    />                                                
+                          <label class="leading-loose block self-center">Fondo</label>
+                          <input type="text" name="fondo"     />                                                
+                          <label class="leading-loose self-center">Altura</label>
+                          <input type="text" name="altura"  />
                         
                       </div>
-                      <div class="flex flex-col mt-6 sm:mt-5 space-y-2">                        
-                          <label class="leading-loose">Tamaño Extendido</label>
-                          <input type="text" id="empresa" class="w-full sm:w-2/3" name="tamano_extendido"   />                                            
-                          <label  class="leading-loose">Tamaño final</label>
-                          <input type="text" name="tamano_final" class="w-full sm:w-2/3"  />                        
+                      <div class="grid grid-cols-1 sm:grid-cols-2  sm:ml-5 md:w-[80%] ">                      
+                          <label class="leading-loose ">Tamaño Extendido</label>
+                          <input type="text" id="empresa" name="tamano_extendido"   />                                            
+                          <label  class="leading-loose ">Tamaño final</label>
+                          <input type="text" name="tamano_final"   />                        
                       </div>
                 </div>
                 
@@ -84,7 +109,7 @@
                 <app-titulo-seccion  titulo="Impresión" numero="4" departamento="Preprensa" ></app-titulo-seccion>                  
                 <div class="grid  sm:grid-cols-2 ">
                     <div  class="space-y-2" >
-                        <h1 class="text-center">Tintas 1ra Entrada</h1>
+                        <h6 class="text-center font-semibold">Tintas 1ra Entrada</h6>
                         <div class="flex    ">                    
                             <label class="pb-2 self-center mx-3  leading-loose">1</label>
                             <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
@@ -111,7 +136,7 @@
 
                     </div>
                     <div  class="space-y-2" >
-                        <h1 class="text-center">Tintas 2da Entrada</h1>
+                      <h6 class="text-center font-semibold">Tintas 2da Entrada</h6>
                         <div class="flex     ">                    
                             <label class="pb-2 self-center mx-3  leading-loose">1</label>
                             <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
@@ -175,12 +200,7 @@
                   
                 </div>
               </div>
-              <div class="pt-4 flex items-center space-x-4">
-                <button class="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
-                  <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg> Cancelar
-                </button>
-                <button type="submit" class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Enviar</button>
-              </div>
+             
             </form>
           </div>
         </div>
