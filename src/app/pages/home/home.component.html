@@ -1,1 +1,189 @@
-<p>home works!</p>
+
+    <div class="w-full h-full bg-gray-200 py-2  sm:py-12">
+      <div class="py-3  max-w-full sm:max-w-6xl sm:mx-auto">
+        <div class=" px-4 py-10 bg-white mx-10 md:mx-0 shadow rounded-3xl sm:p-10">
+          <div class="mx-auto">
+            <app-titulo-seccion titulo="Descripción del producto" numero="1" departamento="Customer" ></app-titulo-seccion>
+            <form class="divide-y divide-gray-200">
+              <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <div class="flex flex-col">
+                  <!-- <h3 class="text-lg font-medium text-gray-900 mb-2">Información Personal</h3> -->
+                  <!-- <div class="flex flex-col sm:flex-row sm:space-x-4">
+                    <div class="flex-1">
+                      <label htmlFor="nombre" class="leading-loose">Nombre</label>
+                      <input type="text" id="nombre" name="nombre" class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Nombre" required />
+                    </div>
+                    <div class="flex-1">
+                      <label htmlFor="apellido" class="leading-loose">Apellido</label>
+                      <input type="text" id="apellido" name="apellido"  class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Apellido" required />
+                    </div>
+                  </div> -->
+                  <!-- <div class="flex flex-col sm:flex-row sm:space-x-4 mt-4">
+                    <div class="flex-1">
+                      <label htmlFor="ciudad" class="leading-loose">Ciudad</label>
+                      <input type="text" id="ciudad" name="ciudad"  class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Ciudad" />
+                    </div>
+                    <div class="flex-1">
+                      <label htmlFor="pais" class="leading-loose">País</label>
+                      <input type="text" id="pais" name="pais"  class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="País" />
+                    </div>
+                    <div class="flex-1">
+                      <label htmlFor="codigoPostal" class="leading-loose">Código Postal</label>
+                      <input type="text" id="codigoPostal" name="codigoPostal" class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Código Postal" />
+                    </div>
+                  </div> -->
+                </div>
+                <div class="flex flex-col">                  
+                    <div class="flex flex-col">                        
+                        <textarea class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-sm" placeholder="Descripción" value=''></textarea>                        
+                      </div>                                        
+                  
+                </div>
+                <app-titulo-seccion  titulo="Dimensiones" numero="2" departamento="Diseño Estructural" ></app-titulo-seccion>
+                <div class="grid grid-cols-1 sm:grid-cols-2   ">
+                    <div class="flex flex-col sm:ml-5  sm:mt-4 gap-1 ">                        
+                          <label class="leading-loose block">Frente</label>
+                          <input type="text"  name="frente"  class="w-full sm:w-2/3"  />                                                
+                          <label class="leading-loose block">Fondo</label>
+                          <input type="text" name="fondo"  class="w-full sm:w-2/3"  />                                                
+                          <label class="leading-loose">Altura</label>
+                          <input type="text" name="altura" class="w-full sm:w-2/3"/>
+                        
+                      </div>
+                      <div class="flex flex-col mt-6 sm:mt-5 space-y-2">                        
+                          <label class="leading-loose">Tamaño Extendido</label>
+                          <input type="text" id="empresa" class="w-full sm:w-2/3" name="tamano_extendido"   />                                            
+                          <label  class="leading-loose">Tamaño final</label>
+                          <input type="text" name="tamano_final" class="w-full sm:w-2/3"  />                        
+                      </div>
+                </div>
+                
+                  <app-titulo-seccion  titulo="Materiales del producto" numero="3" departamento="Cotizaciones" ></app-titulo-seccion>                  
+                <div class="flex flex-col gap-2">                  
+                  <div class="flex flex-col sm:items-center sm:justify-center  sm:flex-row sm:space-x-4">                    
+                      <label class="pb-2 w-32 leading-loose">Pliego impreso</label>
+                      <input type="text"  name="pliego_impreso"  class="w-full sm:w-3/5"   />                                                              
+                  </div>
+                  <div class="flex flex-col sm:items-center sm:justify-center  sm:flex-row sm:space-x-4">                    
+                    <label class="pb-2 w-32 leading-loose">Single</label>
+                    <input type="text"  name="pliego_impreso"  class="w-full sm:w-3/5"   />                                                              
+                </div>
+                <div class="flex flex-col sm:items-center sm:justify-center  sm:flex-row sm:space-x-4">                    
+                    <label class="pb-2 w-32 leading-loose">Corrugado Tacon</label>
+                    <input type="text"  name="pliego_impreso"  class="w-full sm:w-3/5"   />                                                              
+                </div>
+                <div class="flex flex-col sm:items-center sm:justify-center  sm:flex-row sm:space-x-4">                    
+                    <label class="pb-2 w-32 leading-loose">Adhesivo</label>
+                    <input type="text"  name="pliego_impreso"  class="w-full sm:w-3/5"   />                                                              
+                </div>
+                <div class="flex flex-col sm:items-center sm:justify-center  sm:flex-row sm:space-x-4">                    
+                    <label class="pb-2 w-32 leading-loose">Cinta</label>
+                    <input type="text"  name="pliego_impreso"  class="w-full sm:w-3/5"   />                                                              
+                </div>
+
+                <app-titulo-seccion  titulo="Impresión" numero="4" departamento="Preprensa" ></app-titulo-seccion>                  
+                <div class="grid  sm:grid-cols-2 ">
+                    <div  class="space-y-2" >
+                        <h1 class="text-center">Tintas 1ra Entrada</h1>
+                        <div class="flex    ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">1</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">2</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">3</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">4</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">5</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        
+
+                        
+
+                    </div>
+                    <div  class="space-y-2" >
+                        <h1 class="text-center">Tintas 2da Entrada</h1>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">1</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">2</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">3</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">4</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        <div class="flex     ">                    
+                            <label class="pb-2 self-center mx-3  leading-loose">5</label>
+                            <input type="text"  name="pliego_impreso"  class="w-full"   />                                                              
+                        </div>
+                        
+
+                        
+
+                    </div>
+                 
+                </div>
+                
+                  
+                
+                  
+                  <div class="flex flex-col mt-4">
+                    <label htmlFor="experiencia" class="leading-loose">Años de Experiencia</label>
+                    <input type="number" id="experiencia" name="experiencia" placeholder="Años de Experiencia" min="0" />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <h3 class="text-lg font-medium text-gray-900 mb-2">Código de barras</h3>
+                  <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                    <div class="space-y-1 text-center">
+                      <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <div class="flex text-sm text-gray-600">
+                        <label htmlFor="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                          <span>Subir archivos</span>
+                          <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple  />
+                        </label>
+                        <p class="pl-1">o arrastrar y soltar</p>
+                      </div>
+                      <p class="text-xs text-gray-500">PNG, JPG, PDF hasta 10MB</p>
+                    </div>
+                  </div>
+                
+                    <div class="mt-2">
+                      <h4 class="text-sm font-medium text-gray-900">Archivos seleccionados:</h4>
+                      <ul class="mt-1 text-sm text-gray-500">                  
+                          <li >--</li>                  
+                      </ul>
+                    </div>
+                  
+                </div>
+              </div>
+              <div class="pt-4 flex items-center space-x-4">
+                <button class="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
+                  <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg> Cancelar
+                </button>
+                <button type="submit" class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
