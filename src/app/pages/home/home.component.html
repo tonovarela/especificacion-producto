@@ -3,7 +3,7 @@
   <div class="py-5 max-w-full sm:max-w-6xl sm:mx-auto">
     <div class="relative">
       <div
-        class="flex justify-between bg-gray-100 gap-4 border rounded-t border-gray-200 shadow-xl px-4 absolute w-full z-10">
+        class="flex justify-between bg-gray-100 gap-4 border rounded-t border-gray-200 shadow-xl px-4 absolute w-full z-50">
         <button type="button" class="text-gray-500 hover:text-gray-800 p-3 rounded-md focus:outline-none">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
@@ -81,25 +81,28 @@
 
                 </div>
               </div>
-              <app-titulo-seccion titulo="Materiales del producto" numero="3"   departamento="Cotizaciones"></app-titulo-seccion>
-              <div class="flex flex-col items-center gap-2">
-                <div class="w-full sm:w-2/3">
-                  <app-form-input form="cotizaciones" label="Pliego Impreso" name="pliego"></app-form-input>
-                </div>
-                <div class="w-full sm:w-2/3">
-                  <app-form-input form="cotizaciones" label="Single" name="single"></app-form-input>
-                </div>
-                <div class="w-full sm:w-2/3">
-                  <app-form-input form="cotizaciones" label="Corrugado Tacon" name="corrugado_tacon"></app-form-input>
-                </div>
-                <div class="w-full sm:w-2/3">
-                  <app-form-input form="cotizaciones" label="Adhesivo" name="adhesivo"></app-form-input>
-                </div>
-                <div class="w-full sm:w-2/3">
-                  <app-form-input form="cotizaciones" label="Cinta" name="cinta"></app-form-input>
-                </div>
-              </div>
               
+                <app-titulo-seccion titulo="Materiales del producto" numero="3"   departamento="Cotizaciones"></app-titulo-seccion>
+                <div class="flex flex-col items-center gap-2">
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="cotizaciones" label="Pliego Impreso" name="pliego"></app-form-input>
+                  </div>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="cotizaciones" label="Single" name="single"></app-form-input>
+                  </div>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="cotizaciones" label="Corrugado Tacon" name="corrugado_tacon"></app-form-input>
+                  </div>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="cotizaciones" label="Adhesivo" name="adhesivo"></app-form-input>
+                  </div>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="cotizaciones" label="Cinta" name="cinta"></app-form-input>
+                  </div>
+                </div>
+              
+              
+
               <app-titulo-seccion titulo="Impresión" numero="4" departamento="Preprensa"></app-titulo-seccion>
               <div class="grid sm:grid-cols-2 gap-4">
                 <div class="space-y-2">
