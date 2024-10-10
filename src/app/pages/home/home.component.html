@@ -30,194 +30,172 @@
         </div>
       </div>
     </div>
-    <div class="h-[95vh] px-4 py-10 overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
-      <div class="mx-auto pt-5">
-        <app-titulo-seccion titulo="Descripción del producto" numero="1" departamento="Customer"></app-titulo-seccion>
-        <form class="divide-y divide-gray-200">
-          <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-            <div class="flex flex-col">
-              <textarea
-                class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-sm"
-                placeholder="Descripción"></textarea>
-            </div>
-            <app-titulo-seccion titulo="Dimensiones" numero="2" departamento="Diseño Estructural"></app-titulo-seccion>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <div class="grid   space-y-4 ">
-                <div class="relative  w-full sm:w-2/3">
-                  <input type="text" id="frende" name="frente" class="peer input-form" placeholder=" " />
-                  <label for="frente" class="label-form ">
-                    Frente </label>
-                </div>
-                <div class="relative  w-full sm:w-2/3">
-                  <input type="text" id="fondo" name="fondo" class="peer input-form" placeholder=" " />
-                  <label for="fondo" class="label-form">
-                    Fondo</label>
-                </div>
-                <div class="relative  w-full sm:w-2/3">
-                  <input type="text" id="altura" name="altura" class="peer input-form" placeholder=" " />
-                  <label for="altura" class="label-form">
-                    Altura </label>
-                </div>
-
-
+    <ng-container [formGroup]="formGeneral">
+      <div class="h-[95vh] px-4 py-10 overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
+        <div class="mx-auto pt-5">
+          <app-titulo-seccion titulo="Descripción del producto" numero="1" departamento="Customer"></app-titulo-seccion>
+          <form class="divide-y divide-gray-200">
+            <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+              <div class="flex flex-col">
+                <textarea
+                  class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-sm"
+                  placeholder="Descripción"></textarea>
               </div>
-              <div class="grid  ">
-                <div class="space-y-4">
+              <app-titulo-seccion titulo="Dimensiones" numero="2"
+                departamento="Diseño Estructural"></app-titulo-seccion>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div class="grid   space-y-4 ">
                   <div class="relative  w-full sm:w-2/3">
-                    <input type="text" id="tamano_extendido" name="tamano_extendido" class="peer input-form" placeholder=" " />
-                    <label for="tamano_extendido" class="label-form">
-                      Tamaño Extendido </label>
+                    <input type="text" id="frende" name="frente" class="peer input-form" placeholder=" " />
+                    <label for="frente" class="label-form ">
+                      Frente </label>
                   </div>
                   <div class="relative  w-full sm:w-2/3">
-                    <input type="text" id="tamano_final" name="tamano_final" class="peer input-form" placeholder=" " />
-                    <label for="tamano_final" class="label-form">
-                      Tamaño Final </label>
+                    <input type="text" id="fondo" name="fondo" class="peer input-form" placeholder=" " />
+                    <label for="fondo" class="label-form">
+                      Fondo</label>
                   </div>
+                  <div class="relative  w-full sm:w-2/3">
+                    <input type="text" id="altura" name="altura" class="peer input-form" placeholder=" " />
+                    <label for="altura" class="label-form">
+                      Altura </label>
+                  </div>
+
+
                 </div>
+                <div class="grid  ">
+                  <div class="space-y-4">
+                    <div class="relative  w-full sm:w-2/3">
+                      <input type="text" id="tamano_extendido" name="tamano_extendido" class="peer input-form"
+                        placeholder=" " />
+                      <label for="tamano_extendido" class="label-form">
+                        Tamaño Extendido </label>
+                    </div>
+                    <div class="relative  w-full sm:w-2/3">
+                      <input type="text" id="tamano_final" name="tamano_final" class="peer input-form"
+                        placeholder=" " />
+                      <label for="tamano_final" class="label-form">
+                        Tamaño Final </label>
+                    </div>
+                  </div>
 
+                </div>
               </div>
-            </div>
-            <app-titulo-seccion titulo="Materiales del producto" numero="3"
-              departamento="Cotizaciones"></app-titulo-seccion>
-            <div class="flex flex-col items-center gap-2">
-              <div class="w-full sm:w-2/3">
-                
-                @if(form){
-                  <form [formGroup]="form">
-                  {{form.value | json}}
-                    <app-form-input 
-                    formControlName="pliego_impreso"
-                    label="Pliego Impreso" 
-                    name="pliego_impreso">
-                    </app-form-input>
-                   
-                  </form>
-                }
-
-                
-                
-              </div>
-              <div class="w-full sm:w-2/3">
-                <!-- <app-form-input label="Single" name="single"></app-form-input> -->
+              <app-titulo-seccion titulo="Materiales del producto" numero="3"   departamento="Cotizaciones"></app-titulo-seccion>
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Pliego Impreso" name="pliego"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Single" name="single"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Corrugado Tacon" name="corrugado_tacon"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Adhesivo" name="adhesivo"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Cinta" name="cinta"></app-form-input>
+                </div>
               </div>
               
-              <div class="relative  w-full sm:w-2/3">
-                <input type="text" id="single" name="single" class="peer input-form" placeholder=" " />
-                <label for="single" class="label-form">
-                  Single </label>
-              </div>
-              <div class="relative  w-full sm:w-2/3">
-                <input type="text" id="corrugado_tacon" name="corrugado_tacon" class="peer input-form" placeholder=" " />
-                <label for="corrugado_tacon" class="label-form">
-                  Corrugado Tacón </label>
-              </div>
-              <div class="relative  w-full sm:w-2/3">
-                <input type="text" id="adhesivo" name="corrugado_tacon" class="peer input-form" placeholder=" " />
-                <label for="corrugado_tacon" class="label-form">
-                  Adhesivo </label>
-              </div>
-              <div class="relative  w-full sm:w-2/3">
-                <input type="text" id="cinta" name="cinta" class="peer input-form" placeholder=" " />
-                <label for="cita" class="label-form">
-                  Cinta </label>
-              </div>
-              
-            </div>
-            <app-titulo-seccion titulo="Impresión" numero="4" departamento="Preprensa"></app-titulo-seccion>
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="space-y-2">
-                <h6 class="text-center font-semibold">Tintas 1ra Entrada</h6>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">1</label>
-                  <input type="text" name="tinta_1_1"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">2</label>
-                  <input type="text" name="tinta_1_2"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">3</label>
-                  <input type="text" name="tinta_1_3"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">4</label>
-                  <input type="text" name="tinta_1_4"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">5</label>
-                  <input type="text" name="tinta_1_5"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-              </div>
-              <div class="space-y-2">
-                <h6 class="text-center font-semibold">Tintas 2da Entrada</h6>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">1</label>
-                  <input type="text" name="tinta_2_1"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">2</label>
-                  <input type="text" name="tinta_2_2"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">3</label>
-                  <input type="text" name="tinta_2_3"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">4</label>
-                  <input type="text" name="tinta_2_4"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-                <div class="flex">
-                  <label class="pb-2 self-center mx-3 leading-loose">5</label>
-                  <input type="text" name="tinta_2_5"
-                    class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-                </div>
-              </div>
-            </div>
-            <div class="flex flex-col mt-4">
-              <label for="experiencia" class="leading-loose">Años de Experiencia</label>
-              <input type="number" id="experiencia" name="experiencia" placeholder="Años de Experiencia" min="0"
-                class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
-            </div>
-            <div class="flex flex-col">
-              <h3 class="text-lg font-medium text-gray-900 mb-2">Código de barras</h3>
-              <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                <div class="space-y-1 text-center">
-                  <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
-                    aria-hidden="true">
-                    <path
-                      d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                      strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <div class="flex text-sm text-gray-600">
-                    <label for="file-upload"
-                      class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                      <span>Subir archivos</span>
-                      <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple />
-                    </label>
-                    <p class="pl-1">o arrastrar y soltar</p>
+              <app-titulo-seccion titulo="Impresión" numero="4" departamento="Preprensa"></app-titulo-seccion>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <h6 class="text-center font-semibold">Tintas 1ra Entrada</h6>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">1</label>
+                    <input type="text" name="tinta_1_1"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
-                  <p class="text-xs text-gray-500">PNG, JPG, PDF hasta 10MB</p>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">2</label>
+                    <input type="text" name="tinta_1_2"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">3</label>
+                    <input type="text" name="tinta_1_3"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">4</label>
+                    <input type="text" name="tinta_1_4"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">5</label>
+                    <input type="text" name="tinta_1_5"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <h6 class="text-center font-semibold">Tintas 2da Entrada</h6>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">1</label>
+                    <input type="text" name="tinta_2_1"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">2</label>
+                    <input type="text" name="tinta_2_2"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">3</label>
+                    <input type="text" name="tinta_2_3"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">4</label>
+                    <input type="text" name="tinta_2_4"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
+                  <div class="flex">
+                    <label class="pb-2 self-center mx-3 leading-loose">5</label>
+                    <input type="text" name="tinta_2_5"
+                      class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+                  </div>
                 </div>
               </div>
-              <div class="mt-2">
-                <h4 class="text-sm font-medium text-gray-900">Archivos seleccionados:</h4>
-                <ul class="mt-1 text-sm text-gray-500">
-                  <li>--</li>
-                </ul>
+              <div class="flex flex-col mt-4">
+                <label for="experiencia" class="leading-loose">Años de Experiencia</label>
+                <input type="number" id="experiencia" name="experiencia" placeholder="Años de Experiencia" min="0"
+                  class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
+              </div>
+              <div class="flex flex-col">
+                <h3 class="text-lg font-medium text-gray-900 mb-2">Código de barras</h3>
+                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                  <div class="space-y-1 text-center">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48"
+                      aria-hidden="true">
+                      <path
+                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <div class="flex text-sm text-gray-600">
+                      <label for="file-upload"
+                        class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                        <span>Subir archivos</span>
+                        <input id="file-upload" name="file-upload" type="file" class="sr-only" multiple />
+                      </label>
+                      <p class="pl-1">o arrastrar y soltar</p>
+                    </div>
+                    <p class="text-xs text-gray-500">PNG, JPG, PDF hasta 10MB</p>
+                  </div>
+                </div>
+                <div class="mt-2">
+                  <h4 class="text-sm font-medium text-gray-900">Archivos seleccionados:</h4>
+                  <ul class="mt-1 text-sm text-gray-500">
+                    <li>--</li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormControlDirective, FormControlName, FormGroup, NgControl, NgModel, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,15 +12,26 @@ import { ControlValueAccessor, FormBuilder, FormControlDirective, FormControlNam
 
 
 export class HomeComponent implements OnInit  {
-  form: FormGroup | null = null;
+
+  formGeneral!: FormGroup;
+  cotizacionesForm!: FormGroup;
+
   
   constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
-    this.form = this.fb.group({
-      pliego_impreso: ['vvv', Validators.required],
-      altura: ['', Validators.required],
-      tamano_extendido: ['', Validators.required],
-      tamano_final: ['', Validators.required]
-    });
+    
+    this.cotizacionesForm = this.fb.group({
+      descripcion: [''],
+      pliego: ['Pliego extra'],
+      single: ['single'],
+      corrugado_tacon: ['Corrugado'],
+      adhesivo: ['adhesivo'],
+      cinta: ['Cinta'],
+    })
+    
+    this.formGeneral = this.fb.group({
+      cotizaciones: this.cotizacionesForm
+    }
+    )      
   }
 }
