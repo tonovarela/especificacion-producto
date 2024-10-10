@@ -11,7 +11,8 @@
         </button>
         <div></div>
         <div class="flex gap-2">
-          <button type="submit" class="text-gray-500 hover:text-blue-700 px-4 py-3 rounded-md focus:outline-none">
+          <button type="button" (click)="onGuardar()"
+            class="text-gray-500 hover:text-blue-700 px-4 py-3 rounded-md focus:outline-none">
             <svg class="w-6 h-6" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
               fill="currentColor">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -36,8 +37,8 @@
           <app-titulo-seccion titulo="Descripción del producto" numero="1" departamento="Customer"></app-titulo-seccion>
           <form class="divide-y divide-gray-200">
             <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-              <div class="flex flex-col">
-                <textarea
+              <div class="flex flex-col" [formGroup]="formGroupName('cotizaciones')">
+                <textarea formControlName="descripcion"
                   class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-sm"
                   placeholder="Descripción"></textarea>
               </div>
@@ -45,91 +46,86 @@
                 departamento="Diseño Estructural"></app-titulo-seccion>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <div class="grid   space-y-4 ">
-                  <div class="relative  w-full sm:w-2/3">
-                    <input type="text" id="frende" name="frente" class="peer input-form" placeholder=" " />
-                    <label for="frente" class="label-form ">
-                      Frente </label>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="disenioEstructural" label="Frente"
+                      name="frente"></app-form-input>
                   </div>
-                  <div class="relative  w-full sm:w-2/3">
-                    <input type="text" id="fondo" name="fondo" class="peer input-form" placeholder=" " />
-                    <label for="fondo" class="label-form">
-                      Fondo</label>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="disenioEstructural" label="Fondo"
+                      name="fondo"></app-form-input>
                   </div>
-                  <div class="relative  w-full sm:w-2/3">
-                    <input type="text" id="altura" name="altura" class="peer input-form" placeholder=" " />
-                    <label for="altura" class="label-form">
-                      Altura </label>
+                  <div class="w-full sm:w-2/3">
+                    <app-form-input form="disenioEstructural" label="Altura"
+                      name="altura"></app-form-input>
                   </div>
-
-
                 </div>
                 <div class="grid  ">
                   <div class="space-y-4">
-                    <div class="relative  w-full sm:w-2/3">
-                      <input type="text" id="tamano_extendido" name="tamano_extendido" class="peer input-form"
-                        placeholder=" " />
-                      <label for="tamano_extendido" class="label-form">
-                        Tamaño Extendido </label>
+                    <div class="w-full sm:w-2/3">
+                      <app-form-input form="disenioEstructural" label="Tamaño Extendido"
+                        name="tamanio_extendido"></app-form-input>
                     </div>
-                    <div class="relative  w-full sm:w-2/3">
-                      <input type="text" id="tamano_final" name="tamano_final" class="peer input-form"
-                        placeholder=" " />
-                      <label for="tamano_final" class="label-form">
-                        Tamaño Final </label>
+                    <div class="w-full sm:w-2/3">
+                      <app-form-input form="disenioEstructural" label="Tamaño Final"
+                        name="tamanio_final"></app-form-input>
                     </div>
                   </div>
-
                 </div>
               </div>
-              
-                <app-titulo-seccion titulo="Materiales del producto" numero="3"   departamento="Cotizaciones"></app-titulo-seccion>
-                <div class="flex flex-col items-center gap-2">
-                  <div class="w-full sm:w-2/3">
-                    <app-form-input form="cotizaciones" label="Pliego Impreso" name="pliego"></app-form-input>
-                  </div>
-                  <div class="w-full sm:w-2/3">
-                    <app-form-input form="cotizaciones" label="Single" name="single"></app-form-input>
-                  </div>
-                  <div class="w-full sm:w-2/3">
-                    <app-form-input form="cotizaciones" label="Corrugado Tacon" name="corrugado_tacon"></app-form-input>
-                  </div>
-                  <div class="w-full sm:w-2/3">
-                    <app-form-input form="cotizaciones" label="Adhesivo" name="adhesivo"></app-form-input>
-                  </div>
-                  <div class="w-full sm:w-2/3">
-                    <app-form-input form="cotizaciones" label="Cinta" name="cinta"></app-form-input>
-                  </div>
+              <app-titulo-seccion titulo="Materiales del producto" numero="3"
+                departamento="Cotizaciones"></app-titulo-seccion>
+              <div class="flex flex-col items-center gap-2">
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Pliego Impreso" name="pliego"></app-form-input>
                 </div>
-              
-              
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Single" name="single"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Corrugado Tacon" name="corrugado_tacon"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Adhesivo" name="adhesivo"></app-form-input>
+                </div>
+                <div class="w-full sm:w-2/3">
+                  <app-form-input form="cotizaciones" label="Cinta" name="cinta"></app-form-input>
+                </div>
+              </div>
+
+
 
               <app-titulo-seccion titulo="Impresión" numero="4" departamento="Preprensa"></app-titulo-seccion>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="space-y-2">
+              <div class="grid sm:grid-cols-2 gap-4" [formGroup]="formGroupName('prePrensa')">
+                <div class="space-y-2" >
                   <h6 class="text-center font-semibold">Tintas 1ra Entrada</h6>
-                  <div class="flex">
+                  <div class="flex" >
                     <label class="pb-2 self-center mx-3 leading-loose">1</label>
                     <input type="text" name="tinta_1_1"
+                    formControlName="tinta1_1"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">2</label>
                     <input type="text" name="tinta_1_2"
+                    formControlName="tinta1_2"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">3</label>
                     <input type="text" name="tinta_1_3"
+                    formControlName="tinta1_3"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">4</label>
                     <input type="text" name="tinta_1_4"
+                    formControlName="tinta1_4"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">5</label>
                     <input type="text" name="tinta_1_5"
+                    formControlName="tinta1_5"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                 </div>
@@ -138,26 +134,31 @@
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">1</label>
                     <input type="text" name="tinta_2_1"
+                    formControlName="tinta2_1"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">2</label>
                     <input type="text" name="tinta_2_2"
+                    formControlName="tinta2_2"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">3</label>
                     <input type="text" name="tinta_2_3"
+                    formControlName="tinta2_3"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
                     <label class="pb-2 self-center mx-3 leading-loose">4</label>
                     <input type="text" name="tinta_2_4"
+                    formControlName="tinta2_4"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                   <div class="flex">
-                    <label class="pb-2 self-center mx-3 leading-loose">5</label>
+                    <label class="pb-2 self-center mx-3 leading-loose">5</label>                    
                     <input type="text" name="tinta_2_5"
+                    formControlName="tinta2_5"
                       class="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" />
                   </div>
                 </div>

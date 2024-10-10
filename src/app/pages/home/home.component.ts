@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormBuilder, FormControlDirective, FormControlName, FormGroup, NgControl, NgModel, Validators } from '@angular/forms';
+import {  FormGroup } from '@angular/forms';
+import { FormFactoryService } from '../../services/modelForm.service';
 
 
 @Component({
@@ -11,27 +12,23 @@ import { ControlValueAccessor, FormBuilder, FormControlDirective, FormControlNam
 
 
 
-export class HomeComponent implements OnInit  {
-
+export class HomeComponent implements OnInit {
+  formService = inject(FormFactoryService);  
   formGeneral!: FormGroup;
-  cotizacionesForm!: FormGroup;
 
-  
-  constructor(private fb: FormBuilder) {}
   ngOnInit(): void {
-    
-    this.cotizacionesForm = this.fb.group({
-      descripcion: [''],
-      pliego: ['Pliego extra'],
-      single: ['single'],
-      corrugado_tacon: ['Corrugado'],
-      adhesivo: ['adhesivo'],
-      cinta: ['Cinta'],
-    })
-    
-    this.formGeneral = this.fb.group({
-      cotizaciones: this.cotizacionesForm
-    }
-    )      
+    const { formGeneral } = this.formService;
+    this.formGeneral = formGeneral;              
+  }
+
+   formGroupName(name:string) {    
+    return this.formGeneral.get(name) as FormGroup
+  }
+  
+  
+
+  onGuardar() {
+    //console.log(this.formGeneral.invalid);
+    console.log(this.formGeneral.value);
   }
 }
