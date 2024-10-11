@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {  AbstractControl, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import {   FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
   selector: 'app-form-input',

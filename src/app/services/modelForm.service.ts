@@ -9,7 +9,7 @@ export class FormFactoryService {
 
      fb = inject(FormBuilder);    
     cotizacionesForm: FormGroup = this.fb.group({
-        descripcion: ['descripcion'],
+        descripcion: ['vslrr'],
         pliego: ['Pliego extra'],
         single: ['single'],
         corrugado_tacon: ['Corrugado'],
@@ -64,7 +64,7 @@ export class FormFactoryService {
         pre_prensa: [''],
         metalizado: [''],
         corte: [''],
-        impresion: [''],
+        impresion: [{value:''}],
         barniz_uv: [''],
         traslape: [''],
         empalme: [''],
@@ -92,8 +92,8 @@ export class FormFactoryService {
         mascarillaBaseBlanca: this.fb.array([]),
         marcarillaPegado: this.fb.array([]),
         marcarillaPegadoCinta: this.fb.array([]),
-        tinta1_1: ['tinta1'],
-        tinta1_2: ['tinta2'],
+        tinta1_1: [{value:'tinta1',disabled:true}],
+        tinta1_2: [{value:'tinta2',disabled:true}],
         tinta1_3: ['tinta3'],
         tinta1_4: ['tinta4'],
         tinta1_5: ['tinta5'],
