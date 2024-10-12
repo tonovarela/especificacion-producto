@@ -12,8 +12,7 @@ export class FormInputComponent {
  @Input() form: string = '';
 formParent!: FormGroup;
   //control! :AbstractControl
-  constructor(
-    private rootFormGroup: FormGroupDirective
+  constructor(private rootFormGroup: FormGroupDirective
   ) {}
   ngOnInit(): void {
     this.formParent = this.rootFormGroup.control.get(this.form) as FormGroup;

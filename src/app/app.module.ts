@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {  ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { HomeComponent } from './pages/home/home.component';
-import { TituloSeccionComponent } from './components/titulo-seccion/titulo-seccion.component';
-import { FormInputComponent } from './components/shared/form-input/form-input.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Seccion1Component } from './components/seccion1/seccion1.component';
-import { Seccion2Component } from './components/seccion2/seccion2.component';
-import { Seccion3Component } from './components/seccion3/seccion3.component';
-import { Seccion4Component } from './components/seccion4/seccion4.component';
-import { FileUploadComponent } from './components/shared/file-upload/file-upload.component';
-import { MenuSolicitudComponent } from './components/menu-solicitud/menu-solicitud.component';
+
+
+import { FormInputComponent,TituloSeccionComponent,FileUploadComponent, MenuSolicitudComponent } from './components/shared';
+import { Seccion1Component, Seccion2Component, Seccion3Component, Seccion4Component, Seccion5Component, Seccion6Component, Seccion7Component, Seccion8Component, Seccion9Component, Seccion10Component, Seccion11Component, Seccion12Component, Seccion13Component, Seccion14Component, Seccion15Component } from './components/secciones';
+import { FormSwitchComponent } from './components/shared/form-switch/form-switch.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,17 +20,28 @@ import { MenuSolicitudComponent } from './components/menu-solicitud/menu-solicit
     HomeComponent,
     TituloSeccionComponent,
     FormInputComponent,
+    FileUploadComponent,
+    MenuSolicitudComponent,
     Seccion1Component,
     Seccion2Component,
     Seccion3Component,
     Seccion4Component,
-    FileUploadComponent,
-    MenuSolicitudComponent,
+    Seccion5Component,
+    Seccion6Component,
+    Seccion7Component,
+    Seccion8Component,
+    Seccion9Component,
+    Seccion10Component,
+    Seccion11Component,
+    Seccion12Component,
+    Seccion13Component,
+    Seccion14Component,
+    Seccion15Component,
+    FormSwitchComponent
     
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
+    BrowserModule,    
     ReactiveFormsModule,
     AppRoutingModule,
     

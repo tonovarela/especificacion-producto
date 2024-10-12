@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AbstractSeccionComponent } from '../../abstract/abstract.seccion.component';
+import { AbstractSeccionComponent } from '../../../abstract/abstract.seccion.component';
 
 @Component({
   selector: 'app-seccion4',
@@ -9,6 +9,8 @@ import { AbstractSeccionComponent } from '../../abstract/abstract.seccion.compon
 })
 export class Seccion4Component  extends AbstractSeccionComponent {
   
+  
  
- 
+
+
 }

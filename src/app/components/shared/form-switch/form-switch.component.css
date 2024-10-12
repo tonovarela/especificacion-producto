@@ -1,0 +1,8 @@
+.peer:checked ~ label .peer-checked\:hidden {
+    display: none;
+  }
+  
+  .peer:checked ~ label .peer-checked\:inline {
+    display: inline;
+  }
+  

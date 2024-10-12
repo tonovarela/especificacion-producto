@@ -59,9 +59,9 @@
 
 </div>
 <div class="flex justify-center">
-  <div class="w-full  sm:w-2/3">
+  <div class="w-full  ">
     <app-form-input form="prePrensa" label="Barniz" name="barniz"></app-form-input>
   </div>
 </div>
 
-<app-file-upload [multiple]="true" ></app-file-upload>          
+   <app-file-upload label="Código de Barras" [multiple]="false" [disabled]="false" [filesUploaded]="[]" (onAdd)="addFile($event,'prePrensa','codigoBarras')" (onRemove)="removeFile($event,'prePrensa','codigoBarras')" ></app-file-upload>          

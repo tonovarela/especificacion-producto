@@ -1,0 +1,17 @@
+<ng-container [formGroup]="formParent">
+<div class="flex justify-start items-center  gap-3 ">
+  <div class="flex w-full justify-between">
+    <label class="text-sm font-semibold font-inter self-center">{{label}}</label>
+    <input type="checkbox" [name]="name"  [id]="name" class="peer hidden" [formControlName]="name" />
+    <label [for]="name" class="font-inter cursor-pointer rounded-lg border-2 text-sm  py-1 w-24 text-center px-2 font-bold border-blue-700 text-blue-700 transition-colors duration-200 ease-in-out
+     peer-disabled:bg-slate-100 
+     peer-disabled:text-slate-500
+     peer-disabled:border-slate-500
+     peer-disabled:cursor-not-allowed  peer-checked:bg-blue-700 peer-checked:text-white ">
+      <span class="peer-checked:hidden">{{labelOff}}</span>
+      <span class="hidden peer-checked:inline">{{labelOn}}</span>
+    </label>
+  </div>
+    
+  </div>
+</ng-container>
