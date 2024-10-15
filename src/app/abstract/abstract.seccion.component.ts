@@ -4,30 +4,41 @@ import { FileModel } from '@app/model/file.interface';
 
 @Component({
   template: '',
-  standalone:true,  
-    
+  standalone: true,
+
 })
-export abstract class AbstractSeccionComponent  {
-   
-@Input({required:true}) formGeneral: FormGroup = new FormGroup({});
-  protected formGroupName(name:string) {    
-    return this.formGeneral.get(name) as FormGroup
+export abstract class AbstractSeccionComponent {
+
+  @Input({ required: true }) formGeneral: FormGroup = new FormGroup({});
+  @Input({ required: true }) formName: string = '';
+
+  protected get formGroupName() {
+    return this.formGeneral.get(this.formName) as FormGroup
   }
 
 
-  addFile(file:FileModel,nameGroup:string,nameField:string) {  
-    
-    const reference = this.formGroupName(nameGroup).get(nameField);
-    const previosValues = reference?.value ?? []; 
-          reference?.setValue([...previosValues,file]);    
-   }
-  
-   removeFile(file:FileModel,nameGroup:string,nameField:string) {    
-    const reference = this.formGroupName(nameGroup).get(nameField);
-    const newValues= reference?.value.filter((f:FileModel) => f.id !== file.id);
-    this.formGroupName(nameGroup).get(nameField)?.setValue(newValues);
-  
-   }
-  
-  
+  protected get isDisabledForm() {
+    return this.formGroupName.disabled;
+  }
+
+
+  protected addFile(file: FileModel, nameField: string) {
+
+    const reference = this.formGroupName.get(nameField);
+    const previosValues = reference?.value ?? [];
+    reference?.setValue([...previosValues, file]);
+  }
+
+  protected removeFile(file: FileModel, nameField: string) {
+    const reference = this.formGroupName.get(nameField);
+    const newValues = reference?.value.filter((f: FileModel) => f.id !== file.id);
+    this.formGroupName.get(nameField)?.setValue(newValues);
+
+  }
+
+  protected obtenerArchivos(nameField: string): FileModel[] {    
+    return this.formGroupName.get(nameField)?.value ?? [];
+  }
+
+
 }

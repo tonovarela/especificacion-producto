@@ -4,23 +4,23 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 py-5">
     <div class="grid   space-y-4 ">
       <div class="w-full sm:w-2/3">
-        <app-form-input form="disenioEstructural" label="Frente" name="frente"></app-form-input>
+        <app-form-input [form]="formName" label="Frente" name="frente"></app-form-input>
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="disenioEstructural" label="Fondo" name="fondo"></app-form-input>
+        <app-form-input [form]="formName" label="Fondo" name="fondo"></app-form-input>
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="disenioEstructural" label="Altura" name="altura"></app-form-input>
+        <app-form-input [form]="formName" label="Altura" name="altura"></app-form-input>
       </div>
     </div>
     <div class="grid  ">
       <div class="space-y-4">
         <div class="w-full sm:w-2/3">
-          <app-form-input form="disenioEstructural" label="Tamaño Extendido"
+          <app-form-input [form]="formName" label="Tamaño Extendido"
             name="tamanio_extendido"></app-form-input>
         </div>
         <div class="w-full sm:w-2/3">
-          <app-form-input form="disenioEstructural" label="Tamaño Final"
+          <app-form-input [form]="formName" label="Tamaño Final"
             name="tamanio_final"></app-form-input>
         </div>
       </div>

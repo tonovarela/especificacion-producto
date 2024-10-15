@@ -1,97 +1,97 @@
 <app-titulo-seccion titulo="Parámetros de empaque" numero="14" departamento="Customer"></app-titulo-seccion>
-<h1 class="text-2xl text-center">Datos impresos en Etiqueta</h1>    
+<h1 class="text-2xl text-center mt-2">Datos impresos en Etiqueta</h1>    
 <div class="flex flex-col gap-4 items-center mt-2 ">
     
     <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Cliente" name="etiqueta_cliente"></app-form-input>        
+        <app-form-input [form]="formName" label="Cliente" name="etiqueta_cliente"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Producto" name="etiqueta_producto"></app-form-input>        
+        <app-form-input [form]="formName" label="Producto" name="etiqueta_producto"></app-form-input>        
       </div>
      
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch form="customer" label="OP en producción" labelOn="Aplica" labelOff="No aplica" name="etiqueta_op"></app-form-switch>
+        <app-form-switch [form]="formName" label="OP en producción" labelOn="Aplica" labelOff="No aplica" name="etiqueta_op"></app-form-switch>
       </div>
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch form="customer" label="Orden de compra" labelOn="Aplica" labelOff="No aplica" name="etiqueta_orden_compra"></app-form-switch>
+        <app-form-switch [form]="formName" label="Orden de compra" labelOn="Aplica" labelOff="No aplica" name="etiqueta_orden_compra"></app-form-switch>
       </div>
       
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Cantidad" name="etiqueta_cantidad"></app-form-input>        
+        <app-form-input [form]="formName" label="Cantidad" name="etiqueta_cantidad"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch form="customer" label="Fecha  fabricación" labelOn="Aplica" labelOff="No aplica" name="etiqueta_fecha_corriente"></app-form-switch>
+        <app-form-switch [form]="formName" label="Fecha  fabricación" labelOn="Aplica" labelOff="No aplica" name="etiqueta_fecha_corriente"></app-form-switch>
       </div>
      
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Destino de acuerdo a lista de distribución" name="etiqueta_destino"></app-form-input>        
+        <app-form-input [form]="formName" label="Destino de acuerdo a lista de distribución" name="etiqueta_destino"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch form="customer" label="Logo Litoprocess" labelOn="Aplica" labelOff="No aplica" name="etiqueta_logotipo"></app-form-switch>
+        <app-form-switch [form]="formName" label="Logo Litoprocess" labelOn="Aplica" labelOff="No aplica" name="etiqueta_logotipo"></app-form-switch>
       </div>
-      <h1 class="text-2xl text-center">Datos impresos en Caja</h1>    
+      <h1 class="text-2xl text-center mt-2">Datos impresos en Caja</h1>    
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Tipo de caja" name="caja_tipo"></app-form-input>        
-      </div>
-      <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Dimensiones" name="caja_dimensiones"></app-form-input>        
+        <app-form-input [form]="formName" label="Tipo de caja" name="caja_tipo"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Peso bruto" name="caja_peso_bruto"></app-form-input>        
+        <app-form-input [form]="formName" label="Dimensiones" name="caja_dimensiones"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Peso máximo" name="caja_peso_maximo"></app-form-input>        
+        <app-form-input [form]="formName" label="Peso bruto" name="caja_peso_bruto"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Piezas por caja" name="caja_piezas_caja"></app-form-input>        
+        <app-form-input [form]="formName" label="Peso máximo" name="caja_peso_maximo"></app-form-input>        
+      </div>
+      <div class="w-full sm:w-2/3">
+        <app-form-input [form]="formName" label="Piezas por caja" name="caja_piezas_caja"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch form="customer" label="Logotipo litoprocess" labelOn="Aplica" labelOff="No aplica" name="caja_logotipo"></app-form-switch>
+        <app-form-switch [form]="formName" label="Logotipo litoprocess" labelOn="Aplica" labelOff="No aplica" name="caja_logotipo"></app-form-switch>
       </div>
       
-      <h1 class="text-2xl text-center">Datos impresos en Tarima</h1>    
+      <h1 class="text-2xl text-center mt-2">Datos impresos en Tarima</h1>    
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Tipo de tarima" name="tarima_tipo"></app-form-input>        
+        <app-form-input [form]="formName" label="Tipo de tarima" name="tarima_tipo"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Estiba máxima" name="tarima_estima_maxima"></app-form-input>        
+        <app-form-input [form]="formName" label="Estiba máxima" name="tarima_estima_maxima"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Cajas por cama" name="tarima_cajas_cama"></app-form-input>        
+        <app-form-input [form]="formName" label="Cajas por cama" name="tarima_cajas_cama"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Camas por tarima" name="tarima_cajas_portarima"></app-form-input>        
+        <app-form-input [form]="formName" label="Camas por tarima" name="tarima_cajas_portarima"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Cajas totales por tarima" name="tarima_total"></app-form-input>        
+        <app-form-input [form]="formName" label="Cajas totales por tarima" name="tarima_total"></app-form-input>        
       </div>
      
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Piezas empacadas por tarima" name="tarima_pieza_empacadas"></app-form-input>        
+        <app-form-input [form]="formName" label="Piezas empacadas por tarima" name="tarima_pieza_empacadas"></app-form-input>        
       </div>
       
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch form="customer" label="Esquineros" labelOn="SI" labelOff="NO" name="esquineros"></app-form-switch>
+        <app-form-switch [form]="formName" label="Esquineros" labelOn="Si aplica" labelOff="No aplica" name="esquineros"></app-form-switch>
       </div>
       
       <div class="w-full sm:w-2/3">
-        <app-form-switch form="customer" label="Fleje" labelOn="SI" labelOff="NO" name="fleje"></app-form-switch>        
+        <app-form-switch [form]="formName" label="Fleje" labelOn="Si aplica" labelOff="No aplica" name="fleje"></app-form-switch>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-switch form="customer" label="Flayo" labelOn="SI" labelOff="NO" name="playo"></app-form-switch>        
+        <app-form-switch [form]="formName" label="Playo" labelOn="Si aplica" labelOff="No aplica" name="playo"></app-form-switch>        
         
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Vueltas de playo base" name="playo_base"></app-form-input>        
+        <app-form-input [form]="formName" label="Vueltas de playo base" name="playo_base"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Vueltas de playo centro" name="playo_centro"></app-form-input>        
+        <app-form-input [form]="formName" label="Vueltas de playo centro" name="playo_centro"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Vueltas de playo arriba" name="playo_arriba"></app-form-input>        
+        <app-form-input [form]="formName" label="Vueltas de playo arriba" name="playo_arriba"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-form-input form="customer" label="Observaciones" name="observaciones"></app-form-input>        
+        <app-form-input [form]="formName" label="Observaciones" name="observaciones"></app-form-input>        
       </div>
       
      

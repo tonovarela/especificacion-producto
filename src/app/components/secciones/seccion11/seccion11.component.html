@@ -1,4 +1,4 @@
 <app-titulo-seccion titulo="Mascarilla de Pegado" numero="11" departamento="Preprensa"></app-titulo-seccion>
-<app-file-upload label="" [multiple]="true" [disabled]="false" [filesUploaded]="[]" 
-(onAdd)="addFile($event,'prePrensa','marcarillaPegado')" 
-(onRemove)="removeFile($event,'prePrensa','marcarillaPegado')" ></app-file-upload>      
+<app-file-upload label="" [multiple]="true" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('marcarillaPegado')"
+(onAdd)="addFile($event,'marcarillaPegado')" 
+(onRemove)="removeFile($event,'marcarillaPegado')" ></app-file-upload>      

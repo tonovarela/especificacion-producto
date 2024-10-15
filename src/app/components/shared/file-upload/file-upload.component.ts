@@ -10,8 +10,7 @@ import { FileModel } from '@app/model/file.interface';
 })
 
 export class FileUploadComponent  implements OnInit {
-  ngOnInit(): void {
-    //this.multiple=false;
+  ngOnInit(): void {   
   }
   
   @Input() multiple: boolean = false;
@@ -38,19 +37,17 @@ export class FileUploadComponent  implements OnInit {
         reader.onload = () => {
           const base64 = reader.result as string;
           const file: FileModel = {id:Math.random().toString(36).substring(7), name: files[i].name, base64};
-          this.filesUploaded.push(file);                              
+          //this.filesUploaded.push(file);                              
           this.onAdd.emit(file);                    
           
         };
         reader.readAsDataURL(files[i]);
       }
     }
-
   }
 
-  quitarImagen(file:FileModel) {   
-   
-    this.filesUploaded = this.filesUploaded.filter(f => f.id !== file.id);
+  quitarImagen(file:FileModel) {      
+    //this.filesUploaded = this.filesUploaded.filter(f => f.id !== file.id);
     this.onRemove.emit(file);
 
   }

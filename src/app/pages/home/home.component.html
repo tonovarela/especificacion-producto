@@ -1,31 +1,41 @@
 <div class="w-full overflow-y-hidden h-screen bg-gradient-to-br from-gray-200 to-gray-700 ">
 
+
   <div class="py-5 max-w-full sm:max-w-2xl sm:mx-auto">
+
     <div class="relative">
-      <app-menu-solicitud (onGuardar)="onGuardar()" [habilitarGuardar]="true"></app-menu-solicitud>    
+      <app-menu-solicitud (onGuardar)="onGuardar()" [catalogoAreas]="catalogoAreas()"
+        [habilitarGuardar]="areasSeleccionadas().length>0"
+        [(areasSeleccionadas)]="areasSeleccionadas"></app-menu-solicitud>
     </div>
+    
+
     <ng-container [formGroup]="formGeneral">
       <div class="h-[95vh]  px-4 py-10 overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
-        <div class="mx-auto pt-5">
-          <form class="divide-y divide-gray-200">
-            <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">              
 
-               <app-seccion1  [formGeneral]="formGeneral"/>
-               
-              <app-seccion2 [formGeneral]="formGeneral"/>
-              <app-seccion3 [formGeneral]="formGeneral"/>
-              <app-seccion4 [formGeneral]="formGeneral"/>
-                <app-seccion5 [formGeneral]="formGeneral"/>
-               <app-seccion6 [formGeneral]="formGeneral"/>
-              <app-seccion7 [formGeneral]="formGeneral"/>
-               <app-seccion8 [formGeneral]="formGeneral"/>
-               <app-seccion9 [formGeneral]="formGeneral"/>
-                <app-seccion10 [formGeneral]="formGeneral"/> 
-                <app-seccion11 [formGeneral]="formGeneral"/>
-               <app-seccion12 [formGeneral]="formGeneral"/>
-               <app-seccion13 [formGeneral]="formGeneral"/>
-               <app-seccion14 [formGeneral]="formGeneral"/> 
-               <app-seccion15 [formGeneral]="formGeneral"/> 
+        <div class="mx-auto pt-5 ">
+
+          <form class="divide-y divide-gray-200 ">
+            <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
+              <!-- <pre>
+                {{usuario | json}}
+                {{formGeneral.value | json}}
+              </pre> -->
+              <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
+              <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
+              <app-seccion3  formName="cotizaciones" *ngIf="isAreaVisible('cotizaciones')" [formGeneral]="formGeneral"  />
+              <app-seccion4  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
+              <app-seccion5  formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
+              <app-seccion6  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion7  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion8  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion9  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion10 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion11 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion12 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion13 formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')" [formGeneral]="formGeneral" />
+              <app-seccion14 formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+              <app-seccion15 formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
             </div>
           </form>
         </div>
@@ -33,3 +43,5 @@
     </ng-container>
   </div>
 </div>
+
+

@@ -1,5 +1,5 @@
 <app-titulo-seccion titulo="Impresión" numero="4" departamento="Preprensa"></app-titulo-seccion>
-<div class="grid sm:grid-cols-2 gap-4 py-5" [formGroup]="formGroupName('prePrensa')">
+<div class="grid sm:grid-cols-2 gap-4 py-5" [formGroup]="formGroupName">
   <div class="space-y-2">
     <h6 class="text-center font-semibold">Tintas 1ra Entrada</h6>
     <div class="flex">
@@ -64,4 +64,4 @@
   </div>
 </div>
 
-   <app-file-upload label="Código de Barras" [multiple]="false" [disabled]="false" [filesUploaded]="[]" (onAdd)="addFile($event,'prePrensa','codigoBarras')" (onRemove)="removeFile($event,'prePrensa','codigoBarras')" ></app-file-upload>          
+   <app-file-upload label="Código de Barras" [multiple]="false" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('codigoBarras')" (onAdd)="addFile($event,'codigoBarras')" (onRemove)="removeFile($event,'codigoBarras')" ></app-file-upload>          

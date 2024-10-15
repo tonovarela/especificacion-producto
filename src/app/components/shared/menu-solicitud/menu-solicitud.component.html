@@ -1,13 +1,29 @@
   
   <div
-        class="flex justify-between bg-gray-100 gap-4 border rounded-t border-gray-200 shadow-xl px-4 absolute w-full z-50">
-        <button type="button" class="text-gray-500 hover:text-gray-800 p-3 rounded-md focus:outline-none">
+        class="flex justify-between bg-gray-100 gap-4 border rounded-t  border-gray-200  shadow-xl px-4  absolute w-full z-50">
+        <button type="button" class="text-gray-500  hover:text-gray-800 p-3 rounded-md focus:outline-none">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <div></div>
-        <div class="flex gap-2">
+        <div>
+          @if (catalogoAreas){
+
+            <p-multiSelect 
+            class="custom-ms"
+      [options]="catalogoAreas"       
+      optionLabel="descripcion" 
+      selectedItemsLabel="{0} areas "
+      scrollHeight="300px"
+      filter="false"    
+      filterPlaceHolder="Buscar"
+      [(ngModel)]="areasSeleccionadas"
+      styleClass=" m-1  p-0 w-[400px] sm:flex hidden font-inter"
+      panelStyleClass="bg-white shadow-md" 
+      placeholder="Seleccionar areas" />
+          }
+        </div>
+        <div class="flex  gap-2">
           <button type="button" 
           (click)="onGuardar.emit()"
           [disabled]="!habilitarGuardar"

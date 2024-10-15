@@ -5,8 +5,3 @@ label {
     @apply text-gray-700  text-sm font-inter 
 }
 
-input:disabled {
-    @apply bg-gray-200 cursor-not-allowed 
-
-    
-  }

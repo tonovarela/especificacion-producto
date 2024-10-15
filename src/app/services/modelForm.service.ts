@@ -9,7 +9,7 @@ export class FormFactoryService {
 
      fb = inject(FormBuilder);    
     cotizacionesForm: FormGroup = this.fb.group({
-        descripcion: ['vslrr'],
+        //descripcion: ['vslrr'],
         pliego: ['Pliego extra'],
         single: ['single'],
         corrugado_tacon: ['Corrugado'],
@@ -17,7 +17,7 @@ export class FormFactoryService {
         cinta: ['Cinta'],
     })
     customerForm: FormGroup = this.fb.group({
-        descripcion: ['s', Validators.required],
+        descripcion: ['s'],
         etiqueta_cliente: ['cliente e'],
         etiqueta_producto: ['producto'],
 
@@ -65,6 +65,7 @@ export class FormFactoryService {
     
     planeacionForm= this.fb.group({
         diseñio_estructural: ['diseño'],
+        
         preprensa: ['preprensa'],
         metalizado: ['metalizado'],
         corte: ['corte'],
@@ -113,7 +114,7 @@ export class FormFactoryService {
    
     formGeneral: FormGroup = this.fb.group({
         cotizaciones: this.cotizacionesForm,
-        customer: this.customerForm,
+        customer: this.customerForm,        
         disenioEstructural: this.disenioEstructuralForm,
         prePrensa: this.prePrensaForm,        
         planeacion: this.planeacionForm,        
