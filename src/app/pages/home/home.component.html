@@ -1,7 +1,7 @@
 <div class="w-full overflow-y-hidden h-screen bg-gradient-to-br from-gray-200 to-gray-700 ">
 
 
-  <div class="py-5 max-w-full sm:max-w-2xl sm:mx-auto">
+  <div class="py-5 max-w-full sm:max-w-4xl sm:mx-auto">
 
     <div class="relative">
       <app-menu-solicitud (onGuardar)="onGuardar()" [catalogoAreas]="catalogoAreas()"
@@ -23,7 +23,7 @@
               </pre> -->
               <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
               <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
-              <app-seccion3  formName="cotizaciones" *ngIf="isAreaVisible('cotizaciones')" [formGeneral]="formGeneral"  />
+              <app-seccion3  formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
               <app-seccion4  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
               <app-seccion5  formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
               <app-seccion6  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />

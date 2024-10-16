@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   filesUploaded: string[] = [];
   catalogoAreas= signal<Area[]>([])
   areasSeleccionadas= signal<Area[]>([])
-  usuario= signal<Usuario>({ id: '1', nombre: 'Juan', usermane: 'juanito', areasPermitidas: ["planeacion",'prePrensa','customer'] });
+  usuario= signal<Usuario>({ id: '1', nombre: 'Juan', usermane: 'juanito', areasPermitidas: ["prePrensa"] });
   
   ngOnInit(): void {
     const { formGeneral } = this.formService;
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       {descripcion: 'Customer', id: 'customer'},
       {descripcion: 'Preprensa', id: 'prePrensa'},
       {descripcion: 'Diseño estructural', id: 'disenioEstructural'},
-      {descripcion: 'Cotizaciones ', id: 'cotizaciones'},
+      {descripcion: 'Cotizaciones ', id: 'cotizacion'},
       {descripcion: 'Planeacion', id: 'planeacion'}
   ]);
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   this.areasSeleccionadas.set(this.catalogoAreas().filter(area => this.usuario().areasPermitidas.includes(area.id)));  
   this.formGeneral.disable();
   this.usuario().areasPermitidas.forEach(area => this.formGeneral.get(area)?.enable());
-  console.log(this.areasSeleccionadas());
+
   
   }
 

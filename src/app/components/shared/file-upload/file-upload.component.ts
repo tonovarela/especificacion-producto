@@ -36,8 +36,7 @@ export class FileUploadComponent  implements OnInit {
         const reader = new FileReader();
         reader.onload = () => {
           const base64 = reader.result as string;
-          const file: FileModel = {id:Math.random().toString(36).substring(7), name: files[i].name, base64};
-          //this.filesUploaded.push(file);                              
+          const file: FileModel = {id:Math.random().toString(36).substring(7), name: files[i].name, base64};    
           this.onAdd.emit(file);                    
           
         };
@@ -47,7 +46,7 @@ export class FileUploadComponent  implements OnInit {
   }
 
   quitarImagen(file:FileModel) {      
-    //this.filesUploaded = this.filesUploaded.filter(f => f.id !== file.id);
+    
     this.onRemove.emit(file);
 
   }

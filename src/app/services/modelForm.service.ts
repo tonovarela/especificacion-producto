@@ -8,8 +8,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class FormFactoryService {
 
      fb = inject(FormBuilder);    
-    cotizacionesForm: FormGroup = this.fb.group({
-        //descripcion: ['vslrr'],
+    cotizacionesForm: FormGroup = this.fb.group({        
         pliego: ['Pliego extra'],
         single: ['single'],
         corrugado_tacon: ['Corrugado'],
@@ -21,9 +20,9 @@ export class FormFactoryService {
         etiqueta_cliente: ['cliente e'],
         etiqueta_producto: ['producto'],
 
-        etiqueta_op: [true],
+        etiqueta_op: [0],
 
-        etiqueta_orden_compra: [true],
+        etiqueta_orden_compra: [1],
         
         etiqueta_cantidad: ['cantidad'],
         etiqueta_fecha_corriente: [true],
@@ -64,7 +63,7 @@ export class FormFactoryService {
     });
     
     planeacionForm= this.fb.group({
-        diseñio_estructural: ['diseño'],
+        disenio_estructural: ['diseño'],
         
         preprensa: ['preprensa'],
         metalizado: ['metalizado'],
@@ -108,12 +107,12 @@ export class FormFactoryService {
         tinta2_4: ['tinta9'],
         tinta2_5: ['tinta10'], 
         barniz: [' Txt barniz'],       
-        codigoBarras: [],
+        codigoBarras: [[]],
         
     });
    
     formGeneral: FormGroup = this.fb.group({
-        cotizaciones: this.cotizacionesForm,
+        cotizacion: this.cotizacionesForm,
         customer: this.customerForm,        
         disenioEstructural: this.disenioEstructuralForm,
         prePrensa: this.prePrensaForm,        
