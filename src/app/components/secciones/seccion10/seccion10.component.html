@@ -1,4 +1,4 @@
-<app-titulo-seccion titulo="Mascarilla de Base Blanca" numero="10" departamento="Preprensa"></app-titulo-seccion>
+<app-titulo-seccion titulo="Mascarilla de Base Blanca" numero="10" departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 <app-file-upload label="" [multiple]="true" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('mascarillaBaseBlanca')" 
 (onAdd)="addFile($event,'mascarillaBaseBlanca')" 
 (onRemove)="removeFile($event,'mascarillaBaseBlanca')" ></app-file-upload>      

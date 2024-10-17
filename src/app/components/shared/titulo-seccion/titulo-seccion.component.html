@@ -1,12 +1,15 @@
 
-<div class="flex  justify-between  mt-3  border px-2 py-1 rounded bg-slate-100 shadow">    
+<div class="flex justify-between mt-3 border px-2 py-1 mb-2 rounded bg-slate-100 shadow" [ngClass]="{'cursor-not-allowed': !habilitado}"
+>    
     <div class="flex">
-        <div class="h-8 w-8 bg-blue-200 rounded-full flex flex-shrink-0 justify-center items-center text-blue-500  font-mono">{{numero}}</div>
-        <div class="pl-3 font-semibold text-xl self-center text-gray-700">
+        <div class="h-8 w-8  rounded-full flex flex-shrink-0 justify-center items-center  font-mono"
+        [ngClass]="{'bg-blue-200  text-blue-500 ': habilitado, 'bg-gray-200  text-gray-400': !habilitado}"
+        >{{numero}}</div>
+        <div class="pl-3 font-semibold text-xl self-center text-gray-700"  [ngClass]="{'text-gray-700': habilitado, 'text-gray-400': !habilitado}">
           <h2 class="text-sm  font-inter sm:text-xl  leading-relaxed">{{titulo}}</h2>            
         </div>        
     </div>
-    <div class="self-end text-end pl-2 font-semibold text-sm  text-slate-400 sm:flex hidden">
+    <div class="self-end text-end pl-2 font-semibold text-sm  sm:flex hidden" [ngClass]="{'text-blue-700': habilitado, 'text-gray-400': !habilitado}">
         <h2 class="leading-relaxed">{{departamento}}</h2>    
       </div>
 </div>

@@ -1,4 +1,4 @@
-<app-titulo-seccion titulo="Ayuda visual" numero="13" departamento="Diseño Estructural"></app-titulo-seccion>
+<app-titulo-seccion titulo="Ayuda visual" numero="13" departamento="Diseño Estructural" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 <app-file-upload label="" [multiple]="true" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('ayudaVisual')"
 (onAdd)="addFile($event,'ayudaVisual')" 
 (onRemove)="removeFile($event,'ayudaVisual')" ></app-file-upload>      

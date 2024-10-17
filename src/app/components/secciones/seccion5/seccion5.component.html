@@ -1,4 +1,4 @@
-<app-titulo-seccion titulo="Flujo de producción" numero="5" departamento="Planeación"></app-titulo-seccion>
+<app-titulo-seccion titulo="Flujo de producción" numero="5" departamento="Planeación" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 <div class="flex flex-col items-center gap-2 py-5">
     <div class="w-full ">
         <app-form-input [form]="formName" label="Diseño Estructural" name="disenio_estructural"></app-form-input>

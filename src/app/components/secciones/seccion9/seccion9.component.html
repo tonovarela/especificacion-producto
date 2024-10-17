@@ -1,4 +1,4 @@
-<app-titulo-seccion titulo="Mascarilla de Barniz" numero="9" departamento="Preprensa"></app-titulo-seccion>
+<app-titulo-seccion titulo="Mascarilla de Barniz" numero="9" departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 <app-file-upload label="" [multiple]="true" [disabled]="isDisabledForm"  [filesUploaded]="obtenerArchivos('marcarillaBarniz')" 
 (onAdd)="addFile($event,'marcarillaBarniz')" 
 (onRemove)="removeFile($event,'marcarillaBarniz')" ></app-file-upload>      

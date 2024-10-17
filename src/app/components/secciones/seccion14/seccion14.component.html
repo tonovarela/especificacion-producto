@@ -1,5 +1,5 @@
-<app-titulo-seccion titulo="Parámetros de empaque" numero="14" departamento="Customer"></app-titulo-seccion>
-<h1 class="text-2xl text-center mt-2">Datos impresos en Etiqueta</h1>    
+<app-titulo-seccion titulo="Parámetros de empaque" numero="14" departamento="Customer" [habilitado]="!isDisabledForm"></app-titulo-seccion>
+<h1 class="text-2xl text-center mt-2" [ngClass]="{'text-gray-400': isDisabledForm}">Datos impresos en Etiqueta</h1>    
 <div class="flex flex-col gap-4 items-center mt-2 ">
     
     <div class="w-full sm:w-2/3">
@@ -29,7 +29,13 @@
       <div class="w-full sm:w-2/3 ">
         <app-form-switch [form]="formName" label="Logo Litoprocess" labelOn="Aplica" labelOff="No aplica" name="etiqueta_logotipo"></app-form-switch>
       </div>
-      <h1 class="text-2xl text-center mt-2">Datos impresos en Caja</h1>    
+      <div class="w-full sm:w-2/3">
+        <app-file-upload  label="Imagen de referencia" [multiple]="false" 
+        [disabled]="isDisabledForm"
+        [filesUploaded]="obtenerArchivos('etiquetaImagen')" (onAdd)="addFile($event,'etiquetaImagen')" (onRemove)="removeFile($event,'etiquetaImagen')"
+        ></app-file-upload>
+      </div>
+      <h1 class="text-2xl text-center mt-2" [ngClass]="{'text-gray-400': isDisabledForm}">Datos impresos en Caja</h1>    
       <div class="w-full sm:w-2/3">
         <app-form-input [form]="formName" label="Tipo de caja" name="caja_tipo"></app-form-input>        
       </div>
@@ -48,8 +54,14 @@
       <div class="w-full sm:w-2/3 ">
         <app-form-switch [form]="formName" label="Logotipo litoprocess" labelOn="Aplica" labelOff="No aplica" name="caja_logotipo"></app-form-switch>
       </div>
-      
-      <h1 class="text-2xl text-center mt-2">Datos impresos en Tarima</h1>    
+      <div class="w-full sm:w-2/3">
+        <app-file-upload  label="Imagen de referencia" [multiple]="false"
+        [disabled]="isDisabledForm" 
+        [filesUploaded]="obtenerArchivos('cajaImagen')" (onAdd)="addFile($event,'cajaImagen')" (onRemove)="removeFile($event,'cajaImagen')"
+        ></app-file-upload>
+      </div>
+
+      <h1 class="text-2xl text-center mt-2" [ngClass]="{'text-gray-400': isDisabledForm}">Datos impresos en Tarima</h1>    
       <div class="w-full sm:w-2/3">
         <app-form-input [form]="formName" label="Tipo de tarima" name="tarima_tipo"></app-form-input>        
       </div>
@@ -92,6 +104,12 @@
       </div>
       <div class="w-full sm:w-2/3">
         <app-form-input [form]="formName" label="Observaciones" name="observaciones"></app-form-input>        
+      </div>
+      <div class="w-full sm:w-2/3">
+        <app-file-upload  label="Imagen de referencia" [multiple]="false"
+        [disabled]="isDisabledForm"
+        [filesUploaded]="obtenerArchivos('tarimaImagen')" (onAdd)="addFile($event,'tarimaImagen')" (onRemove)="removeFile($event,'tarimaImagen')"
+        ></app-file-upload>
       </div>
       
      

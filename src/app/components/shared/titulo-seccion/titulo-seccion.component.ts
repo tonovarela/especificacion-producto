@@ -9,6 +9,7 @@ export class TituloSeccionComponent {
   @Input('titulo') titulo: string=" ";
   @Input('numero') numero: string=" ";
   @Input('departamento') departamento: string=" ";
+  @Input('habilitado') habilitado: boolean=true;
 
 
 }

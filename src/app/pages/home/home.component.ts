@@ -1,14 +1,6 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Area } from '@app/model/area.interface';
-import { FormFactoryService } from '@services/modelForm.service';
-
-interface Usuario {
-  id:string;
-  nombre:string;
-  usermane:string;
-  areasPermitidas: string[];  
-}
+import { Component, inject, OnInit, signal } from "@angular/core";
+import { Router } from "@angular/router";
+import { AbstractBaseGridComponent } from "@app/abstract/abstract.baseGrid.component";
 
 @Component({
   selector: 'app-home',
@@ -16,45 +8,18 @@ interface Usuario {
   styleUrl: './home.component.css'
 })
 
-
-
-
-export class HomeComponent implements OnInit {
-  formService = inject(FormFactoryService);
-  formGeneral!: FormGroup;
-  filesUploaded: string[] = [];
-  catalogoAreas= signal<Area[]>([])
-  areasSeleccionadas= signal<Area[]>([])
-  usuario= signal<Usuario>({ id: '1', nombre: 'Juan', usermane: 'juanito', areasPermitidas: ["prePrensa"] });
-  
+export class HomeComponent  extends AbstractBaseGridComponent  implements OnInit{
+  solicitudes = signal<any[]>([{id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},]);
+  router= inject(Router);
   ngOnInit(): void {
-    const { formGeneral } = this.formService;
-    this.formGeneral = formGeneral;
-    this.catalogoAreas.set([
-      {descripcion: 'Customer', id: 'customer'},
-      {descripcion: 'Preprensa', id: 'prePrensa'},
-      {descripcion: 'Diseño estructural', id: 'disenioEstructural'},
-      {descripcion: 'Cotizaciones ', id: 'cotizacion'},
-      {descripcion: 'Planeacion', id: 'planeacion'}
-  ]);
-
-  
-  this.areasSeleccionadas.set(this.catalogoAreas().filter(area => this.usuario().areasPermitidas.includes(area.id)));  
-  this.formGeneral.disable();
-  this.usuario().areasPermitidas.forEach(area => this.formGeneral.get(area)?.enable());
-
-  
+    this.autoFitColumns = false;    
+    this.iniciarResizeGrid(0.2);
   }
 
-   
-  isAreaVisible(name:string): boolean {
-    return this.areasSeleccionadas().some(area => area.id === name);
+  irDetalle(id: string) {
+    this.router.navigate(['/detalle', id]);
   }
-  
-  
-  onGuardar() {  
-    console.log(this.formGeneral.value);
-  }
+
 
  
 }

@@ -1,0 +1,7 @@
+input {
+    @apply h-10 font-inter text-sm
+}
+label {
+    @apply text-gray-700  text-sm font-inter 
+}
+

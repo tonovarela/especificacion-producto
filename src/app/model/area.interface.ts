@@ -1,4 +1,5 @@
 export interface Area {
     descripcion: string,
-    id: string
+    id: string,
+    puedeEditar?: boolean
   }

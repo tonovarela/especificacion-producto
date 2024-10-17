@@ -10,8 +10,10 @@ import { Area } from '@app/model/area.interface';
 export class MenuSolicitudComponent implements OnInit {
 
 @Output() onGuardar =new EventEmitter<void>();
+@Output() onRegresar =new EventEmitter<void>();
 @Input() habilitarGuardar: boolean=true;
 @Input() catalogoAreas: Area[]=[];
+@Input() guardando: boolean=false;
 
 
  

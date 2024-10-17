@@ -1,0 +1,50 @@
+<div class="py-5 max-w-full sm:max-w-4xl sm:mx-auto">
+  <div class="relative">
+    <app-menu-solicitud 
+    (onGuardar)="onGuardar()" 
+    (onRegresar)="onRegresar()"
+    [catalogoAreas]="catalogoAreas()"
+      [habilitarGuardar]="areasSeleccionadas().length>0"
+      [guardando]="guardando()"
+      [(areasSeleccionadas)]="areasSeleccionadas"></app-menu-solicitud>
+  
+  </div>
+  
+  <ng-container [formGroup]="formGeneral">
+    <div class="h-[95vh]  px-4 py-10 overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
+  
+      <div class="mx-auto pt-5 ">
+  
+        <form class="divide-y divide-gray-200 ">
+          <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
+            <!-- <pre>
+              {{usuario | json}}
+              {{formGeneral.value | json}}
+            </pre> -->
+            @if(guardando()){
+              <app-skeleton></app-skeleton>
+            }@else{
+              <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
+              <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
+              <app-seccion3  formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
+              <app-seccion4  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
+              <app-seccion5  formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
+              <app-seccion6  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion7  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion8  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion9  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion10 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion11 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion12 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+              <app-seccion13 formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')" [formGeneral]="formGeneral" />
+              <app-seccion14 formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+              <app-seccion15 formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+            }                                            
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+  
+</div>
+

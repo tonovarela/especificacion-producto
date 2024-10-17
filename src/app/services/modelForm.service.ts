@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {  FormBuilder, FormGroup } from "@angular/forms";
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +28,7 @@ export class FormFactoryService {
         etiqueta_fecha_corriente: [true],
         etiqueta_destino: ['destino'],
         etiqueta_logotipo: [true],
+        etiquetaImagen:[[]],
         
         caja_tipo: ['tipo_caja'],
         caja_dimensiones: ['dimensiones'],
@@ -35,6 +36,7 @@ export class FormFactoryService {
         caja_peso_maximo: ['peso_maximo'],
         caja_piezas_caja: ['piezas_caja'],
         caja_logotipo: [true],
+        cajaImagen:[[]],
 
         tarima_tipo: ['tipo_tarima'],
         tarima_estima_maxima: ['estiba_maxima'],
@@ -50,6 +52,7 @@ export class FormFactoryService {
         playo_centro: ['playo centro'],
         playo_arriba:[ 'playo arriba'],
         observaciones: ['observaciones'],
+        tarimaImagen:[[]],
 
 
         lista_distribucion: ['lista_distribucion'],

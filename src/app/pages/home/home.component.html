@@ -1,47 +1,82 @@
-<div class="w-full overflow-y-hidden h-screen bg-gradient-to-br from-gray-200 to-gray-700 ">
+<div class="py-5 mt-10 w-4/5 sm:mx-auto">
 
-
-  <div class="py-5 max-w-full sm:max-w-4xl sm:mx-auto">
-
-    <div class="relative">
-      <app-menu-solicitud (onGuardar)="onGuardar()" [catalogoAreas]="catalogoAreas()"
-        [habilitarGuardar]="areasSeleccionadas().length>0"
-        [(areasSeleccionadas)]="areasSeleccionadas"></app-menu-solicitud>
-    </div>
+      <div class="h-[90vh]  px-4  overflow-hidden bg-white mx-10 md:mx-0 shadow rounded-md sm:p-5">
     
-
-    <ng-container [formGroup]="formGeneral">
-      <div class="h-[95vh]  px-4 py-10 overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
-
-        <div class="mx-auto pt-5 ">
-
+        <div class="mx-auto ">
+    
           <form class="divide-y divide-gray-200 ">
-            <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
-              <!-- <pre>
-                {{usuario | json}}
-                {{formGeneral.value | json}}
-              </pre> -->
-              <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
-              <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
-              <app-seccion3  formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
-              <app-seccion4  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
-              <app-seccion5  formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
-              <app-seccion6  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion7  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion8  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion9  formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion10 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion11 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion12 formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion13 formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')" [formGeneral]="formGeneral" />
-              <app-seccion14 formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
-              <app-seccion15 formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+            <div class=" text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
+           
+                <ejs-grid #grid [dataSource]='solicitudes()' [filterSettings]="filterSettings " (dataBound)='dataBound()'
+    [allowExcelExport]='true'  [height]="heightGrid" allowReordering='true' [allowFiltering]=true
+    allowPaging="true " allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
+    <e-columns>
+      <!-- <ng-template #toolbarTemplate let-data>
+        <div class="flex justify-end border-1 rounded-t-md " style="background-color: #f9fafb;;">          
+          <button
+            class="mr-5 my-2 p-2 border font-bold border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
+            Boton 1
+            
+          </button>
+          
+        </div>
+
+      </ng-template> -->
+
+      <!-- <e-column field="id" headerText='id' width='80'>
+        <ng-template #template let-data>
+          {{data.id}}
+        </ng-template> 
+      </e-column>-->
+      <e-column field='nombre' width='120' ></e-column>
+      <e-column field='fecha' width='120' ></e-column>
+      <e-column headerText='' allowFiltering="false" textAlign='Center'  >
+        <ng-template #template let-solicitud  >
+          <button
+          (click)="irDetalle(solicitud.id)"
+            class="p-2 border font-bold   border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
+            Ver detalle</button>
+        </ng-template> 
+      </e-column>
+      <e-column headerText='' allowFiltering="false" textAlign='Center'  >
+        <ng-template #template let-data >
+            
+          <button
+            class="   p-2 border font-bold   border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
+            PDF </button>
+        </ng-template> 
+      </e-column>
+      <e-column headerText='' allowFiltering="false" textAlign='Center'  >
+        <ng-template #template let-data >
+            
+          <button
+            class="   p-2 border font-bold   border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
+            PDF </button>
+        </ng-template> 
+      </e-column>
+      <e-column headerText='' allowFiltering="false" textAlign='Center'  >
+        <ng-template #template let-data >
+            
+          <button
+            class="   p-2 border font-bold   border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
+            PDF </button>
+        </ng-template> 
+      </e-column>
+      <e-column headerText='' allowFiltering="false" textAlign='Center'  >
+        <ng-template #template let-data >
+            
+          <button
+            class="   p-2 border font-bold   border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
+            PDF </button>
+        </ng-template> 
+      </e-column>
+        </e-columns>
+                </ejs-grid>
+           
             </div>
           </form>
         </div>
       </div>
-    </ng-container>
+    
+    
   </div>
-</div>
-
-

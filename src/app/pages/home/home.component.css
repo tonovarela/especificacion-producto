@@ -1,7 +1,29 @@
-input {
-    @apply h-10 font-inter text-sm
-}
-label {
-    @apply text-gray-700  text-sm font-inter 
-}
 
+::ng-deep .e-grid{
+    border:none;
+    
+} 
+/* ::ng-deep .e-grid{
+    border:none;
+    
+} */
+    /* ::ng-deep .e-grid .e-headercelldiv{
+        @apply text-slate-500  text-base capitalize font-semibold 
+    } */
+    /* ::ng-deep .e-grid .e-rowcell{
+        @apply font-sans  text-sm 
+    } */
+/* 
+    ::ng-deep .e-grid .e-headercelldiv{
+        height: auto;
+    }
+
+    ::ng-deep .e-grid .e-headercell{
+        height: 40px;
+        @apply py-3  
+    } */
+
+    ::ng-deep .e-grid .e-focused:not(.e-menu-item):not(.e-editedbatchcell){
+        box-shadow: none;
+    }
+    

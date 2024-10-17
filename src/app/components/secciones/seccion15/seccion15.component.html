@@ -1,12 +1,12 @@
 
-<app-titulo-seccion titulo="Requisitos documentales" numero="15" departamento="Customer"></app-titulo-seccion>
+<app-titulo-seccion titulo="Requisitos documentales" numero="15" departamento="Customer" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 
-<div class="flex flex-col gap-4 items-center mt-2 ">
+<div class="flex flex-col gap-4 items-center mt-5 ">
     <div class="w-full sm:w-2/3">
         <app-form-input [form]="formName" label="Lista de distribución" name="lista_distribucion"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3 ">
-        <app-form-switch [form]="formName" label="Certicado de calidad" labelOn="Si aplica" labelOff="No aplica" name="certificado_calidad"></app-form-switch>
+        <app-form-switch [form]="formName" label="Certificado de calidad" labelOn="Si aplica" labelOff="No aplica" name="certificado_calidad"></app-form-switch>
       </div>
       <div class="w-full sm:w-2/3">
         <app-form-switch [form]="formName" label="Carta de color" labelOn="Si aplica" labelOff="No aplica" name="carta_color"></app-form-switch>

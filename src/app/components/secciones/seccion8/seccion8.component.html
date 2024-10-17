@@ -1,4 +1,4 @@
-<app-titulo-seccion titulo="Plano Formación" numero="8" departamento="Preprensa"></app-titulo-seccion>
+<app-titulo-seccion titulo="Plano Formación" numero="8" departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 <app-file-upload label="" [multiple]="true" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('planoFormacion')" 
 (onAdd)="addFile($event,'planoFormacion')" 
 (onRemove)="removeFile($event,'planoFormacion')" ></app-file-upload>          

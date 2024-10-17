@@ -1,5 +1,6 @@
 
     <app-titulo-seccion titulo="Descripción del producto" numero="1"
+    [habilitado]="!isDisabledForm"
     departamento="Customer"></app-titulo-seccion>
     <div class="flex flex-col -z-40 py-5" [formGroup]="formGroupName">
     <textarea formControlName="descripcion"
