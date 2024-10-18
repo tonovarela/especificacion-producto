@@ -1,4 +1,6 @@
 <app-titulo-seccion titulo="Planos individuales" numero="7" departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
-<app-file-upload label="" [multiple]="true" [disabled]="isDisabledForm"  [filesUploaded]="obtenerArchivos('planosIndividuales')" 
+<app-file-upload label="" 
+[cargandoImagenes]="cargandoImagenes"
+[multiple]="true" [disabled]="isDisabledForm"  [filesUploaded]="obtenerArchivos('planosIndividuales')" 
 (onAdd)="addFile($event,'planosIndividuales')" 
 (onRemove)="removeFile($event,'planosIndividuales')" ></app-file-upload>          

@@ -1,5 +1,7 @@
 export interface FileModel {
-  id:string;
-  name:string;
-  base64:string;
+  id_documento:string;
+  nombre:string;
+  documento:string;
 }
+
+

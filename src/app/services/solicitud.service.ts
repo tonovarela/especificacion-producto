@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
+import { ResponseSolicitud } from '@app/model/solicitud.response';
 
 interface SolicitudModel {
   id_solicitud:string;
@@ -21,6 +22,10 @@ export class SolicitudService {
   public guardar(id_usuario:string,props:SolicitudModel){
     return this.http.post(`${this.URL}/solicitud`,{id_usuario,...props});
 
+  }
+
+  public obtener(id_solicitud:string,conImagenes=false){
+    return this.http.get<ResponseSolicitud>(`${this.URL}/solicitud/${id_solicitud}?imagenes=${conImagenes}`);
   }
 
 

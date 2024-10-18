@@ -1,4 +1,4 @@
 export const environment = {
     production:false,
-    apiUrl:'https://servicios.litoprocess.com/especificacion-producto/api'
+    apiUrl:'http://192.168.2.222/especificacion-producto/api'
 };

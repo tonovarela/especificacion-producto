@@ -64,4 +64,4 @@
   </div>
 </div>
 
-   <app-file-upload label="Código de Barras" [multiple]="false" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('codigoBarras')" (onAdd)="addFile($event,'codigoBarras')" (onRemove)="removeFile($event,'codigoBarras')" ></app-file-upload>          
+   <app-file-upload label="Código de Barras" [cargandoImagenes]="cargandoImagenes" [multiple]="false" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('codigoBarras')" (onAdd)="addFile($event,'codigoBarras')" (onRemove)="removeFile($event,'codigoBarras')" ></app-file-upload>          

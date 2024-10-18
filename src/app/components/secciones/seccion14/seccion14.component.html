@@ -30,7 +30,9 @@
         <app-form-switch [form]="formName" label="Logo Litoprocess" labelOn="Aplica" labelOff="No aplica" name="etiqueta_logotipo"></app-form-switch>
       </div>
       <div class="w-full sm:w-2/3">
-        <app-file-upload  label="Imagen de referencia" [multiple]="false" 
+        <app-file-upload 
+        [cargandoImagenes]="cargandoImagenes"
+         label="Imagen de referencia" [multiple]="false" 
         [disabled]="isDisabledForm"
         [filesUploaded]="obtenerArchivos('etiquetaImagen')" (onAdd)="addFile($event,'etiquetaImagen')" (onRemove)="removeFile($event,'etiquetaImagen')"
         ></app-file-upload>
@@ -55,7 +57,9 @@
         <app-form-switch [form]="formName" label="Logotipo litoprocess" labelOn="Aplica" labelOff="No aplica" name="caja_logotipo"></app-form-switch>
       </div>
       <div class="w-full sm:w-2/3">
-        <app-file-upload  label="Imagen de referencia" [multiple]="false"
+        <app-file-upload 
+        [cargandoImagenes]="cargandoImagenes"
+         label="Imagen de referencia" [multiple]="false"
         [disabled]="isDisabledForm" 
         [filesUploaded]="obtenerArchivos('cajaImagen')" (onAdd)="addFile($event,'cajaImagen')" (onRemove)="removeFile($event,'cajaImagen')"
         ></app-file-upload>
@@ -106,7 +110,7 @@
         <app-form-input [form]="formName" label="Observaciones" name="observaciones"></app-form-input>        
       </div>
       <div class="w-full sm:w-2/3">
-        <app-file-upload  label="Imagen de referencia" [multiple]="false"
+        <app-file-upload  [cargandoImagenes]="cargandoImagenes" label="Imagen de referencia" [multiple]="false"
         [disabled]="isDisabledForm"
         [filesUploaded]="obtenerArchivos('tarimaImagen')" (onAdd)="addFile($event,'tarimaImagen')" (onRemove)="removeFile($event,'tarimaImagen')"
         ></app-file-upload>

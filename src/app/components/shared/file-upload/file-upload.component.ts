@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FileModel } from '@app/model/file.interface';
+import { environment } from '@env/environment.development';
 
 
 
@@ -11,12 +12,16 @@ import { FileModel } from '@app/model/file.interface';
 
 export class FileUploadComponent  implements OnInit {
   ngOnInit(): void {   
+    // this.filesUploaded = this.filesUploaded.map((file: FileModel) => {
+    //   return { ...file, documento:`${environment.apiUrl}/documento/${file.id_documento}` };
+    // }); 
   }
   
   @Input() multiple: boolean = false;
   @Input() disabled: boolean = false;
   @Input() filesUploaded: FileModel[] = [];
   @Input() label: string = 'Seleccionar archivo';
+  @Input() cargandoImagenes :boolean = false;
 
 
   
@@ -36,7 +41,7 @@ export class FileUploadComponent  implements OnInit {
         const reader = new FileReader();
         reader.onload = () => {
           const base64 = reader.result as string;
-          const file: FileModel = {id:Math.random().toString(36).substring(7), name: files[i].name, base64};    
+          const file: FileModel = {id_documento:Math.random().toString(36).substring(7), nombre: files[i].name, documento: base64};    
           this.onAdd.emit(file);                    
           
         };

@@ -12,7 +12,7 @@ export class UsuarioService {
 
   private _statusSesion= signal<StatusSesion>(
      {  
-      usuario: { id: '1', nombre: 'Juan', usermane: 'juanito', areasPermitidas: ["customer"]},
+      usuario: { id: '1', nombre: 'Juan', usermane: 'juanito', areasPermitidas: ["prePrensa"]},
       estatus: StatutLogin.LOGIN
      }
   );
