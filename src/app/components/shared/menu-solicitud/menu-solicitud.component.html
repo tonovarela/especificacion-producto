@@ -43,6 +43,12 @@
         <div class="flex  gap-2">
           
              @if(!guardando){
+              <!-- <ng-container [formGroup]="formGeneral">
+                <div class="px-4 py-3">
+                  <app-form-switch label="He finalizo el registro  " labelOn="SI" labelOff="NO" name="S"></app-form-switch>
+                </div>              
+            </ng-container> -->
+           
               <button type="button" 
           (click)="onGuardar.emit()"
           [disabled]="!habilitarGuardar"
@@ -67,6 +73,7 @@
             </svg>
               </button>
              }@else{
+              
               <button type="button"                             
                 class="
                 text-blue-500  px-4 py-3 rounded-md  cursor-not-allowed

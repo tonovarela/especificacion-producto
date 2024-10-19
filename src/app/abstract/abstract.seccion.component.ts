@@ -28,7 +28,7 @@ export abstract class AbstractSeccionComponent {
 
     const reference = this.formGroupName.get(nameField);
     const previosValues = reference?.value ?? [];
-    reference?.setValue([...previosValues, file]);
+    reference?.setValue([file,...previosValues ]);
   }
 
   protected removeFile(file: FileModel, nameField: string) {
@@ -38,14 +38,15 @@ export abstract class AbstractSeccionComponent {
 
   }
 
-  protected obtenerArchivos(nameField: string): FileModel[] {    
-    return this.formGroupName.get(nameField)?.value.map((f:FileModel)=>{    
-       if (f.documento===undefined) {
-        return { ...f, documento: `${environment.apiUrl}/documento/${f.id_documento}` };
-      }
-      return f;
-
-    }) ?? [];
+  protected obtenerArchivos(nameField: string): FileModel[] {
+    const fieldValue = this.formGroupName.get(nameField)?.value;
+    if (!fieldValue) {
+      return [];
+    }
+    return fieldValue.map((f: FileModel) => ({
+      ...f,
+      documento: f.documento ?? `${environment.apiUrl}/documento/${f.id_documento}`
+    }));
   }
 
 

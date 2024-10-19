@@ -1,8 +1,22 @@
-<div class="w-full overflow-y-hidden h-screen bg-gradient-to-br from-gray-200 to-gray-700 ">
-
-  <router-outlet></router-outlet>      
-    
-  </div>
-  
-  
-  
+<div class="w-full overflow-y-hidden h-screen bg-gradient-to-br from-gray-200 to-gray-700">
+  <header class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-3 shadow-md mb-2 px-12">
+    <div class="flex items-center justify-between flex-wrap">
+      <div class="flex items-center space-x-4">
+        <img src="https://servicios.litoprocess.com/colaboradores/assets/_images/logoLito.svg" alt="logo" class="w-20 hidden sm:block sm:w-32 md:w-40">
+        <h1 class="text-xl sm:text-sm md:text-3xl font-bold ">Especificación de producto</h1>
+      </div>
+      <div class="relative flex items-center space-x-2">
+        <input type="checkbox" id="menu-toggle" class="hidden peer">
+        <label for="menu-toggle" class="cursor-pointer flex items-center space-x-2">
+          <img src="https://via.placeholder.com/40" alt="avatar" class="w-12 h-12 bg-cover rounded-full">
+        </label>
+        <div class="absolute top-14 left-1/2 z-50 transform -translate-x-1/2 bg-white text-blue-600 shadow-md rounded-md w-32 p-2 transition-transform origin-top duration-200 ease-out scale-y-0 peer-checked:scale-y-100">
+          <ul class="space-y-2">
+            <li><a href="#">Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <router-outlet></router-outlet>
+</div>

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output,model } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output,inject,model } from '@angular/core';
 import { Area } from '@app/model/area.interface';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -20,8 +21,13 @@ export class MenuSolicitudComponent implements OnInit {
 areasSeleccionadas= model<Area[]>([]);
 
 
-
-ngOnInit() { }
+fb = inject(FormBuilder);
+formGeneral!: FormGroup; 
+ngOnInit() { 
+  this.formGeneral = this.fb.group({  
+    areas: []
+  });
+}
 
 
 

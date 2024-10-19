@@ -24,8 +24,8 @@ export class SolicitudService {
 
   }
 
-  public obtener(id_solicitud:string,conImagenes=false){
-    return this.http.get<ResponseSolicitud>(`${this.URL}/solicitud/${id_solicitud}?imagenes=${conImagenes}`);
+  public obtener(id_solicitud:string,conBase64=false){
+    return this.http.get<ResponseSolicitud>(`${this.URL}/solicitud/${id_solicitud}?conBase64=${conBase64}`);
   }
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class MainLayoutComponent {
 
+
+  logout() {
+    // Lógica para cerrar sesión
+    console.log('Cerrar sesión');
+    // Aquí puedes añadir la lógica para cerrar sesión, como redirigir al usuario a la página de inicio de sesión
+  }
 }

@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+      
+
+import { NgOptimizedImage } from '@angular/common'
+
+
+    
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -58,7 +64,8 @@ import { SkeletonComponent } from './components/shared/skeleton/skeleton.compone
     BrowserAnimationsModule ,
     FormsModule,
     SynfusionModule,
-    PrimeModule    
+    PrimeModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -52,18 +52,8 @@ export class DetalleComponent implements OnInit {
         this.router.navigate(['/home']);
       }
       this.cargandoDatos.set(false);
-      //this.cargandoImagenes.set(true);
-      //const {solicitud,...rest} = await firstValueFrom(this.solicitudService.obtener(id,true));            
-      //this.formGeneral.patchValue({ prePrensa:{...this.obtenerArregloImagenes(rest.prePrensa)}});                
-      //this.formGeneral.patchValue({ customer:{...this.obtenerArregloImagenes(rest.customer)}});                
-      //this.cargandoImagenes.set(false);
-
     });
     
-
-
-
-
     this.catalogoAreas.set([
       { descripcion: 'Customer', id: 'customer' },
       { descripcion: 'Preprensa  ', id: 'prePrensa' },
@@ -114,19 +104,19 @@ export class DetalleComponent implements OnInit {
 
 
 
-  private obtenerArregloImagenes(object: any) {    
-    const data: { [key: string]: any } = {};
-    for (const key in object) {
-      if (object.hasOwnProperty(key)) {
-        if (object[key] instanceof Array){
-          const arreglo = object[key].map((item: any) => {
-            return { ...item, documento: `${this.URL_API}/documento/${item.id_documento}` };
-          });
-          data[key] = arreglo;          
-        }                      
-      }      
-    }        
-    return data;
-  }
+  // private obtenerArregloImagenes(object: any) {    
+  //   const data: { [key: string]: any } = {};
+  //   for (const key in object) {
+  //     if (object.hasOwnProperty(key)) {
+  //       if (object[key] instanceof Array){
+  //         const arreglo = object[key].map((item: any) => {
+  //           return { ...item, documento: `${this.URL_API}/documento/${item.id_documento}` };
+  //         });
+  //         data[key] = arreglo;          
+  //       }                      
+  //     }      
+  //   }        
+  //   return data;
+  // }
 
 }
