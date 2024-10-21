@@ -1,14 +1,9 @@
-<div class="  w-4/5 sm:mx-auto">
-
-      <div class="h-[90vh]  px-4  overflow-hidden bg-white mx-10 md:mx-0 shadow rounded-md sm:p-5">
-    
-        <div class="mx-auto ">
-    
-          <form class="divide-y divide-gray-200 ">
-            <div class=" text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
-           
+<div class="max-w-screen-2xl mx-auto bg-white rounded-md">
+      <div class="h-[90vh]   overflow-hidden px-1   ">            
+          <div class="divide-y divide-gray-200 ">
+            <div class="text-base " style="height: calc(100vh - 120px)">           
                 <ejs-grid #grid [dataSource]='solicitudes()' [filterSettings]="filterSettings " (dataBound)='dataBound()'
-    [allowExcelExport]='true'  [height]="heightGrid" allowReordering='true' [allowFiltering]=true
+    [allowExcelExport]='true'   height="100%" allowReordering='true' [allowFiltering]=true
     allowPaging="true " allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
     <e-columns>
       <!-- <ng-template #toolbarTemplate let-data>
@@ -79,11 +74,10 @@
         </ng-template>
       </e-column>
         </e-columns>
-                </ejs-grid>
-           
+                </ejs-grid>           
             </div>
-          </form>
-        </div>
+          </div>
+        
       </div>
     
     

@@ -1,6 +1,7 @@
 
 ::ng-deep .e-grid{
     border:none;
+    @apply font-inter
     
 } 
 /* ::ng-deep .e-grid{

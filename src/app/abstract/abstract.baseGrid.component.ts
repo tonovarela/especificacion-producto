@@ -19,25 +19,11 @@ export abstract class AbstractBaseGridComponent implements OnDestroy {
     protected pageSettings: PageSettingsModel = { pageSizes: true, pageSize: 30 };
     protected filterSettings: FilterSettingsModel = { type: "CheckBox" };
     protected subsriptions: Subscription[] = [];
-    heightGrid: number = 0;
+ 
 
 
 
-    protected iniciarResizeGrid(porcentaje: number) {
-        if (window.innerHeight >=1000){
-            porcentaje = 0.23;
-        }
-        this.heightGrid = window.innerHeight - (window.innerHeight * porcentaje);
-        // const subs1 = fromEvent(window, 'resize').subscribe(() => {
-        //         if (window.innerHeight >=1000){
-        //         porcentaje = 0.23;
-        //     }
-        //     this.heightGrid = window.innerHeight - (window.innerHeight * porcentaje);
-        //     this.dataBound();
-        // });        
-        // this.subsriptions.push(subs1);
-    }
-
+ 
     ngOnDestroy(): void {
         this.subsriptions.forEach(s => s.unsubscribe());
     }

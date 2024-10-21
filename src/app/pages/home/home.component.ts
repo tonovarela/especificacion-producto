@@ -14,12 +14,45 @@ export class HomeComponent  extends AbstractBaseGridComponent  implements OnInit
   solicitudes = signal<any[]>([
     {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
     {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+    {id: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
   ]);
   router= inject(Router);
   usuarioService= inject(UsuarioService);
   ngOnInit(): void {
-    this.autoFitColumns = false;    
-    this.iniciarResizeGrid(0.2);
+    this.autoFitColumns = false;        
     console.log(this.usuarioService.StatusSesion().usuario?.areasPermitidas);
   }
 
