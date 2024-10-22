@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FileModel } from '@app/model/file.interface';
 import Compressor from 'compressorjs';
 
@@ -8,7 +8,23 @@ import Compressor from 'compressorjs';
   styleUrl: './file-upload.component.css'
 })
 
-export class FileUploadComponent {
+export class FileUploadComponent implements OnInit {
+  ngOnInit(): void {
+    this.responsiveOptions = [
+      {
+          breakpoint: '1024px',
+          numVisible: 5
+      },
+      {
+          breakpoint: '768px',
+          numVisible: 3
+      },
+      {
+          breakpoint: '560px',
+          numVisible: 1
+      }
+  ];
+  }
 
 
 
@@ -22,6 +38,7 @@ export class FileUploadComponent {
 
   @Output() onAdd = new EventEmitter<FileModel>();
   @Output() onRemove = new EventEmitter<FileModel>();
+  responsiveOptions: any[] | undefined;
 
   identificador = Math.random().toString(36).substring(7);
   imageLoader = true;
