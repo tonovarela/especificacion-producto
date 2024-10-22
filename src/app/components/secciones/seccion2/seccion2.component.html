@@ -2,8 +2,11 @@
     <app-titulo-seccion titulo="Dimensiones" numero="2"
     [habilitado]="!isDisabledForm"
     departamento="Diseño Estructural"></app-titulo-seccion>
+    <div class="w-full sm:w-1/3">
+      <app-form-input [form]="formName" label="Código interno" name="codigo_interno"></app-form-input>
+    </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 py-5">
-    <div class="grid   space-y-4 ">
+    <div class="grid   space-y-4 ">      
       <div class="w-full sm:w-2/3">
         <app-form-input [form]="formName" label="Frente" name="frente"></app-form-input>
       </div>

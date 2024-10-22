@@ -17,8 +17,7 @@ export class FormSwitchComponent {
   formParent!: FormGroup;    
     constructor(private rootFormGroup: FormGroupDirective
     ) {}
-    ngOnInit(): void {
-      console.log(this.formParent);
+    ngOnInit(): void {      
       this.formParent = this.rootFormGroup.control.get(this.form) as FormGroup;              
     }
 

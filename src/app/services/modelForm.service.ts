@@ -18,6 +18,7 @@ export class FormFactoryService {
     })
     customerForm: FormGroup = this.fb.group({
         descripcion: [''],
+        codigo_cliente: [''],
         etiqueta_cliente: [''],
         etiqueta_producto: [''],
 
@@ -84,6 +85,7 @@ export class FormFactoryService {
 
     });
     disenioEstructuralForm: FormGroup = this.fb.group({
+        codigo_interno: [''],
         frente: [''],
         fondo: [''],
         altura: [''],

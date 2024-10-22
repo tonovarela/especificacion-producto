@@ -1,28 +1,16 @@
-<div class="max-w-screen-2xl mx-auto bg-white rounded-md">
-      <div class="h-[90vh]   overflow-hidden px-1   ">            
+<div class="max-w-screen-2xl mx-auto bg-white  rounded-b-md pt-1">
+      <div class="h-[94vh]   overflow-hidden    ">            
           <div class="divide-y divide-gray-200 ">
-            <div class="text-base " style="height: calc(100vh - 120px)">           
+            <div class="text-base border mx-1 rounded-sm   " style="height: calc(100vh - 120px)">           
                 <ejs-grid #grid [dataSource]='solicitudes()' [filterSettings]="filterSettings " (dataBound)='dataBound()'
     [allowExcelExport]='true'   height="100%" allowReordering='true' [allowFiltering]=true
     allowPaging="true " allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
     <e-columns>
-      <!-- <ng-template #toolbarTemplate let-data>
-        <div class="flex justify-end border-1 rounded-t-md " style="background-color: #f9fafb;;">          
-          <button
-            class="mr-5 my-2 p-2 border font-bold border-slate-400 text-xs rounded-md  hover:bg-indigo-700 hover:text-white">
-            Boton 1
-            
-          </button>
-          
+      <ng-template #toolbarTemplate let-data>
+        <div class="flex py-1 px-0 justify-center border-1 rounded-t-md text-xs  text-gray-500 font-inter" >          
+          CONFIRMACION DE REGISTRO          
         </div>
-
-      </ng-template> -->
-
-      <!-- <e-column field="id" headerText='id' width='80'>
-        <ng-template #template let-data>
-          {{data.id}}
-        </ng-template> 
-      </e-column>-->
+      </ng-template>     
       <e-column field='nombre' width='150' >
         <ng-template #template let-data >
           <label (click)="irDetalle(data.id)" class="cursor-pointer text-blue-500 hover:text-blue-700">{{data.nombre}}</label>
@@ -53,7 +41,7 @@
       <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='100'   >
         <ng-template #template let-data >
                       
-            <input type="checkbox" [disabled]="!puedeConfirmarArea('DEstructural')" (change)="cambiar($event,'DEstructural',data.id)"  class="form-checkbox h-5 w-5 text-blue-600">                      
+            <input type="checkbox" [disabled]="!puedeConfirmarArea('disenioEstructural')" (change)="cambiar($event,'DEstructural',data.id)"  class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
       <e-column headerText='Cotizaciones' allowFiltering="false" textAlign='Center' width='100'   >

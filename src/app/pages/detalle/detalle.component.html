@@ -1,4 +1,4 @@
-<div class=" max-w-full sm:max-w-4xl sm:mx-auto">
+<div class=" max-w-full sm:max-w-screen-2xl sm:mx-auto bg-gray-100  pb-2   ">
   <div class="relative">
     @if(!cargandoDatos()){
       <app-menu-solicitud 
@@ -13,34 +13,37 @@
   </div>
   
   <ng-container [formGroup]="formGeneral">
-    <div class="h-[90vh]  px-4 py-10 overflow-auto bg-white mx-10 md:mx-0 shadow rounded-md sm:p-10">
-  
-      <div class="mx-auto pt-5 ">
-  
-        <form class="divide-y divide-gray-200 ">
-          <div class="py-2 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7 ">
+    <div class="h-[90vh] w-full sm:max-w-4xl  p-5  sm:p-10 overflow-auto  bg-white  sm:mx-auto shadow rounded-md  ">  
+      <div class=" ">  
+        <form class="divide-y divide-gray-200  ">
+          <div class="text-base space-y-4 text-gray-700     ">
             <!-- <pre>
               {{usuario | json}}
               {{formGeneral.value | json}}
             </pre> -->
             @if(guardando()  || cargandoDatos()){
               <app-skeleton></app-skeleton>
-            }@else{                         
-              <app-seccion1  [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
-              <app-seccion2  [cargandoImagenes]="cargandoImagenes()" formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
-              <app-seccion3  [cargandoImagenes]="cargandoImagenes()" formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
-              <app-seccion4  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
-              <app-seccion5  [cargandoImagenes]="cargandoImagenes()" formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
-              <app-seccion6  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion7  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion8  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion9  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion10 [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion11 [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion12 [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
-              <app-seccion13 [cargandoImagenes]="cargandoImagenes()" formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')" [formGeneral]="formGeneral" />
-              <app-seccion14 [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
-              <app-seccion15 [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+            }@else{                                       
+              <div class="pt-5">
+                <app-seccion1  [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
+                <app-seccion2  [cargandoImagenes]="cargandoImagenes()" formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
+                <app-seccion3  [cargandoImagenes]="cargandoImagenes()" formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
+                <app-seccion4  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
+                <app-seccion5  [cargandoImagenes]="cargandoImagenes()" formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
+                <app-seccion6  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion7  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion8  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion9  [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion10 [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion11 [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion12 [cargandoImagenes]="cargandoImagenes()" formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral" />
+                <app-seccion13 [cargandoImagenes]="cargandoImagenes()" formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')" [formGeneral]="formGeneral" />
+                <app-seccion14 [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+                <app-seccion15 [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+              </div>
+
+              
+              
             }                                            
           </div>
         </form>
