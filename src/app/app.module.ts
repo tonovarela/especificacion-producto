@@ -23,6 +23,7 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { DetalleComponent } from './pages/detalle/detalle.component';
 import { SynfusionModule } from './lib/synfusion.module';
 import { SkeletonComponent } from './components/shared/skeleton/skeleton.component';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -67,7 +68,7 @@ import { SkeletonComponent } from './components/shared/skeleton/skeleton.compone
     PrimeModule,
     NgOptimizedImage
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

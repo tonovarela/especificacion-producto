@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Area } from '@app/model/area.interface';
@@ -9,45 +9,52 @@ import { FormFactoryService } from '@services/modelForm.service';
 import {  firstValueFrom } from 'rxjs';
 import { Solicitud } from '../../model/solicitud.response';
 import { environment } from '@env/environment.development';
+import { MessageService } from 'primeng/api';
+
 
 
 
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
-  styleUrl: './detalle.component.css'
+  styleUrl: './detalle.component.css',
+  
 })
 export class DetalleComponent implements OnInit {
   readonly URL_API = environment.apiUrl;
+  private _actualizoInformacion = signal<boolean>(false);  
+  private messageService = inject(MessageService);
   formService = inject(FormFactoryService);
+  
+  solicitud!:Solicitud;
   solicitudService = inject(SolicitudService);
   activatedRouter = inject(ActivatedRoute);
   usuarioService = inject(UsuarioService);
   router = inject(Router);
   formGeneral!: FormGroup;
-  filesUploaded: string[] = [];
+  archivosCargados: string[] = [];
   catalogoAreas = signal<Area[]>([]);
   areasSeleccionadas = signal<Area[]>([]);
-
+  
 
   usuario = this.usuarioService.StatusSesion().usuario!;
   guardando = signal<boolean>(false);
   cargandoDatos = signal<boolean>(false);
   cargandoImagenes = signal<boolean>(false);
-   solicitud!:Solicitud;
-
-
+  actualizoInformacion = computed<boolean>(() => this._actualizoInformacion());
+  
   ngOnInit(): void {
     const { formGeneral } = this.formService;
     this.formGeneral = formGeneral;
     this.formGeneral.reset();
+    
     this.activatedRouter.params.subscribe(async ({ id }) => {
       try {
         this.cargandoDatos.set(true);
         const {solicitud,...rest} = await firstValueFrom(this.solicitudService.obtener(id,false));                      
         this.solicitud=solicitud;
-        this.formGeneral.patchValue({ ...rest});
-      
+        this.formGeneral.patchValue({ ...rest});      
+        this.formGeneral.valueChanges.subscribe(() => this._actualizoInformacion.set(true));
       } catch (error) {
         this.router.navigate(['/home']);
       }
@@ -91,13 +98,16 @@ export class DetalleComponent implements OnInit {
     this.guardando.set(true);
     try {
       await firstValueFrom(this.solicitudService.guardar(id_usuario, propsSave));
+      this.messageService.add({ severity: 'success', summary: 'Listo', detail: 'Informacion actualizada',life:1500 });
+      
     }
     catch (exception: any) {
-      //console.error(exception["error"]); 
-      console.log("Manda info con algun toast")
+      //console.error(exception["error"]);       
+      this.messageService.add({ severity: 'error', summary: 'Ups', detail: 'No se puedo guardar la informacion' });
     }
     finally {
       this.guardando.set(false);
+      this._actualizoInformacion.set(false); 
     }
 
   }

@@ -17,7 +17,7 @@ interface SolicitudModel {
 export class SolicitudService {
 
   private http = inject(HttpClient);
-  private readonly URL=environment.apiUrl;
+  private readonly URL=`${environment.apiUrl}/api`;
 
   public guardar(id_usuario:string,props:SolicitudModel){
     return this.http.post(`${this.URL}/solicitud`,{id_usuario,...props});

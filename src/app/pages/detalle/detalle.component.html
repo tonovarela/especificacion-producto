@@ -5,7 +5,7 @@
       (onGuardar)="onGuardar()" 
       (onRegresar)="onRegresar()"
       [catalogoAreas]="catalogoAreas()"
-      [habilitarGuardar]="areasSeleccionadas().length>0  "
+      [habilitarGuardar]="areasSeleccionadas().length>0  && actualizoInformacion() "
       [guardando]="guardando() || cargandoImagenes()"
         [(areasSeleccionadas)]="areasSeleccionadas"></app-menu-solicitud>
     }
@@ -24,7 +24,7 @@
             @if(guardando()  || cargandoDatos()){
               <app-skeleton></app-skeleton>
             }@else{                                       
-              <div class="pt-5">
+              <div class="pt-5">              
                 <app-seccion1  [cargandoImagenes]="cargandoImagenes()" formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
                 <app-seccion2  [cargandoImagenes]="cargandoImagenes()" formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
                 <app-seccion3  [cargandoImagenes]="cargandoImagenes()" formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
