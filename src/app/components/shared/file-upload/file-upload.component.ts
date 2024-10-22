@@ -16,7 +16,7 @@ export class FileUploadComponent {
   @Input() disabled: boolean = false;
   @Input() filesUploaded: FileModel[] = [];
   @Input() label: string = 'Seleccionar archivo';
-  @Input() cargandoImagenes: boolean = false;
+  
 
 
 
@@ -51,6 +51,11 @@ export class FileUploadComponent {
           continue
         }      
      const file= files[i]
+     console.log(file.size);
+     if (file.size > 10000000) { // 10MB en bytes
+      alert("El archivo es muy pesado, por favor seleccione una imagen de menor tamaño");
+      continue;
+     }
      //console.log("Viejo "+file.size);
      const newFile=  await this.comprimirArchivo(file);    
      //console.log("Nuevo "+newFile.size);

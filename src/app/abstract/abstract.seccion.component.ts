@@ -12,7 +12,7 @@ export abstract class AbstractSeccionComponent {
 
   @Input({ required: true }) formGeneral: FormGroup = new FormGroup({});
   @Input({ required: true }) formName: string = '';
-  @Input() cargandoImagenes: boolean = false;
+  
 
   protected get formGroupName() {
     return this.formGeneral.get(this.formName) as FormGroup
@@ -45,7 +45,7 @@ export abstract class AbstractSeccionComponent {
     }
     return fieldValue.map((f: FileModel) => ({
       ...f,
-      documento: f.documento ?? `${environment.apiUrl}/documento/${f.id_documento}`
+      documento: f.documento ?? `${environment.apiUrl}/api/documento/${f.id_documento}`
     }));
   }
 

@@ -1,3 +1,3 @@
 <app-titulo-seccion titulo="Prueba de color" numero="6" departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
-<app-file-upload [cargandoImagenes]="cargandoImagenes" label="" [multiple]="true" [disabled]="isDisabledForm"  [filesUploaded]="obtenerArchivos('pruebaColor')"
+<app-file-upload  label="" [multiple]="true" [disabled]="isDisabledForm"  [filesUploaded]="obtenerArchivos('pruebaColor')"
 (onAdd)="addFile($event,'pruebaColor')" (onRemove)="removeFile($event,'pruebaColor')" ></app-file-upload>          

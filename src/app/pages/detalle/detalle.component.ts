@@ -39,8 +39,7 @@ export class DetalleComponent implements OnInit {
 
   usuario = this.usuarioService.StatusSesion().usuario!;
   guardando = signal<boolean>(false);
-  cargandoDatos = signal<boolean>(false);
-  cargandoImagenes = signal<boolean>(false);
+  cargandoDatos = signal<boolean>(false);  
   actualizoInformacion = computed<boolean>(() => this._actualizoInformacion());
   
   ngOnInit(): void {

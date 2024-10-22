@@ -1,6 +1,6 @@
 <app-titulo-seccion titulo="Mascarilla de Pegado" numero="11" departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
 <app-file-upload
-[cargandoImagenes]="cargandoImagenes"
+
  label="" [multiple]="true" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('marcarillaPegado')"
 (onAdd)="addFile($event,'marcarillaPegado')" 
 (onRemove)="removeFile($event,'marcarillaPegado')" ></app-file-upload>      
