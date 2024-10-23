@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FileModel } from '@app/model/file.interface';
 import Compressor from 'compressorjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-file-upload',
@@ -10,20 +11,7 @@ import Compressor from 'compressorjs';
 
 export class FileUploadComponent implements OnInit {
   ngOnInit(): void {
-    this.responsiveOptions = [
-      {
-          breakpoint: '1024px',
-          numVisible: 5
-      },
-      {
-          breakpoint: '768px',
-          numVisible: 3
-      },
-      {
-          breakpoint: '560px',
-          numVisible: 1
-      }
-  ];
+
   }
 
 
@@ -32,16 +20,16 @@ export class FileUploadComponent implements OnInit {
   @Input() disabled: boolean = false;
   @Input() filesUploaded: FileModel[] = [];
   @Input() label: string = 'Seleccionar archivo';
-  
+
 
 
 
   @Output() onAdd = new EventEmitter<FileModel>();
   @Output() onRemove = new EventEmitter<FileModel>();
-  responsiveOptions: any[] | undefined;
+
 
   identificador = Math.random().toString(36).substring(7);
-  imageLoader = true;
+  messageService = inject(MessageService);
 
 
   async comprimirArchivo(file: File): Promise<File> {
@@ -64,18 +52,20 @@ export class FileUploadComponent implements OnInit {
     const files = event.target.files
     if (files.length > 0) {
       for (let i = 0; i < files.length; i++) {
-        if (!files[i].type.includes('image')) {
+        const file = files[i]
+        if (!file.type.includes('image') || file.type.includes('webp')) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: `El archivo ${file.name}  no es una imagen o no es compatible` });
           continue
-        }      
-     const file= files[i]
-     console.log(file.size);
-     if (file.size > 10000000) { // 10MB en bytes
-      alert("El archivo es muy pesado, por favor seleccione una imagen de menor tamaño");
-      continue;
-     }
-     //console.log("Viejo "+file.size);
-     const newFile=  await this.comprimirArchivo(file);    
-     //console.log("Nuevo "+newFile.size);
+        }
+        
+        console.log(file.size);
+        if (file.size > 10000000) { // 10MB en bytes
+          alert("El archivo es muy pesado, por favor seleccione una imagen de menor tamaño");
+          continue;
+        }
+        //console.log("Viejo "+file.size);
+        const newFile = await this.comprimirArchivo(file);
+        //console.log("Nuevo "+newFile.size);
         const reader = new FileReader();
         reader.onload = () => {
           const base64 = reader.result as string;
