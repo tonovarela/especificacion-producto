@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+
+
+
+@if(estatusLogin()=="LOGIN"){
+    <router-outlet></router-outlet>
+}
+
+@if(estatusLogin()=="LOADING"){
+    <div id="loading" class="flex items-center justify-center h-screen">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+      </div>
+}
+

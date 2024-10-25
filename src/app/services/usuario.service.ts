@@ -1,6 +1,9 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { LoginResponse } from '@app/model/login.response';
 import { StatutLogin, Usuario } from '@app/model/usuario.interface';
 import { environment } from '@env/environment.development';
+import { delay, firstValueFrom } from 'rxjs';
 
 interface StatusSesion {
   usuario?:Usuario;
@@ -11,10 +14,11 @@ interface StatusSesion {
 })
 export class UsuarioService {
   private readonly URL=`${environment.apiUrl}/api`;
+  private http = inject(HttpClient);
   private _statusSesion= signal<StatusSesion>(
      {  
-      usuario: { id: '1', nombre: 'Juan', usermane: 'juanito', areasPermitidas: ["prePrensa"]},
-      estatus: StatutLogin.LOGIN
+      usuario: undefined,
+      estatus: StatutLogin.LOGOUT
      }
   );
    
@@ -23,6 +27,19 @@ export class UsuarioService {
   StatusSesion = computed(() => {
     return this._statusSesion();
   });
+
+
+  public async login(username: string, password: string) {
+    this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.LOADING });
+    try {
+      const resp =await firstValueFrom(this.http.post<LoginResponse>(`${this.URL}/auth/login`, { login:{username, password} }).pipe(delay(2000)));
+      this._statusSesion.set({ usuario: resp.usuario, estatus: StatutLogin.LOGIN });
+    } catch (error) {
+
+      this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.ERROR });
+    }    
+
+  }
 
   
 

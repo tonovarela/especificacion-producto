@@ -1,3 +1,18 @@
+import { FileModel } from "./file.interface";
+
+export interface SolicitudModel {
+    id_solicitud:string;
+    customer?:any;
+    disenioEstructural?:any;
+    cotizacion?:any;
+    planeacion?:any;
+    prePrensa?:any;  
+  }
+
+export interface ResponseListadoSolicitud{
+    solicitudes: Solicitud[];
+}
+
 export interface ResponseSolicitud {
     solicitud:          Solicitud;
     planeacion:         Planeacion;
@@ -16,44 +31,44 @@ export interface Cotizacion {
 }
 
 export interface Customer {
-    caja_dimensiones:         null;
+    caja_dimensiones:         string;
     caja_logotipo:            string;
-    caja_peso_bruto:          null;
-    caja_peso_maximo:         null;
-    caja_piezas_caja:         null;
-    caja_tipo:                null;
+    caja_peso_bruto:          string;
+    caja_peso_maximo:         string;
+    caja_piezas_caja:         string;
+    caja_tipo:                string;
     carta_color:              string;
     carta_garantia:           string;
     certificado_calidad:      string;
     descripcion:              string;
     esquineros:               string;
-    etiqueta_cantidad:        null;
-    etiqueta_cliente:         null;
-    etiqueta_destino:         null;
+    etiqueta_cantidad:        string;
+    etiqueta_cliente:         string;
+    etiqueta_destino:         string;
     etiqueta_fecha_corriente: string;
     etiqueta_logotipo:        string;
     etiqueta_op:              string;
     etiqueta_orden_compra:    string;
-    etiqueta_producto:        null;
+    etiqueta_producto:        string;
     factura:                  string;
     fleje:                    string;
-    lista_distribucion:       null;
-    observaciones:            null;
+    lista_distribucion:       string;
+    observaciones:            string;
     orden_compra:             string;
     playo:                    string;
-    playo_arriba:             null;
-    playo_base:               null;
-    playo_centro:             null;
+    playo_arriba:             string;
+    playo_base:               string;
+    playo_centro:             string;
     remision:                 string;
-    tarima_cajas_cama:        null;
-    tarima_cajas_portarima:   null;
-    tarima_estima_maxima:     null;
-    tarima_pieza_empacadas:   null;
-    tarima_tipo:              null;
-    tarima_total:             null;
-    etiquetaImagen:           any[];
-    cajaImagen:               any[];
-    tarimaImagen:             any[];
+    tarima_cajas_cama:        string;
+    tarima_cajas_portarima:   string;
+    tarima_estima_maxima:     string;
+    tarima_pieza_empacadas:   string;
+    tarima_tipo:              string;
+    tarima_total:             string;
+    etiquetaImagen:           FileModel[];
+    cajaImagen:               FileModel[];
+    tarimaImagen:             FileModel[];
 }
 
 export interface DisenioEstructural {
@@ -62,14 +77,10 @@ export interface DisenioEstructural {
     altura:            string;
     tamanio_extendido: string;
     tamanio_final:     string;
-    ayudaVisual:       AyudaVisual[];
+    ayudaVisual:       FileModel[];
 }
 
-export interface AyudaVisual {
-    id_documento: string;
-    nombre:       string;
-    documento:    string;
-}
+
 
 export interface Planeacion {
     acabados:            string;
@@ -99,19 +110,26 @@ export interface PrePrensa {
     tinta2_4:              string;
     tinta2_5:              string;
     barniz:                string;
-    codigoBarras:          AyudaVisual[];
-    planosIndividuales:    any[];
-    pruebaColor:           any[];
-    planoFormacion:        any[];
-    marcarillaBarniz:      any[];
-    mascarillaBaseBlanca:  any[];
-    marcarillaPegado:      any[];
-    marcarillaPegadoCinta: any[];
+    codigoBarras:          FileModel[];
+    planosIndividuales:    FileModel[];
+    pruebaColor:           FileModel[];
+    planoFormacion:        FileModel[];
+    marcarillaBarniz:      FileModel[];
+    mascarillaBaseBlanca:  FileModel[];
+    marcarillaPegado:      FileModel[];
+    marcarillaPegadoCinta: FileModel[];
 }
 
 export interface Solicitud {
     id_solicitud:   string;
-    producto:       string;
-    cliente:        string;
-    id_Oportunidad: string;
+    nombre:         string;
+    producto?:       string;
+    cliente?:        string;
+    id_Oportunidad?: string;
+    customer?:boolean;
+    prePrensa?:boolean;
+    cotizaciones?:boolean;
+    disenioEstructural?:boolean;
+    planeacion?:boolean;
+    fecha_registro?:Date;
 }

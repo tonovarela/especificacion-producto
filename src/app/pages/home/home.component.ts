@@ -1,9 +1,13 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { AbstractBaseGridComponent } from "@app/abstract/abstract.baseGrid.component";
+import { Solicitud } from "@app/model/solicitud.response";
+import { SolicitudService } from "@app/services/solicitud.service";
 
 import { UsuarioService } from "@app/services/usuario.service";
 import { environment } from "@env/environment.development";
+import { MessageService } from "primeng/api";
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,45 +15,56 @@ import { environment } from "@env/environment.development";
   styleUrl: './home.component.css'
 })
 
-export class HomeComponent  extends AbstractBaseGridComponent  implements OnInit{
-   readonly URL = environment.apiUrl
-  solicitudes = signal<any[]>([
-    {id_solicitud: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
-    {id_solicitud: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
-    {id_solicitud: "be0425c8-4dc6-4d59-a3c7-9b3c8b07fd8a", nombre: 'Nombre del trabajo 1', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
-    {id_solicitud: "89d57f9e-fdfe-4c27-9131-9b65c679b1d3", nombre: 'Nombre del trabajo 2', fecha: '2021-10-10', area: 'Customer', estado: 'En proceso'},
+export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
+  private readonly URL = environment.apiUrl
+  private solicitudService = inject(SolicitudService);
+  private router = inject(Router);
+  private messageService = inject(MessageService);
 
-  ]);
-  router= inject(Router);
-  usuarioService= inject(UsuarioService);
+  solicitudes = signal<Solicitud[]>([]);
+  usuarioService = inject(UsuarioService);
+
   ngOnInit(): void {
-    this.autoFitColumns = false;        
-    console.log(this.usuarioService.StatusSesion().usuario?.areasPermitidas);
+    this.autoFitColumns = false;
+    this.cargarSolicitudes();
   }
 
-  irDetalle(id_solicitud: string) {    
+  cargarSolicitudes() {
+    this.solicitudService.listar().subscribe(({ solicitudes }) => this.solicitudes.set(solicitudes));
+  }
+
+  irDetalle(id_solicitud: string) {
     this.router.navigate(['/detalle', id_solicitud]);
   }
 
-  puedeConfirmarArea(nombre:string){
+  puedeConfirmarArea(nombre: string) {
     if (!this.usuarioService.StatusSesion().usuario?.areasPermitidas) {
       return false;
     }
     return this.usuarioService.StatusSesion().usuario?.areasPermitidas.includes(nombre);
   }
 
-  cambiar(event: Event,modulo:string,id:string): void {
+  async cambiar(event: Event, modulo: string, solicitud: Solicitud): Promise<void> {
     const checkbox = event.target as HTMLInputElement;
-    console.log({modulo,id,checked:checkbox.checked});    
-    // Lógica adicional para manejar el cambio del checkbox
-  
+    const { id_solicitud } = solicitud;
+    const { checked:activo } = checkbox;
+    const { id:id_usuario } = this.usuarioService.StatusSesion().usuario || { id: '0' };
+    try {
+      await firstValueFrom(this.solicitudService.actualizarConfirmacion({id_solicitud, modulo, activo, id_usuario}));
+      this.messageService.add({ severity: 'success', summary: 'Actualización', detail: `Se actualizó correctamente`, life: 500 });
+    } catch (error) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ocurrió un error al actualizar` });
+    }
+
+
+
   }
 
-  verImpresion(solicitud:any){
-    console.log(solicitud.id_solicitud);    
-    window.open(`${this.URL}/impresion/${solicitud.id_solicitud}`,'_blank');
+  verImpresion(solicitud: any) {
+    console.log(solicitud.id_solicitud);
+    window.open(`${this.URL}/impresion/${solicitud.id_solicitud}`, '_blank');
 
   }
 
- 
+
 }

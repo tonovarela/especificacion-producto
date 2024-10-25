@@ -19,31 +19,30 @@
   
       <e-column headerText='Customer' allowFiltering="false" textAlign='Center' width='100'  >
         <ng-template #template let-data >                      
-            <input type="checkbox" [disabled]="!puedeConfirmarArea('customer')" (change)="cambiar($event,'customer',data.id)"  class="form-checkbox h-5 w-5 text-blue-600">            
-          
+            <input type="checkbox" [disabled]="!puedeConfirmarArea('customer')" (change)="cambiar($event,'customer',data)"  [checked]="data.customer==1" class="form-checkbox h-5 w-5 text-blue-600">                       
         </ng-template> 
       </e-column>
       <e-column headerText='Preprensa' allowFiltering="false" textAlign='Center'  width='100'  >
         <ng-template #template let-data >            
           
-            <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')"   (change)="cambiar($event,'prePrensa',data.id)" class="form-checkbox h-5 w-5 text-blue-600">
+            <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')"   (change)="cambiar($event,'prePrensa',data)"  [checked]="data.prePrensa==1" class="form-checkbox h-5 w-5 text-blue-600">
                       
         </ng-template> 
       </e-column>
       <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='100'   >
         <ng-template #template let-data >
                       
-            <input type="checkbox" [disabled]="!puedeConfirmarArea('disenioEstructural')" (change)="cambiar($event,'DEstructural',data.id)"  class="form-checkbox h-5 w-5 text-blue-600">                      
+            <input type="checkbox" [disabled]="!puedeConfirmarArea('disenioEstructural')" (change)="cambiar($event,'disenioEstructural',data)"  [checked]="data.disenioEstructural==1" class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
       <e-column headerText='Cotizaciones' allowFiltering="false" textAlign='Center' width='100'   >
         <ng-template #template let-data >                    
-            <input type="checkbox" [disabled]="!puedeConfirmarArea('cotizaciones')"  (change)="cambiar($event,'cotizaciones',data.id)" class="form-checkbox h-5 w-5 text-blue-600">                      
+            <input type="checkbox" [disabled]="!puedeConfirmarArea('cotizaciones')"  (change)="cambiar($event,'cotizaciones',data)"   [checked]="data.cotizaciones==1" class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
       <e-column headerText='Planeacion' allowFiltering="false" textAlign='Center' width='100'  >
         <ng-template #template let-data >                    
-            <input type="checkbox" [disabled]="!puedeConfirmarArea('planeacion')"   (change)="cambiar($event,'planeacion',data.id)" class="form-checkbox h-5 w-5 text-blue-600">                      
+            <input type="checkbox" [disabled]="!puedeConfirmarArea('planeacion')"   (change)="cambiar($event,'planeacion',data)" [checked]="data.planeacion==1"  class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
       <e-column headerText='' allowFiltering="false" textAlign='Center'  width='100' >
