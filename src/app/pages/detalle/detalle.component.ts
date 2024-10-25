@@ -52,6 +52,9 @@ export class DetalleComponent implements OnInit {
         this.cargandoDatos.set(true);
         const {solicitud,...rest} = await firstValueFrom(this.solicitudService.obtener(id,false));                      
         this.solicitud=solicitud;
+        
+        
+        
         this.formGeneral.patchValue({ ...rest});      
         this.formGeneral.valueChanges.subscribe(() => this._actualizoInformacion.set(true));
       } catch (error) {
@@ -71,9 +74,8 @@ export class DetalleComponent implements OnInit {
       return { ...area, puedeEditar: this.usuario.areasPermitidas.includes(area.id) };
     });
     this.catalogoAreas.set(areas);
-
-    this.areasSeleccionadas.set(this.catalogoAreas().filter(area => this.usuario.areasPermitidas.includes(area.id)));
-    //this.areasSeleccionadas.set(this.catalogoAreas());    
+    const areasSeleccionadas= this.catalogoAreas().filter(area => this.usuario.areasPermitidas.includes(area.id));
+    this.areasSeleccionadas.set(areasSeleccionadas.length===0?this.catalogoAreas():areasSeleccionadas);    
     this.formGeneral.disable();
     this.usuario.areasPermitidas.forEach(area => this.formGeneral.get(area)?.enable());
 

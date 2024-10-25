@@ -9,7 +9,12 @@ import { UsuarioService } from '@app/services/usuario.service';
 })
 export class MainLayoutComponent implements AfterViewInit {
   private usuarioService  = inject(UsuarioService);
-  usuario = computed(() => this.usuarioService.StatusSesion().usuario || { nombre: '', id:"-1",personal: '' ,areasPermitidas:[]});
+  usuario = computed(() =>     {
+  const usuario = this.usuarioService.StatusSesion().usuario ?? { nombre: '', id:"-1",personal: null ,areasPermitidas:[]}; 
+    return {...usuario,personal: usuario?.personal ?? 'XXXX'} 
+  }
+
+);
   ngAfterViewInit(): void {
     // const userMenuButton = document.getElementById('user-menu-button')!;
     // const userDropdown = document.getElementById('user-dropdown')!;

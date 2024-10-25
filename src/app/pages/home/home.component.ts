@@ -18,8 +18,9 @@ import { firstValueFrom } from 'rxjs';
 export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   private readonly URL = environment.apiUrl
   private solicitudService = inject(SolicitudService);
-  private router = inject(Router);
   private messageService = inject(MessageService);
+  
+  private router = inject(Router);
 
   solicitudes = signal<Solicitud[]>([]);
   usuarioService = inject(UsuarioService);

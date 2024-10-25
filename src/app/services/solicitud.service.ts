@@ -37,5 +37,9 @@ export class SolicitudService {
     return this.http.get<ResponseSolicitud>(`${this.URL}/solicitud/${id_solicitud}?conBase64=${conBase64}`);
   }
 
+  public obtenerBitacora(id_solcitud:string){
+    return this.http.get(`${this.URL}/solicitud/${id_solcitud}/bitacora`);
+  }
+
 
 }

@@ -17,17 +17,20 @@
       <div class=" ">  
         <form class="divide-y divide-gray-200  ">
           <div class="text-base space-y-4 text-gray-700     ">
-            <!-- <pre>
-              {{usuario | json}}
-              {{formGeneral.value | json}}
-            </pre> -->
+            
             @if(guardando()  || cargandoDatos()){
               <app-skeleton></app-skeleton>
             }@else{                                       
               
+
+
+        
+
+
               <div class="pt-5">              
-                <app-seccion1   formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
-                <app-seccion2   formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
+                
+                <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
+                <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
                 <app-seccion3   formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
                 <app-seccion4   formName="prePrensa" *ngIf="isAreaVisible('prePrensa')" [formGeneral]="formGeneral"  />
                 <app-seccion5   formName="planeacion" *ngIf="isAreaVisible('planeacion')" [formGeneral]="formGeneral"  />
@@ -41,6 +44,34 @@
                 <app-seccion13  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')" [formGeneral]="formGeneral" />
                 <app-seccion14  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
                 <app-seccion15  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral" />
+
+
+                @if(solicitud.autorizaciones!.length>0){
+                  <app-titulo-seccion titulo="Control de validaciones" numero="16"                
+                  departamento="Todos"></app-titulo-seccion>
+                  <div class="grid grid-cols-2 gap-2 pt-2" >                 
+                    @for(autorizacion of solicitud.autorizaciones;track autorizacion.modulo)
+                    {
+                      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white font-inter">
+                        <div class="flex items-center p-2">                          
+                            <img class="w-16 h-16 rounded-full mr-4 border-2 hover:border-blue-400 " src="https://servicios.litoprocess.com/colaboradores/api/foto/{{autorizacion.personal || '-1' }} " alt="User Avatar">                          
+                          <div class="text-left">
+                            <div class="font-bold text-md mb-2  capitalize">{{autorizacion.nombre}}</div> 
+                            <span class="inline-block bg-gray-200 rounded-sm capitalize px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{autorizacion.etiqueta }}</span>                                                  
+                          </div>
+                        </div>
+                        <div class="flex justify-end">
+                          <p class="text-gray-400 text-xs  py-2 mr-5">
+                            {{autorizacion.fecha_evento | date:'dd-MM-yyyy '}}
+                          </p>                 
+                        </div>
+                        
+                      </div> 
+                    }                                                                                                                                     
+                  </div>
+                }
+               
+               
                
               </div>
 

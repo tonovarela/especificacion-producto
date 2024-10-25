@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { UsuarioService } from '@services/usuario.service';
-import { StatutLogin } from './model/usuario.interface';
+
 
 
 @Component({
@@ -15,8 +15,9 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {    
-    //this.usuarioService.login('glozada', '55964');
-    this.usuarioService.login('danmar', '32568');
+  this.usuarioService.login('CTP', '98233');
+    //this.usuarioService.login('erivera', '29170');
+    //this.usuarioService.login('danmar', '32568');
     
   }
   

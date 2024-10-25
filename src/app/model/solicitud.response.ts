@@ -1,5 +1,20 @@
 import { FileModel } from "./file.interface";
 
+
+export interface ResponseBitacora {
+    bitacora: Bitacora[];
+}
+
+export interface Bitacora {
+    fecha_evento: Date;
+    personal:     string;
+    Departamento: string;
+    evento:       string;
+}
+
+
+
+
 export interface SolicitudModel {
     id_solicitud:string;
     customer?:any;
@@ -20,6 +35,16 @@ export interface ResponseSolicitud {
     disenioEstructural: DisenioEstructural;
     customer:           Customer;
     prePrensa:          PrePrensa;
+    
+}
+
+export interface Autorizacion {
+    id_usuario: string;
+    fecha_evento:Date;
+    nombre:string;
+    personal:string;
+    modulo:string;
+    etiqueta:string;
 }
 
 export interface Cotizacion {
@@ -131,5 +156,6 @@ export interface Solicitud {
     cotizaciones?:boolean;
     disenioEstructural?:boolean;
     planeacion?:boolean;
+    autorizaciones?:Autorizacion[];
     fecha_registro?:Date;
 }
