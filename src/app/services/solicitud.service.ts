@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { ResponseListadoSolicitud, ResponseSolicitud, SolicitudModel } from '@app/model/solicitud.response';
+import { ResponseBitacora, ResponseListadoSolicitud, ResponseSolicitud, SolicitudModel } from '@app/model/solicitud.response';
 
 interface PropsActualizarConfirmacion{
   activo:boolean;
@@ -37,8 +37,8 @@ export class SolicitudService {
     return this.http.get<ResponseSolicitud>(`${this.URL}/solicitud/${id_solicitud}?conBase64=${conBase64}`);
   }
 
-  public obtenerBitacora(id_solcitud:string){
-    return this.http.get(`${this.URL}/solicitud/${id_solcitud}/bitacora`);
+  public obtenerBitacora(id_solicitud:string){
+    return this.http.get<ResponseBitacora>(`${this.URL}/solicitud/${id_solicitud}/bitacora`);
   }
 
 

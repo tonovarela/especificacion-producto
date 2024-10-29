@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { Router } from "@angular/router";
 import { AbstractBaseGridComponent } from "@app/abstract/abstract.baseGrid.component";
-import { Solicitud } from "@app/model/solicitud.response";
+import { Bitacora, Solicitud } from "@app/model/solicitud.response";
 import { SolicitudService } from "@app/services/solicitud.service";
 
 import { UsuarioService } from "@app/services/usuario.service";
@@ -19,11 +19,16 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   private readonly URL = environment.apiUrl
   private solicitudService = inject(SolicitudService);
   private messageService = inject(MessageService);
-  
+
   private router = inject(Router);
+
+
 
   solicitudes = signal<Solicitud[]>([]);
   usuarioService = inject(UsuarioService);
+  bitacoraVisible = false;
+
+  bitacoras = signal<{ cargando: boolean, value: Bitacora[] }>({ value: [], cargando: false });
 
   ngOnInit(): void {
     this.autoFitColumns = false;
@@ -38,6 +43,15 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     this.router.navigate(['/detalle', id_solicitud]);
   }
 
+  mostrarBitacora(id_solicitud: string) {
+    this.bitacoraVisible = true;
+    this.bitacoras.set({ value: [], cargando: true });
+    this.solicitudService.obtenerBitacora(id_solicitud).subscribe((response) => {
+      this.bitacoras.set({ value: response.bitacora, cargando: false });
+    });
+
+  }
+
   puedeConfirmarArea(nombre: string) {
     if (!this.usuarioService.StatusSesion().usuario?.areasPermitidas) {
       return false;
@@ -48,10 +62,10 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   async cambiar(event: Event, modulo: string, solicitud: Solicitud): Promise<void> {
     const checkbox = event.target as HTMLInputElement;
     const { id_solicitud } = solicitud;
-    const { checked:activo } = checkbox;
-    const { id:id_usuario } = this.usuarioService.StatusSesion().usuario || { id: '0' };
+    const { checked: activo } = checkbox;
+    const { id: id_usuario } = this.usuarioService.StatusSesion().usuario || { id: '0' };
     try {
-      await firstValueFrom(this.solicitudService.actualizarConfirmacion({id_solicitud, modulo, activo, id_usuario}));
+      await firstValueFrom(this.solicitudService.actualizarConfirmacion({ id_solicitud, modulo, activo, id_usuario }));
       this.messageService.add({ severity: 'success', summary: 'Actualización', detail: `Se actualizó correctamente`, life: 500 });
     } catch (error) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ocurrió un error al actualizar` });

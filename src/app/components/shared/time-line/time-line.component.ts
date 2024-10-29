@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Bitacora } from '@app/model/solicitud.response';
 
 @Component({
   selector: 'app-time-line',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './time-line.component.css'
 })
 export class TimeLineComponent {
+ @Input() eventos :Bitacora[] = [];
+ 
 
 }
