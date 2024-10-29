@@ -1,5 +1,8 @@
 
 
+@if(estatusLogin()=="ERROR"){
+    <h1>Usuario sin privilegios de uso de sistema</h1>
+}
 
 @if(estatusLogin()=="LOGIN"){
     <router-outlet></router-outlet>

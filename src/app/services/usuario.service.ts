@@ -29,7 +29,7 @@ export class UsuarioService {
   });
 
 
-  public async login(username: string, password: string) {
+  private async login(username: string, password: string) {
     this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.LOADING });
     try {
       const resp =await firstValueFrom(this.http.post<LoginResponse>(`${this.URL}/auth/login`, { login:{username, password} }).pipe(delay(2000)));
@@ -39,6 +39,30 @@ export class UsuarioService {
       this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.ERROR });
     }    
 
+  }
+
+
+  
+
+
+  public async verificarSesionLitoapps() {
+    let user = localStorage.getItem("User") ;
+    let password = localStorage.getItem("Pass");  
+    if (!environment.production){
+      const  {username,password:passwordDev} = environment.userDev;
+      user = username;
+      password = passwordDev;
+    }
+    if (!(user != null && password != null) ) {      
+      this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.ERROR });
+      return;
+    } 
+    await  this.login(user, password);
+  }
+
+
+  logout() {  
+    this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.LOGOUT });
   }
 
   

@@ -1,6 +1,6 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, effect, EffectRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { environment } from '@env/environment.development';
 import { UsuarioService } from '@services/usuario.service';
-
 
 
 @Component({
@@ -8,21 +8,39 @@ import { UsuarioService } from '@services/usuario.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   private usuarioService = inject(UsuarioService);
-   estatusLogin= computed(() => this.usuarioService.StatusSesion().estatus);
+  estatusLogin = computed(() => this.usuarioService.StatusSesion().estatus);
+  effectLogin: EffectRef;
+
+  constructor() {
+    this.effectLogin = effect(() => {    
+      if (this.estatusLogin() === 'LOGOUT' ) {
+        const esProduccion = environment.production;
+        if (esProduccion) {
+          window.location.href = "/litoapps";
+          localStorage.removeItem("User");
+          localStorage.removeItem("Pass");
+          return;
+        }
+
+      };
+    });
+
+  }
+  ngOnDestroy(): void {
+    this.effectLogin.destroy();
+  }
 
 
   ngOnInit(): void {    
-  this.usuarioService.login('CTP', '98233');
-    //this.usuarioService.login('erivera', '29170');
-    //this.usuarioService.login('danmar', '32568');
-    
-  }
-  
-  
+    this.usuarioService.verificarSesionLitoapps();
 
- 
-  
+  }
+
+
+
+
+
 }

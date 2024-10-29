@@ -11,13 +11,7 @@
           CONFIRMACION DE REGISTRO          
         </div>
       </ng-template>     
-      <e-column  headerText='Bitacora' width='50'  textAlign='Center' >
-        <ng-template #template let-data >
-          <div class="flex justify-center">                        
-            <svg (click)="mostrarBitacora(data.id_solicitud)"  viewBox="0 0 24 24" class="w-5 h-5 cursor-pointer hover:text-blue-700" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.7769 10L16.6065 11.2941" stroke="#050710" stroke-width="1.5" stroke-linecap="round"></path> <path d="M11 12.8975L13.8978 13.6739" stroke="#050710" stroke-width="1.5" stroke-linecap="round"></path> <path d="M20.3116 12.6473C19.7074 14.9024 19.4052 16.0299 18.7203 16.7612C18.1795 17.3386 17.4796 17.7427 16.7092 17.9223C16.6129 17.9448 16.5152 17.9621 16.415 17.9744C15.4999 18.0873 14.3834 17.7881 12.3508 17.2435C10.0957 16.6392 8.96815 16.3371 8.23687 15.6522C7.65945 15.1114 7.25537 14.4115 7.07573 13.641C6.84821 12.6652 7.15033 11.5377 7.75458 9.28263L8.27222 7.35077C8.35912 7.02646 8.43977 6.72546 8.51621 6.44561C8.97128 4.77957 9.27709 3.86298 9.86351 3.23687C10.4043 2.65945 11.1042 2.25537 11.8747 2.07573C12.8504 1.84821 13.978 2.15033 16.2331 2.75458C18.4881 3.35883 19.6157 3.66095 20.347 4.34587C20.9244 4.88668 21.3285 5.58657 21.5081 6.35703C21.669 7.04708 21.565 7.81304 21.2766 9" stroke="#050710" stroke-width="1.5" stroke-linecap="round"></path> <path d="M3.27222 16.647C3.87647 18.9021 4.17859 20.0296 4.86351 20.7609C5.40432 21.3383 6.10421 21.7424 6.87466 21.922C7.85044 22.1495 8.97798 21.8474 11.2331 21.2432C13.4881 20.6389 14.6157 20.3368 15.347 19.6519C15.8399 19.1902 16.2065 18.6126 16.415 17.9741M8.51621 6.44531C8.16368 6.53646 7.77741 6.63996 7.35077 6.75428C5.09569 7.35853 3.96815 7.66065 3.23687 8.34557C2.65945 8.88638 2.25537 9.58627 2.07573 10.3567C1.91482 11.0468 2.01883 11.8129 2.30728 13" stroke="#050710" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-          </div>
-        </ng-template>
-      </e-column>
+     
       <e-column field='nombre' width='150' >
         <ng-template #template let-data >
           <div class="flex justify-start space-x-5">                        
@@ -26,52 +20,60 @@
           
         </ng-template>
       </e-column>
+      <e-column  headerText='Bitacora' width='45'  textAlign='Center' >
+        <ng-template #template let-data >
+          <div class="flex justify-center">                        
+            <svg (click)="mostrarBitacora(data.id_solicitud)" viewBox="0 -0.5 25 25" fill="none"  class="w-6 h-6   cursor-pointer  hover:text-blue-800" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.808 4.00001H15.329C15.3863 4.00001 15.4433 4.00367 15.5 4.01101C17.7473 4.16817 19.4924 6.0332 19.5 8.28601V14.715C19.4917 17.0871 17.5641 19.0044 15.192 19H9.808C7.43551 19.0044 5.50772 17.0865 5.5 14.714V8.28601C5.50772 5.91353 7.43551 3.99558 9.808 4.00001Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M19.5 9.03599C19.9142 9.03599 20.25 8.7002 20.25 8.28599C20.25 7.87177 19.9142 7.53599 19.5 7.53599V9.03599ZM15.5 8.28599H14.75C14.75 8.7002 15.0858 9.03599 15.5 9.03599V8.28599ZM16.25 4.01099C16.25 3.59677 15.9142 3.26099 15.5 3.26099C15.0858 3.26099 14.75 3.59677 14.75 4.01099H16.25ZM14.5 12.75C14.9142 12.75 15.25 12.4142 15.25 12C15.25 11.5858 14.9142 11.25 14.5 11.25V12.75ZM8.5 11.25C8.08579 11.25 7.75 11.5858 7.75 12C7.75 12.4142 8.08579 12.75 8.5 12.75V11.25ZM11.5 9.74999C11.9142 9.74999 12.25 9.4142 12.25 8.99999C12.25 8.58577 11.9142 8.24999 11.5 8.24999V9.74999ZM8.5 8.24999C8.08579 8.24999 7.75 8.58577 7.75 8.99999C7.75 9.4142 8.08579 9.74999 8.5 9.74999V8.24999ZM15.5 15.75C15.9142 15.75 16.25 15.4142 16.25 15C16.25 14.5858 15.9142 14.25 15.5 14.25V15.75ZM8.5 14.25C8.08579 14.25 7.75 14.5858 7.75 15C7.75 15.4142 8.08579 15.75 8.5 15.75V14.25ZM19.5 7.53599H15.5V9.03599H19.5V7.53599ZM16.25 8.28599V4.01099H14.75V8.28599H16.25ZM14.5 11.25H8.5V12.75H14.5V11.25ZM11.5 8.24999H8.5V9.74999H11.5V8.24999ZM15.5 14.25H8.5V15.75H15.5V14.25Z" fill="currentColor"></path> </g></svg>            
+          </div>
+        </ng-template>
+      </e-column>
       
   
-      <e-column headerText='Customer' allowFiltering="false" textAlign='Center' width='70'  >
+      <e-column headerText='Customer' allowFiltering="false" textAlign='Center' width='50'  >
         <ng-template #template let-data >                      
             <input type="checkbox" [disabled]="!puedeConfirmarArea('customer')" (change)="cambiar($event,'customer',data)"  [checked]="data.customer==1" class="form-checkbox h-5 w-5 text-blue-600">                       
         </ng-template> 
       </e-column>
-      <e-column headerText='Preprensa' allowFiltering="false" textAlign='Center'  width='70'  >
+      <e-column headerText='Preprensa' allowFiltering="false" textAlign='Center'  width='50'  >
         <ng-template #template let-data >            
           
             <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')"   (change)="cambiar($event,'prePrensa',data)"  [checked]="data.prePrensa==1" class="form-checkbox h-5 w-5 text-blue-600">
                       
         </ng-template> 
       </e-column>
-      <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='70'   >
+      <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='50'   >
         <ng-template #template let-data >
                       
             <input type="checkbox" [disabled]="!puedeConfirmarArea('disenioEstructural')" (change)="cambiar($event,'disenioEstructural',data)"  [checked]="data.disenioEstructural==1" class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
-      <e-column headerText='Cotizaciones' allowFiltering="false" textAlign='Center' width='70'   >
+      <e-column headerText='Cotizaciones' allowFiltering="false" textAlign='Center' width='50'   >
         <ng-template #template let-data >                    
             <input type="checkbox" [disabled]="!puedeConfirmarArea('cotizacion')"  (change)="cambiar($event,'cotizacion',data)"   [checked]="data.cotizacion==1" class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
-      <e-column headerText='Planeacion' allowFiltering="false" textAlign='Center' width='70'  >
+      <e-column headerText='Planeacion' allowFiltering="false" textAlign='Center' width='50'  >
         <ng-template #template let-data >                    
             <input type="checkbox" [disabled]="!puedeConfirmarArea('planeacion')"   (change)="cambiar($event,'planeacion',data)" [checked]="data.planeacion==1"  class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
-      <e-column headerText='Logistica' allowFiltering="false" textAlign='Center' width='70'  >
+      <e-column headerText='Logistica' allowFiltering="false" textAlign='Center' width='50'  >
         <ng-template #template let-data >                    
             <input type="checkbox" [disabled]="!puedeConfirmarArea('logistica')"   (change)="cambiar($event,'logistica',data)" [checked]="data.logistica==1"  class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
-      <e-column headerText='Produccion' allowFiltering="false" textAlign='Center' width='70'  >
+      <e-column headerText='Produccion' allowFiltering="false" textAlign='Center' width='50'  >
         <ng-template #template let-data >                    
             <input type="checkbox" [disabled]="!puedeConfirmarArea('produccion')"   (change)="cambiar($event,'produccion',data)" [checked]="data.produccion==1"  class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
-      <e-column headerText='Calidad' allowFiltering="false" textAlign='Center' width='70'  >
+      <e-column headerText='Calidad' allowFiltering="false" textAlign='Center' width='50'  >
         <ng-template #template let-data >                    
             <input type="checkbox" [disabled]="!puedeConfirmarArea('calidad')"   (change)="cambiar($event,'calidad',data)" [checked]="data.calidad==1"  class="form-checkbox h-5 w-5 text-blue-600">                      
         </ng-template> 
       </e-column>
-      <e-column headerText='' allowFiltering="false" textAlign='Center'  width='70' >
+      <e-column headerText='' allowFiltering="false" textAlign='Center'  width='50' >
         <ng-template #template let-data >
           <div class="flex justify-center w-full hover:cursor-pointer" (click)="verImpresion(data)" >
             <svg  class="pdf-icon  w-8 h-8 text-red-500 hover:text-red-700 transition-transform transform hover:scale-110" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.cls-1{fill:#ff402f;}</style> </defs> <title></title> <g id="xxx-word"> <path class="cls-1" d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z"></path> <path class="cls-1" d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z"></path> <path class="cls-1" d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z"></path> <path class="cls-1" d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z"></path> <path class="cls-1" d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z"></path> <path class="cls-1" d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z"></path> <path class="cls-1" d="M145,236h-9.61V182.68h21.84q9.34,0,13.85,4.71a16.37,16.37,0,0,1-.37,22.95,17.49,17.49,0,0,1-12.38,4.53H145Zm0-29.37h11.37q4.45,0,6.8-2.19a7.58,7.58,0,0,0,2.34-5.82,8,8,0,0,0-2.17-5.62q-2.17-2.34-7.83-2.34H145Z"></path> <path class="cls-1" d="M183,236V182.68H202.7q10.9,0,17.5,7.71t6.6,19q0,11.33-6.8,18.95T200.55,236Zm9.88-7.85h8a14.36,14.36,0,0,0,10.94-4.84q4.49-4.84,4.49-14.41a21.91,21.91,0,0,0-3.93-13.22,12.22,12.22,0,0,0-10.37-5.41h-9.14Z"></path> <path class="cls-1" d="M245.59,236H235.7V182.68h33.71v8.24H245.59v14.57h18.75v8H245.59Z"></path> </g> </g></svg>
