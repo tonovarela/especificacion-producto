@@ -44,8 +44,9 @@
             @if (puedeVerConfirmacion()){
               <e-column field='confirmacion' headerText='Autorizado' allowFiltering="true" width='80' textAlign='Center' >
                 <ng-template #template let-data>
-                  <input type="checkbox"                      
-                     (change)="cambiar($event,'confirmacion',data)" [checked]="data.customer==1"
+                  <input type="checkbox"                 
+                  [disabled]="data.confirmacion==1"     
+                     (change)="data.confirmacion=1;cambiar($event,'confirmacion',data)" [checked]="data.confirmacion==1"
                     class="form-checkbox h-5 w-5 ">
                 </ng-template>
               </e-column>
