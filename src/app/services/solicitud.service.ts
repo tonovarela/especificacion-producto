@@ -24,8 +24,8 @@ export class SolicitudService {
   }
 
 
-  public listar(){
-    return this.http.get<ResponseListadoSolicitud>(`${this.URL}/solicitud`);
+  public listar(todas=false){
+    return this.http.get<ResponseListadoSolicitud>(`${this.URL}/solicitud?todas=${todas}`);
   }
 
   public actualizarConfirmacion(props:PropsActualizarConfirmacion){

@@ -10,6 +10,7 @@ export class FormInputComponent {
  @Input() label: string = '';
  @Input() name: string = '';
  @Input() form: string = '';
+ @Input() maxlength: number = 250;
 formParent!: FormGroup;
   //control! :AbstractControl
   constructor(private rootFormGroup: FormGroupDirective

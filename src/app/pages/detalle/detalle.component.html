@@ -3,6 +3,7 @@
     @if(!cargandoDatos()){
       <app-menu-solicitud 
       (onGuardar)="onGuardar()" 
+      [codigoInterno]="formGeneral.value.disenioEstructural.codigo_interno"
       (onRegresar)="onRegresar()"
       [catalogoAreas]="catalogoAreas()"
       [habilitarGuardar]="areasSeleccionadas().length>0  && actualizoInformacion() "
@@ -20,15 +21,15 @@
             
             @if(guardando()  || cargandoDatos()){
               <app-skeleton></app-skeleton>
-            }@else{                                       
-              
-
-
-        
-
-
-              <div class="pt-5">              
+            }@else{                                                           
+              <div class="pt-7 text-inter">
+                <div class="flex flex-col space-y-2">
+                  <div class="flex gap-2"><span class="text-md font-bold">Trabajo:</span>{{solicitud.nombre}}</div>    
+                  <div class="flex gap-2"><span class="text-md font-bold">Cliente:</span>{{solicitud.cliente}}</div>    
+                </div>
                 
+                
+                              
                 <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')" [formGeneral]="formGeneral"  />
                 <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
                 <app-seccion3   formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />

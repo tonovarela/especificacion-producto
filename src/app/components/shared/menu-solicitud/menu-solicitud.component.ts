@@ -15,6 +15,7 @@ export class MenuSolicitudComponent implements OnInit {
 @Input() habilitarGuardar: boolean=true;
 @Input() catalogoAreas: Area[]=[];
 @Input() guardando: boolean=false;
+@Input() codigoInterno: string='';
 
 
  

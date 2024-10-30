@@ -23,10 +23,13 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   private router = inject(Router);
 
 
+  
 
   solicitudes = signal<Solicitud[]>([]);
   usuarioService = inject(UsuarioService);
   bitacoraVisible = false;
+
+  puedeVerConfirmacion = this.usuarioService.puedeVerConfirmacion;
 
   bitacoras = signal<{ cargando: boolean, value: Bitacora[] }>({ value: [], cargando: false });
 
@@ -36,7 +39,8 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   }
 
   cargarSolicitudes() {
-    this.solicitudService.listar().subscribe(({ solicitudes }) => this.solicitudes.set(solicitudes));
+    const todas = this.puedeVerConfirmacion(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
+    this.solicitudService.listar(todas).subscribe(({ solicitudes }) => this.solicitudes.set(solicitudes));
   }
 
   irDetalle(id_solicitud: string) {

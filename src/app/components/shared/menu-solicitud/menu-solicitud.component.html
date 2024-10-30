@@ -10,37 +10,49 @@
         </button>
         <div>
           @if (catalogoAreas){
-
-            <p-multiSelect 
-            class="custom-ms"
-      [options]="catalogoAreas"       
-      [disabled]="guardando"
-      optionLabel="descripcion" 
-      selectedItemsLabel="{0} areas "
-      scrollHeight="300px"
-      filter="false"    
-      filterPlaceHolder="Buscar"
-      [(ngModel)]="areasSeleccionadas"
-      styleClass=" m-1  p-0 w-[400px] sm:flex hidden font-inter"
-      panelStyleClass="bg-white shadow-md" 
-      placeholder="Seleccionar areas" >
-      <ng-template let-area pTemplate="item">
-        <div class="flex justify-between  gap-2 w-full" >          
-          <div >{{ area.descripcion  }}</div>
-          <div *ngIf="area.puedeEditar">
-            <svg class="w-5 h-5  fill-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-          </svg>
+            <div class="flex flex-row justify-around">
+              <p-multiSelect 
+              class="custom-ms"
+        [options]="catalogoAreas"       
+        [disabled]="guardando"
+        optionLabel="descripcion" 
+        selectedItemsLabel="{0} areas "
+        scrollHeight="300px"
+        filter="false"    
+        filterPlaceHolder="Buscar"
+        [(ngModel)]="areasSeleccionadas"
+        styleClass=" m-1  p-0 w-[400px] sm:flex hidden font-inter"
+        panelStyleClass="bg-white shadow-md" 
+        placeholder="Seleccionar areas" >
+        <ng-template let-area pTemplate="item">
+          <div class="flex justify-between  gap-2 w-full" >          
+            <div >{{ area.descripcion  }}</div>
+            <div *ngIf="area.puedeEditar">
+              <svg class="w-5 h-5  fill-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+            </svg>
+            
+          </div>
+          
         </div>
-      </div>
-
-      </ng-template>
-            </p-multiSelect>
+  
+        </ng-template>
+              </p-multiSelect>
+              @if(codigoInterno!=null && codigoInterno.length>0){
+                <span class="hidden text-sm sm:flex self-center text-white bg-pink-500 p-2 rounded-sm">
+                  Código interno :
+                  {{codigoInterno}}
+                </span>              
+              }              
+            </div>
+            
+            
           }
+
         </div>
-        <div class="flex  gap-2">
+        <div class="flex  gap-2">          
           
              @if(!guardando){                         
               <button type="button" 

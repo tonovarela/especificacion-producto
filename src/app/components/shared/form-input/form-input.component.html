@@ -1,6 +1,6 @@
 <ng-container [formGroup]="formParent">
   <div class="relative">
-    <input [formControlName]="name" type="text" [id]="name" [name]="name" class="peer input-form"
+    <input [formControlName]="name" [maxlength]="maxlength" type="text" [id]="name" [name]="name" class="peer input-form"
     
      placeholder=" " />
     <label [for]="name" class="label-form">{{label}} </label>
