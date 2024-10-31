@@ -3,7 +3,7 @@
     @if(!cargandoDatos()){
       <app-menu-solicitud 
       (onGuardar)="onGuardar()" 
-      [codigoInterno]="formGeneral.value.disenioEstructural.codigo_interno"
+      [codigoInterno]="formGeneral.value.disenioEstructural?.codigo_interno"
       (onRegresar)="onRegresar()"
       [catalogoAreas]="catalogoAreas()"
       [habilitarGuardar]="areasSeleccionadas().length>0  && actualizoInformacion() "
