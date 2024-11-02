@@ -6,7 +6,7 @@ import { Area } from '@app/model/area.interface';
 import { SolicitudService } from '@app/services/solicitud.service';
 import { UsuarioService } from '@app/services/usuario.service';
 import { FormFactoryService } from '@services/modelForm.service';
-import {  firstValueFrom } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { Solicitud } from '../../model/solicitud.response';
 import { environment } from '@env/environment.development';
 import { MessageService } from 'primeng/api';
@@ -18,15 +18,15 @@ import { MessageService } from 'primeng/api';
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
   styleUrl: './detalle.component.css',
-  
+
 })
 export class DetalleComponent implements OnInit {
   readonly URL_API = environment.apiUrl;
-  private _actualizoInformacion = signal<boolean>(false);  
+  private _actualizoInformacion = signal<boolean>(false);
   private messageService = inject(MessageService);
   formService = inject(FormFactoryService);
-  
-  solicitud!:Solicitud;
+
+  solicitud!: Solicitud;
   solicitudService = inject(SolicitudService);
   activatedRouter = inject(ActivatedRoute);
   usuarioService = inject(UsuarioService);
@@ -35,34 +35,38 @@ export class DetalleComponent implements OnInit {
   archivosCargados: string[] = [];
   catalogoAreas = signal<Area[]>([]);
   areasSeleccionadas = signal<Area[]>([]);
-  
+
 
   usuario = this.usuarioService.StatusSesion().usuario!;
   guardando = signal<boolean>(false);
-  cargandoDatos = signal<boolean>(false);  
+  cargandoDatos = signal<boolean>(false);
   actualizoInformacion = computed<boolean>(() => this._actualizoInformacion());
-  
+
   ngOnInit(): void {
     const { formGeneral } = this.formService;
     this.formGeneral = formGeneral;
     this.formGeneral.reset();
-    
+
     this.activatedRouter.params.subscribe(async ({ id }) => {
       try {
         this.cargandoDatos.set(true);
-        const {solicitud,...rest} = await firstValueFrom(this.solicitudService.obtener(id,false));                      
-        this.solicitud=solicitud;
-        
-        
-        
-        this.formGeneral.patchValue({ ...rest});      
+        const { solicitud, ...rest } = await firstValueFrom(this.solicitudService.obtener(id, false));
+        this.solicitud = solicitud;
+
+
+
+        this.formGeneral.patchValue({ ...rest });
         this.formGeneral.valueChanges.subscribe(() => this._actualizoInformacion.set(true));
+        
+        if (this.solicitud.id_estado=="2"){
+          this.usuario.areasPermitidas.forEach(area => this.formGeneral.get(area)?.enable());
+        }        
       } catch (error) {
         this.router.navigate(['/home']);
       }
       this.cargandoDatos.set(false);
     });
-    
+
     this.catalogoAreas.set([
       { descripcion: 'Customer', id: 'customer' },
       { descripcion: 'Preprensa  ', id: 'prePrensa' },
@@ -74,10 +78,14 @@ export class DetalleComponent implements OnInit {
       return { ...area, puedeEditar: this.usuario.areasPermitidas.includes(area.id) };
     });
     this.catalogoAreas.set(areas);
-    const areasSeleccionadas= this.catalogoAreas().filter(area => this.usuario.areasPermitidas.includes(area.id));
-    this.areasSeleccionadas.set(areasSeleccionadas.length===0?this.catalogoAreas():areasSeleccionadas);    
+    const areasSeleccionadas = this.catalogoAreas().filter(area => this.usuario.areasPermitidas.includes(area.id));
+    this.areasSeleccionadas.set(areasSeleccionadas.length === 0 ? this.catalogoAreas() : areasSeleccionadas);
     this.formGeneral.disable();
-    this.usuario.areasPermitidas.forEach(area => this.formGeneral.get(area)?.enable());
+
+
+    
+
+
 
 
   }
@@ -92,15 +100,15 @@ export class DetalleComponent implements OnInit {
   }
 
   async onGuardar() {
-    
-    const {id_solicitud} = this.solicitud
+
+    const { id_solicitud } = this.solicitud
     const propsSave = { id_solicitud, ...this.formGeneral.value };
     const id_usuario = this.usuario.id;
     this.guardando.set(true);
     try {
       await firstValueFrom(this.solicitudService.guardar(id_usuario, propsSave));
-      this.messageService.add({ severity: 'success', summary: 'Listo', detail: 'Informacion actualizada',life:1500 });
-      
+      this.messageService.add({ severity: 'success', summary: 'Listo', detail: 'Informacion actualizada', life: 1500 });
+
     }
     catch (exception: any) {
       //console.error(exception["error"]);       
@@ -108,7 +116,7 @@ export class DetalleComponent implements OnInit {
     }
     finally {
       this.guardando.set(false);
-      this._actualizoInformacion.set(false); 
+      this._actualizoInformacion.set(false);
     }
 
   }

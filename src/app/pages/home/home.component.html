@@ -1,4 +1,4 @@
-<div class="max-w-screen-2xl mx-auto bg-white  rounded-b-md pt-1">
+<div class="max-w-screen-2xl mx-auto bg-white  rounded-b-md pt-1">  
   <div class="h-[94vh]   overflow-hidden    ">
     <div class="divide-y divide-gray-200 ">
       <div class="text-base border mx-1 rounded-sm   " style="height: calc(100vh - 120px)">
@@ -7,8 +7,13 @@
           allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
           <e-columns>
             <ng-template #toolbarTemplate let-data>
-              <div class="flex py-1 px-0 justify-center border-1 rounded-t-md text-xs  text-gray-500 font-inter">
+              <div class=" flex py-2 px-0 justify-center border-1 rounded-t-md text-xs  text-gray-500 font-inter">
                 CONFIRMACION DE REGISTRO
+                <div class="absolute top-0 right-3">
+                  <button *ngIf="verValidas"  (click)="verValidas=false;cargarSolicitudes()"  class="border bg-slate-700 hover:bg-blue-700 px-2 py-1 m-1 text-white  rounded ">Ver canceladas</button>
+                  <button *ngIf="!verValidas"  (click)="verValidas=true;cargarSolicitudes()" class="border bg-slate-700 hover:bg-blue-700 px-2 py-1 m-1 text-white  rounded ">Ver validas</button>
+                </div>
+                
               </div>
             </ng-template>
 
@@ -41,19 +46,29 @@
                 </div>
               </ng-template>
             </e-column>
-            @if (puedeVerConfirmacion()){
-              <e-column field='confirmacion' headerText='Autorizado' allowFiltering="true" width='80' textAlign='Center' >
-                <ng-template #template let-data>
-                  <input type="checkbox"                 
-                  [disabled]="data.confirmacion==1"     
-                     (change)="data.confirmacion=1;cambiar($event,'confirmacion',data)" [checked]="data.confirmacion==1"
-                    class="form-checkbox h-5 w-5 ">
+           
+              <e-column field='descripcionEstado' headerText='Estatus' allowFiltering="true" width='80' textAlign='Center' >
+                <ng-template #template let-data>    
+                  
+                  @if (puedeCambiarEstado()){
+                  <select [ngModel]="data.id_estado"                    
+                  (change)="actualizarEstado($event,data)"
+                  class="form-select font-inter mt-1 block w-full px-2  py-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    @for (estado of  estados();track estado.id_estado)
+                    {
+                      <option  [value]="estado.id_estado" >{{estado.nombre}}</option>
+                    }                                      
+                  </select>  
+                }@else{
+                  {{data.descripcionEstado}}
+                }                   
+                  
                 </ng-template>
               </e-column>
-            }            
+                       
             <e-column headerText='Customer' allowFiltering="false" textAlign='Center' width='50'>
-              <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('customer')"
+              <ng-template #template let-data>                
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('customer') || !data.sePuedeEditar"
                   (change)="cambiar($event,'customer',data)" [checked]="data.customer==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
@@ -61,7 +76,7 @@
             <e-column headerText='Preprensa' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
 
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'prePrensa',data)" [checked]="data.prePrensa==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
 
@@ -70,42 +85,42 @@
             <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
 
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('disenioEstructural')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('disenioEstructural')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'disenioEstructural',data)" [checked]="data.disenioEstructural==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Cotizaciones' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('cotizacion')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('cotizacion')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'cotizacion',data)" [checked]="data.cotizacion==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Planeacion' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('planeacion')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('planeacion')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'planeacion',data)" [checked]="data.planeacion==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Logistica' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('logistica')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('logistica')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'logistica',data)" [checked]="data.logistica==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Produccion' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('produccion')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('produccion')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'produccion',data)" [checked]="data.produccion==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Calidad' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('calidad')"
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('calidad')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'calidad',data)" [checked]="data.calidad==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
@@ -187,3 +202,5 @@
   </p-dialog>
 
 </div>
+
+

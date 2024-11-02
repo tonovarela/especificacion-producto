@@ -1,18 +1,22 @@
-import { Component, inject, OnInit, signal } from "@angular/core";
+import { Component, inject, OnInit, signal, EventEmitter } from '@angular/core';
 import { Router } from "@angular/router";
 import { AbstractBaseGridComponent } from "@app/abstract/abstract.baseGrid.component";
-import { Bitacora, Solicitud } from "@app/model/solicitud.response";
+import { Bitacora, Estado, Solicitud } from "@app/model/solicitud.response";
 import { SolicitudService } from "@app/services/solicitud.service";
 
 import { UsuarioService } from "@app/services/usuario.service";
 import { environment } from "@env/environment.development";
-import { MessageService } from "primeng/api";
+import { ConfirmationService, MessageService } from "primeng/api";
+import Swal from 'sweetalert2'
 import { firstValueFrom } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
+  providers: [ConfirmationService, MessageService]
 })
 
 export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
@@ -20,27 +24,104 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   private solicitudService = inject(SolicitudService);
   private messageService = inject(MessageService);
 
+  verValidas=true;
   private router = inject(Router);
 
 
-  
+
 
   solicitudes = signal<Solicitud[]>([]);
   usuarioService = inject(UsuarioService);
-  bitacoraVisible = false;
 
-  puedeVerConfirmacion = this.usuarioService.puedeVerConfirmacion;
+  bitacoraVisible = false;
+  estados = signal<Estado[]>([]);
+
+  puedeCambiarEstado = this.usuarioService.puedeCambiarEstado;
 
   bitacoras = signal<{ cargando: boolean, value: Bitacora[] }>({ value: [], cargando: false });
 
   ngOnInit(): void {
     this.autoFitColumns = false;
-    this.cargarSolicitudes();
+    this.cargarSolicitudes(true);
   }
 
-  cargarSolicitudes() {
-    const todas = this.puedeVerConfirmacion(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
-    this.solicitudService.listar(todas).subscribe(({ solicitudes }) => this.solicitudes.set(solicitudes));
+
+  async capturarMotivoCancelacion(): Promise<{ confirma: boolean, mensaje: string }> {
+    return new Promise((resolve) => {
+      Swal.fire({
+        title: 'Motivo de Cancelación',
+        input: 'textarea',
+        inputPlaceholder: 'Escribe el motivo de la cancelación...',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        inputValidator: (value) => {
+          if (!value) {
+            return 'Debes escribir un motivo!';
+          }
+          return null;
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          resolve({ confirma: true, mensaje: result.value });
+        } else {
+          resolve({ confirma: false, mensaje: '' });
+        }
+      });
+    });
+
+  }
+
+
+  private setEstadoSolicitud(id_solicitud: string, id_estado: string) {
+    this.solicitudes.set(this.solicitudes().map(s => s.id_solicitud === id_solicitud ? { ...s, id_estado: id_estado } : s));
+  }
+
+  async actualizarEstado(event: Event, { id_solicitud, id_estado }: Solicitud) {
+    const dropdown = event.target as HTMLInputElement;
+    const nuevoEstado = dropdown.value;
+    let motivo = "";
+    if (nuevoEstado === "3") {
+      const { mensaje, confirma } = await this.capturarMotivoCancelacion();
+      motivo = mensaje;
+      if (!confirma) {                //Regresa a su estado anterior
+        this.setEstadoSolicitud(id_solicitud, id_estado!);
+        return;
+      }
+    }
+    //Actualizar el estado de la solicitud
+    const req = {
+      id_estado: nuevoEstado,
+      id_solicitud,
+      motivo,
+      id_usuario: this.usuarioService.StatusSesion().usuario?.id || '0'
+    };
+    try {
+       await firstValueFrom(this.solicitudService.actualizarEstado(req));       
+       this.cargarSolicitudes();        
+    } catch (error) {
+      this.setEstadoSolicitud(id_solicitud, id_estado!);
+    }
+
+  }
+
+
+   cargarSolicitudes(recargarEstados = false) {
+    
+    if (this.verValidas){
+      const todas = this.puedeCambiarEstado(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
+      this.solicitudService.listar(todas).subscribe(({ solicitudes, estados }) => {
+        this.solicitudes.set(solicitudes.map(s=>{return {...s,sePuedeEditar:s.id_estado=="2"}}));
+        if (recargarEstados) {
+          this.estados.set(estados);
+        }
+      });
+    }else{
+      this.solicitudService.listarCanceladas().subscribe(({ solicitudes, estados }) => {
+        this.solicitudes.set(solicitudes.map(s=>{return {...s,sePuedeEditar:s.id_estado=="2"}}));
+      });
+    }
+    
   }
 
   irDetalle(id_solicitud: string) {
@@ -60,7 +141,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     if (!this.usuarioService.StatusSesion().usuario?.areasPermitidas) {
       return false;
     }
-    return this.usuarioService.StatusSesion().usuario?.areasPermitidas.includes(nombre);
+    return this.usuarioService.StatusSesion().usuario?.areasPermitidas.includes(nombre) ;
   }
 
   async cambiar(event: Event, modulo: string, solicitud: Solicitud): Promise<void> {
@@ -78,6 +159,10 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
 
 
   }
+
+
+
+  
 
   verImpresion(solicitud: any) {
     console.log(solicitud.id_solicitud);

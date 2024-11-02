@@ -84,8 +84,7 @@ export class FormFactoryService {
         maquilas:  [''],
 
     });
-    disenioEstructuralForm: FormGroup = this.fb.group({
-        codigo_interno: [''],
+    disenioEstructuralForm: FormGroup = this.fb.group({        
         frente: [''],
         fondo: [''],
         altura: [''],

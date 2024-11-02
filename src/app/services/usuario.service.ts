@@ -65,7 +65,7 @@ export class UsuarioService {
     this._statusSesion.set({ usuario: undefined, estatus: StatutLogin.LOGOUT });
   }
 
-  puedeVerConfirmacion = computed(() => {
+  puedeCambiarEstado = computed(() => {
     return this.StatusSesion().usuario?.areasPermitidas?.includes('confirmacion');
   }); 
 

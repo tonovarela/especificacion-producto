@@ -26,6 +26,7 @@ export interface SolicitudModel {
 
 export interface ResponseListadoSolicitud {
     solicitudes: Solicitud[];
+    estados: Estado[];
 }
 
 export interface ResponseSolicitud {
@@ -145,12 +146,19 @@ export interface PrePrensa {
     marcarillaPegadoCinta: FileModel[];
 }
 
+export interface Estado {
+    id_estado: string;
+    nombre: string;
+}
+
 export interface Solicitud {
     id_solicitud: string;
+    id_estado?: string;
     nombre: string;
     producto?: string;
     cliente?: string;
     id_Oportunidad?: string;
+    codigo_interno:string;
     customer?: boolean;
     prePrensa?: boolean;
     cotizaciones?: boolean;

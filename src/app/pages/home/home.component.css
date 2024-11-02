@@ -27,4 +27,9 @@
     ::ng-deep .e-grid .e-focused:not(.e-menu-item):not(.e-editedbatchcell){
         box-shadow: none;
     }
-    
+    .dropdown:focus-within .dropdown-menu {
+        opacity:1;
+        transform: translate(0) scale(1);
+        visibility: visible;
+        z-index: 999999;
+      }
