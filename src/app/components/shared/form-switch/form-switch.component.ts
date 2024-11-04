@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Input } from '@angular/core';
+import {  Component, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
@@ -27,9 +27,6 @@ export class FormSwitchComponent {
        }
     }
 
-isChecked(){
- 
-   
-}
+
 
 }
