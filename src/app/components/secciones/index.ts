@@ -4,6 +4,7 @@ export * from './seccion11/seccion11.component';
 export * from './seccion12/seccion12.component';
 export * from './seccion13/seccion13.component';
 export * from './seccion14/seccion14.component';
+export * from './seccion14_1/seccion14_1.component';
 export * from './seccion15/seccion15.component';
 export * from './seccion2/seccion2.component';
 export * from './seccion3/seccion3.component';

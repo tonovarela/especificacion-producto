@@ -53,7 +53,7 @@ export class DetalleComponent implements OnInit {
         const { solicitud, ...rest } = await firstValueFrom(this.solicitudService.obtener(id, false));
         this.solicitud = solicitud;
 
-
+       
 
         this.formGeneral.patchValue({ ...rest });
         this.formGeneral.valueChanges.subscribe(() => this._actualizoInformacion.set(true));
@@ -72,7 +72,8 @@ export class DetalleComponent implements OnInit {
       { descripcion: 'Preprensa  ', id: 'prePrensa' },
       { descripcion: 'Diseño estructural', id: 'disenioEstructural' },
       { descripcion: 'Cotizaciones ', id: 'cotizacion' },
-      { descripcion: 'Planeacion', id: 'planeacion' }
+      { descripcion: 'Planeacion', id: 'planeacion' },
+      { descripcion: 'Logistica', id: 'logistica' }
     ]);
     const areas = this.catalogoAreas().map(area => {
       return { ...area, puedeEditar: this.usuario.areasPermitidas.includes(area.id) };

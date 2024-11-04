@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterContentInit, Component, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Component({
@@ -17,8 +17,19 @@ export class FormSwitchComponent {
   formParent!: FormGroup;    
     constructor(private rootFormGroup: FormGroupDirective
     ) {}
+  
     ngOnInit(): void {      
-      this.formParent = this.rootFormGroup.control.get(this.form) as FormGroup;              
+      this.formParent = this.rootFormGroup.control.get(this.form) as FormGroup;                    
+      if (this.formParent.get(this.name)?.value === '1' || this.formParent.get(this.name)?.value === true){
+        this.formParent.get(this.name)!.setValue(true);
+       }else{
+        this.formParent.get(this.name)!.setValue(false);
+       }
     }
+
+isChecked(){
+ 
+   
+}
 
 }

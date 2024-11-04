@@ -16,22 +16,9 @@ export class FormFactoryService {
         adhesivo: [''],
         cinta: [''],
     })
-    customerForm: FormGroup = this.fb.group({
-        descripcion: [''],
-        codigo_cliente: [''],
-        etiqueta_cliente: [''],
-        etiqueta_producto: [''],
 
-        etiqueta_op: [0],
 
-        etiqueta_orden_compra: [1],
-        
-        etiqueta_cantidad: [''],
-        etiqueta_fecha_corriente: [1],
-        etiqueta_destino: [''],
-        etiqueta_logotipo: [1],
-        etiquetaImagen:[[]],
-        
+    logisticaForm: FormGroup = this.fb.group({
         caja_tipo: [''],
         caja_dimensiones: [''],
         caja_peso_bruto: [''],
@@ -55,6 +42,24 @@ export class FormFactoryService {
         playo_arriba:[ ''],
         observaciones: [''],
         tarimaImagen:[[]],
+    });
+    customerForm: FormGroup = this.fb.group({
+        descripcion: [''],
+        codigo_cliente: [''],
+        etiqueta_cliente: [''],
+        etiqueta_producto: [''],
+
+        etiqueta_op: [0],
+
+        etiqueta_orden_compra: [1],
+        
+        etiqueta_cantidad: [''],
+        etiqueta_fecha_corriente: [1],
+        etiqueta_destino: [''],
+        etiqueta_logotipo: [1],
+        etiquetaImagen:[[]],
+        
+       
 
 
         lista_distribucion: [''],
@@ -118,7 +123,8 @@ export class FormFactoryService {
    
     formGeneral: FormGroup = this.fb.group({
         cotizacion: this.cotizacionesForm,
-        customer: this.customerForm,        
+        customer: this.customerForm,   
+        logistica: this.logisticaForm,     
         disenioEstructural: this.disenioEstructuralForm,
         prePrensa: this.prePrensaForm,        
         planeacion: this.planeacionForm,        
