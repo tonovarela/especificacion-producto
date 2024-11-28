@@ -158,15 +158,20 @@ export interface Solicitud {
     producto?: string;
     cliente?: string;
     id_Oportunidad?: string;
+
     codigo_interno:string;
-    customer?: boolean;
-    prePrensa?: boolean;
-    cotizaciones?: boolean;
-    disenioEstructural?: boolean;
-    planeacion?: boolean;
+    customer?: string;
+    prePrensa?: string;
+    cotizacion?: string;
+    disenioEstructural?: string;
+    planeacion?: string;
+    logistica?: string;
+    produccion?: string;
+    calidad?: string;
     autorizaciones?: Autorizacion[];
     fecha_registro?: Date;
     OP?: string;
+    sepuedeCerrar?: boolean;
 }
 
 

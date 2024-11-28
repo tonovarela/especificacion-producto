@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, EventEmitter } from '@angular/core';
+import { Component, inject, OnInit, signal, effect, EffectRef, OnDestroy, computed } from '@angular/core';
 import { Router } from "@angular/router";
 import { AbstractBaseGridComponent } from "@app/abstract/abstract.baseGrid.component";
 import { Bitacora, Estado, Solicitud } from "@app/model/solicitud.response";
@@ -24,7 +24,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   private solicitudService = inject(SolicitudService);
   private messageService = inject(MessageService);
 
-  verValidas=true;
+  verValidas = true;
   private router = inject(Router);
 
 
@@ -40,10 +40,30 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
 
   bitacoras = signal<{ cargando: boolean, value: Bitacora[] }>({ value: [], cargando: false });
 
+
+
   ngOnInit(): void {
     this.autoFitColumns = false;
     this.cargarSolicitudes(true);
   }
+
+
+
+  solicitudesView = computed(() => {
+    const solicitudes = this.solicitudes().map(s => {
+      return {
+        ...s,
+        sePuedeEditar: s.id_estado == "2",
+        sepuedeCerrar: this.tieneTodasLasConfirmaciones(s),
+        puedeConfirmaProduccionCalidad: this.puedeConfirmarProduccionCalidad(s)
+      }
+    })
+    
+
+    return solicitudes;
+
+  });
+
 
 
   async capturarMotivoCancelacion(): Promise<{ confirma: boolean, mensaje: string }> {
@@ -97,8 +117,8 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
       id_usuario: this.usuarioService.StatusSesion().usuario?.id || '0'
     };
     try {
-       await firstValueFrom(this.solicitudService.actualizarEstado(req));       
-       this.cargarSolicitudes();        
+      await firstValueFrom(this.solicitudService.actualizarEstado(req));
+      this.cargarSolicitudes();
     } catch (error) {
       this.setEstadoSolicitud(id_solicitud, id_estado!);
     }
@@ -106,22 +126,22 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   }
 
 
-   cargarSolicitudes(recargarEstados = false) {
-    
-    if (this.verValidas){
+  cargarSolicitudes(recargarEstados = false) {
+
+    if (this.verValidas) {
       const todas = this.puedeCambiarEstado(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
       this.solicitudService.listar(todas).subscribe(({ solicitudes, estados }) => {
-        this.solicitudes.set(solicitudes.map(s=>{return {...s,sePuedeEditar:s.id_estado=="2"}}));
+        this.solicitudes.set(solicitudes);
         if (recargarEstados) {
           this.estados.set(estados);
         }
       });
-    }else{
+    } else {
       this.solicitudService.listarCanceladas().subscribe(({ solicitudes, estados }) => {
-        this.solicitudes.set(solicitudes.map(s=>{return {...s,sePuedeEditar:s.id_estado=="2"}}));
+        this.solicitudes.set(solicitudes);
       });
     }
-    
+
   }
 
   irDetalle(id_solicitud: string) {
@@ -141,7 +161,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     if (!this.usuarioService.StatusSesion().usuario?.areasPermitidas) {
       return false;
     }
-    return this.usuarioService.StatusSesion().usuario?.areasPermitidas.includes(nombre) ;
+    return this.usuarioService.StatusSesion().usuario?.areasPermitidas.includes(nombre);
   }
 
   async cambiar(event: Event, modulo: string, solicitud: Solicitud): Promise<void> {
@@ -151,18 +171,36 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     const { id: id_usuario } = this.usuarioService.StatusSesion().usuario || { id: '0' };
     try {
       await firstValueFrom(this.solicitudService.actualizarConfirmacion({ id_solicitud, modulo, activo, id_usuario }));
+      this.solicitudes.set(this.solicitudes().map(s => s.id_solicitud === id_solicitud ? { ...s, [modulo]: activo ? "1" : "0" } : s));
       this.messageService.add({ severity: 'success', summary: 'Actualización', detail: `Se actualizó correctamente`, life: 500 });
     } catch (error) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: `Ocurrió un error al actualizar` });
     }
+  }
 
 
+
+
+  private tieneTodasLasConfirmaciones(solicitud: Solicitud) {
+    return solicitud.customer == "1" && solicitud.disenioEstructural == "1"
+      && solicitud.cotizacion == "1" && solicitud.planeacion == "1"
+      && solicitud.prePrensa == "1" && solicitud.logistica == "1" && solicitud.produccion == "1"
+      && solicitud.calidad == "1";
+
+  }
+  private puedeConfirmarProduccionCalidad(solicitud: Solicitud) {
+    return solicitud.customer == "1"
+      && solicitud.disenioEstructural == "1"
+      && solicitud.cotizacion == "1"
+      && solicitud.planeacion == "1"
+      && solicitud.prePrensa == "1"
+      && solicitud.logistica == "1";      
 
   }
 
 
 
-  
+
 
   verImpresion(solicitud: any) {
     console.log(solicitud.id_solicitud);

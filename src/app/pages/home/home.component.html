@@ -1,8 +1,9 @@
 <div class="max-w-screen-2xl mx-auto bg-white  rounded-b-md pt-1">  
-  <div class="h-[94vh]   overflow-hidden    ">
+  
+  <div class="h-[94vh]   overflow-hidden    ">    
     <div class="divide-y divide-gray-200 ">
       <div class="text-base border mx-1 rounded-sm   " style="height: calc(100vh - 120px)">
-        <ejs-grid #grid [dataSource]='solicitudes()' [filterSettings]="filterSettings " (dataBound)='dataBound()'
+        <ejs-grid #grid [dataSource]='solicitudesView()' [filterSettings]="filterSettings " (dataBound)='dataBound()'
           [allowExcelExport]='true' height="100%" allowReordering='true' [allowFiltering]=true allowPaging="true "
           allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
           <e-columns>
@@ -41,8 +42,7 @@
 
             </e-column>
            
-          
-           
+                 
               <e-column field='descripcionEstado' headerText='Estatus' allowFiltering="true" width='80' textAlign='Center' >
                 <ng-template #template let-data>    
                   
@@ -51,20 +51,25 @@
                   (change)="actualizarEstado($event,data)"
                   class="form-select font-inter mt-1 block w-full px-2  py-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     @for (estado of  estados();track estado.id_estado)
-                    {
-                      <option  [value]="estado.id_estado" >{{estado.nombre}}</option>
+                    { 
+                      @if(!data.sepuedeCerrar && estado.id_estado=='4'){
+                        <option  disabled >Cerrado</option>                                           
+                      }@else {
+                        <option  [value]="estado.id_estado" >{{estado.nombre}}</option>                                           
+                      }
                     }                                      
                   </select>  
                 }@else{
                   {{data.descripcionEstado}}
-                }                   
-                  
+                }                                                             
                 </ng-template>
               </e-column>
                        
             <e-column headerText='Customer' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>                
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('customer') || !data.sePuedeEditar"
+                <input type="checkbox"
+               
+                 [disabled]="!puedeConfirmarArea('customer') || !data.sePuedeEditar"
                   (change)="cambiar($event,'customer',data)" [checked]="data.customer==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
@@ -72,7 +77,7 @@
             
             <e-column headerText='Preprensa' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-
+     
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'prePrensa',data)" [checked]="data.prePrensa==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
@@ -110,14 +115,20 @@
             </e-column>
             <e-column headerText='Produccion' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('produccion')  || !data.sePuedeEditar"
+                <input type="checkbox"                 
+                [pTooltip]="!data.puedeConfirmaProduccionCalidad ?avisoTooltip:''" 
+                tooltipPosition="bottom"                 
+                [disabled]="!puedeConfirmarArea('produccion')  || !data.sePuedeEditar || !data.puedeConfirmaProduccionCalidad"
                   (change)="cambiar($event,'produccion',data)" [checked]="data.produccion==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Calidad' allowFiltering="false" textAlign='Center' width='50'>
               <ng-template #template let-data>
-                <input type="checkbox" [disabled]="!puedeConfirmarArea('calidad')  || !data.sePuedeEditar"
+                <input type="checkbox"
+                [pTooltip]="!data.puedeConfirmaProduccionCalidad ?avisoTooltip:''" 
+                tooltipPosition="bottom"                 
+                 [disabled]="!puedeConfirmarArea('calidad')  || !data.sePuedeEditar || !data.puedeConfirmaProduccionCalidad"
                   (change)="cambiar($event,'calidad',data)" [checked]="data.calidad==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
@@ -126,7 +137,7 @@
               <ng-template #template let-data>
                 <div class="flex justify-center">
                   <svg (click)="mostrarBitacora(data.id_solicitud)" viewBox="0 -0.5 25 25" fill="none"
-                    class="w-6 h-6   cursor-pointer  hover:text-blue-800" xmlns="http://www.w3.org/2000/svg">
+                    class="w-8 h-8   cursor-pointer  hover:text-blue-800" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">
@@ -217,6 +228,14 @@
 
   </p-dialog>
 
+  <ng-template #avisoTooltip>
+    <div class="p-1 max-w-lg mx-auto text-[10px]">
+      <p class="break-words">
+        Solo se permite habilitar hasta que las secciones de <b>Customer, Preprensa, Cotizaciones, Planeación y Logistica</b> estén habilitadas.
+      </p>
+    </div>
+</ng-template>
+ 
 </div>
 
 
