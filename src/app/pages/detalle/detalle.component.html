@@ -26,11 +26,12 @@
                 <div class="flex flex-col space-y-2">
                   <div class="flex gap-2"><span class="text-md font-bold">Trabajo:</span>{{solicitud.nombre}}</div>    
                   <div class="flex gap-2"><span class="text-md font-bold">Cliente:</span>{{solicitud.cliente}}</div>    
-                  <div class="flex gap-2"><span class="text-md font-bold">OP:</span>{{solicitud.OP}}</div>    
-                </div>
-                
-                
-                              
+                  <div class="flex justify-between gap-2"><span><span class="text-md font-bold">OP:</span>{{solicitud.OP}}</span>  
+                    @if(solicitud.id_estado=='4'){                      
+                    <h1 class="text-xl bg-slate-700 border rounded px-4 text-white ">CERRADO</h1>
+                    }
+                  </div>    
+                </div>                                                          
                 <app-seccion1  formName="customer" *ngIf="isAreaVisible('customer')  " [formGeneral]="formGeneral"  />
                 <app-seccion2  formName="disenioEstructural" *ngIf="isAreaVisible('disenioEstructural')"  [formGeneral]="formGeneral" />
                 <app-seccion3   formName="cotizacion" *ngIf="isAreaVisible('cotizacion')" [formGeneral]="formGeneral"  />
