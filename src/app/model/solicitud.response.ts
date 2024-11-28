@@ -166,6 +166,7 @@ export interface Solicitud {
     planeacion?: boolean;
     autorizaciones?: Autorizacion[];
     fecha_registro?: Date;
+    OP?: string;
 }
 
 
