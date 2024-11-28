@@ -58,7 +58,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
         puedeConfirmaProduccionCalidad: this.puedeConfirmarProduccionCalidad(s)
       }
     })
-    
+
 
     return solicitudes;
 
@@ -188,13 +188,19 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
       && solicitud.calidad == "1";
 
   }
+     //Esta regla es para que solo se pueda confirmar en producción y calidad si el usuario tiene permisos
   private puedeConfirmarProduccionCalidad(solicitud: Solicitud) {
-    return solicitud.customer == "1"
-      && solicitud.disenioEstructural == "1"
-      && solicitud.cotizacion == "1"
-      && solicitud.planeacion == "1"
-      && solicitud.prePrensa == "1"
-      && solicitud.logistica == "1";      
+    if (this.puedeConfirmarArea('produccion') || this.puedeConfirmarArea('calidad')) {
+      return solicitud.customer == "1"
+        && solicitud.disenioEstructural == "1"
+        && solicitud.cotizacion == "1"
+        && solicitud.planeacion == "1"
+        && solicitud.prePrensa == "1"
+        && solicitud.logistica == "1";
+      ;
+    }
+    return true;
+
 
   }
 
