@@ -42,6 +42,12 @@ export class DetalleComponent implements OnInit {
   cargandoDatos = signal<boolean>(false);
   actualizoInformacion = computed<boolean>(() => this._actualizoInformacion());
 
+
+
+puedeEditarAlgunaArea = computed<boolean>(() => {
+  return this.areasSeleccionadas().some(area => area.puedeEditar);
+}); 
+
   ngOnInit(): void {
     const { formGeneral } = this.formService;
     this.formGeneral = formGeneral;

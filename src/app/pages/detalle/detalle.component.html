@@ -6,12 +6,13 @@
       [codigoInterno]="solicitud.codigo_interno || ''"
       (onRegresar)="onRegresar()"
       [catalogoAreas]="catalogoAreas()"
-      [habilitarGuardar]="areasSeleccionadas().length>0  && actualizoInformacion()  && solicitud.id_estado=='2'"
+      [habilitarGuardar]="areasSeleccionadas().length>0  && actualizoInformacion()  && solicitud.id_estado=='2'  && puedeEditarAlgunaArea()"
       [guardando]="guardando() "
         [(areasSeleccionadas)]="areasSeleccionadas"></app-menu-solicitud>
     }
     
   </div>
+  
   
   <ng-container [formGroup]="formGeneral">
     <div class=" h-[90vh] w-full sm:max-w-4xl  p-5  sm:p-10 overflow-auto  bg-white  sm:mx-auto shadow rounded-md  ">  
