@@ -111,11 +111,13 @@ export class FormFactoryService {
         tinta1_3: [''],
         tinta1_4: [''],
         tinta1_5: [''],
+        tinta1_6: [''],
         tinta2_1: [''],
         tinta2_2: [''],
         tinta2_3: [''],
         tinta2_4: [''],
         tinta2_5: [''], 
+        tinta2_6: [''], 
         barniz: [''],       
         codigoBarras: [[]],
         

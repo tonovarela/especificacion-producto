@@ -111,6 +111,7 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
     const { id_solicitud } = this.solicitud
     const propsSave = { id_solicitud, ...this.formGeneral.value };
     const id_usuario = this.usuario.id;
+        
     this.guardando.set(true);
     try {
       await firstValueFrom(this.solicitudService.guardar(id_usuario, propsSave));
