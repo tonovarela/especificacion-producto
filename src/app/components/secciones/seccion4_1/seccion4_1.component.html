@@ -1,0 +1,3 @@
+<app-titulo-seccion titulo="Impresión"  departamento="Preprensa" [habilitado]="!isDisabledForm"></app-titulo-seccion>
+
+<app-file-upload label="Código de Barras"  [multiple]="false" [disabled]="isDisabledForm" [filesUploaded]="obtenerArchivos('codigoBarras')" (onAdd)="addFile($event,'codigoBarras')" (onRemove)="removeFile($event,'codigoBarras')" ></app-file-upload>          

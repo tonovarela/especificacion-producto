@@ -1,4 +1,4 @@
-<div class="max-w-screen-2xl mx-auto bg-white  rounded-b-md pt-1">  
+<div class="w-full mx-auto bg-white  rounded-b-md px-5 pt-1">  
   
   <div class="h-[94vh]   overflow-hidden    ">    
     <div class="divide-y divide-gray-200 ">
@@ -8,15 +8,22 @@
           allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
           <e-columns>
             <ng-template #toolbarTemplate let-data>
-              <div class=" flex py-2 px-0 justify-center border-1 rounded-t-md text-xs  text-gray-500 font-inter">
+              <div class=" flex py-4 px-0 justify-center border-1 rounded-t-md text-xs  text-gray-500 font-inter">
                 CONFIRMACION DE REGISTRO
-                @if (puedeCambiarEstado()){
-                <div class="absolute top-0 right-3">
-                  <button *ngIf="verValidas"  (click)="verValidas=false;cargarSolicitudes()"  class="border bg-slate-700 hover:bg-blue-700 px-2 py-1 m-1 text-white  rounded ">Ver canceladas</button>
-                  <button *ngIf="!verValidas"  (click)="verValidas=true;cargarSolicitudes()" class="border bg-slate-700 hover:bg-blue-700 px-2 py-1 m-1 text-white  rounded ">Ver validas</button>
-                </div>
-              }
                 
+                <div class="absolute top-0 right-3">                  
+                  <p-selectButton 
+                  [options]="opcionesView" 
+                  (onChange)="cargarSolicitudes()"
+                  [(ngModel)]="estadoSeleccionado"                  
+                  optionLabel="name" 
+                  optionValue="value" 
+                  >                
+                  <ng-template let-item >                  
+                      {{item.value}}                    
+                </ng-template>
+                  </p-selectButton>                  
+                </div>                            
               </div>
             </ng-template>
            
@@ -25,7 +32,7 @@
               <ng-template #template let-data>
                 <div class="flex justify-start space-x-5 text-[11px]">
                   <label (click)="irDetalle(data.id_solicitud)"
-                    class="cursor-pointer text-blue-500 capitalize hover:text-blue-700 ">{{data.nombre.length>40?data.nombre.substring(0, 39) + ' ...': data.nombre}}</label>
+                    class="cursor-pointer text-blue-500 capitalize hover:text-blue-700 ">{{data.nombre.length>45?data.nombre.substring(0, 44) + ' ...': data.nombre}}</label>
                 </div>
 
               </ng-template>
@@ -53,7 +60,7 @@
                     @for (estado of  estados();track estado.id_estado)
                     { 
                       @if(!data.sepuedeCerrar && estado.id_estado=='4'){
-                        <option  disabled >Cerrado</option>                                           
+                        <option [value]="estado.id_estado"  disabled >Cerrado</option>                                           
                       }@else {
                         <option  [value]="estado.id_estado" >{{estado.nombre}}</option>                                           
                       }
@@ -82,6 +89,13 @@
                   (change)="cambiar($event,'prePrensa',data)" [checked]="data.prePrensa==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
 
+              </ng-template>
+            </e-column>
+            <e-column headerText='Offset' allowFiltering="false" textAlign='Center' width='50'>
+              <ng-template #template let-data>     
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('offset')  || !data.sePuedeEditar"
+                  (change)="cambiar($event,'offset',data)" [checked]="data.offset==1"
+                  class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
             <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='50'>

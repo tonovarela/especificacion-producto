@@ -29,8 +29,8 @@ export class SolicitudService {
     return this.http.post(`${this.URL}/solicitud`,{id_usuario,...props});
   }
 
-  public listar(todas=false){
-    return this.http.get<ResponseListadoSolicitud>(`${this.URL}/solicitud?todas=${todas}`);
+  public listar(todas=false,estado='pendientes'){
+    return this.http.get<ResponseListadoSolicitud>(`${this.URL}/solicitud?todas=${todas}&estado=${estado}`);
   }
 
   public listarCanceladas(){

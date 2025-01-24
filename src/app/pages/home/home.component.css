@@ -27,6 +27,22 @@
     ::ng-deep .e-grid .e-focused:not(.e-menu-item):not(.e-editedbatchcell){
         box-shadow: none;
     }
+
+    ::ng-deep .p-selectbutton .p-button {
+        @apply    min-w-32 text-xs  border border-slate-500 bg-slate-100 mt-2;
+        
+    }
+
+    ::ng-deep .p-selectbutton .p-button.p-highlight::before {
+        @apply  bg-slate-700  ;
+        
+    }
+
+    ::ng-deep .p-selectbutton .p-button.p-highlight span {
+        @apply    text-white   
+        
+        
+    }
     .dropdown:focus-within .dropdown-menu {
         opacity:1;
         transform: translate(0) scale(1);

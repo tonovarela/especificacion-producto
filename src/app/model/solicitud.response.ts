@@ -166,6 +166,7 @@ export interface Solicitud {
     disenioEstructural?: string;
     planeacion?: string;
     logistica?: string;
+    offset?: string;
     produccion?: string;
     calidad?: string;
     autorizaciones?: Autorizacion[];

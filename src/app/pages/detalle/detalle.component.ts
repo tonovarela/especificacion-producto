@@ -57,10 +57,7 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
       try {
         this.cargandoDatos.set(true);
         const { solicitud, ...rest } = await firstValueFrom(this.solicitudService.obtener(id, false));
-        this.solicitud = solicitud;
-
-       
-
+        this.solicitud = solicitud;       
         this.formGeneral.patchValue({ ...rest });
         this.formGeneral.valueChanges.subscribe(() => this._actualizoInformacion.set(true));
         
@@ -79,7 +76,8 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
       { descripcion: 'Diseño estructural', id: 'disenioEstructural' },
       { descripcion: 'Cotizaciones ', id: 'cotizacion' },
       { descripcion: 'Planeacion', id: 'planeacion' },
-      { descripcion: 'Logistica', id: 'logistica' }
+      { descripcion: 'Logistica', id: 'logistica' },
+      {descripcion:'Offset', id:'offset'},
     ]);
     const areas = this.catalogoAreas().map(area => {
       return { ...area, puedeEditar: this.usuario.areasPermitidas.includes(area.id) };

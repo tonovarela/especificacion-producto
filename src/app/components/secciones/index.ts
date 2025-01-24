@@ -9,6 +9,7 @@ export * from './seccion15/seccion15.component';
 export * from './seccion2/seccion2.component';
 export * from './seccion3/seccion3.component';
 export * from './seccion4/seccion4.component';
+export * from './seccion4_1/seccion4_1.component';
 export * from './seccion5/seccion5.component';
 export * from './seccion6/seccion6.component';
 export * from './seccion7/seccion7.component';

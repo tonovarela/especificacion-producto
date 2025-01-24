@@ -2,6 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import {  FormBuilder, FormGroup } from "@angular/forms";
 
 
+
 @Injectable({
     providedIn: 'root'
   })
@@ -98,14 +99,7 @@ export class FormFactoryService {
         ayudaVisual: [[]],
 
     });
-    prePrensaForm: FormGroup = this.fb.group({
-        pruebaColor:[[]],        
-        planosIndividuales: [[]],
-        planoFormacion:[[]],
-        marcarillaBarniz: [[]],
-        mascarillaBaseBlanca: [[]],
-        marcarillaPegado: [[]],
-        marcarillaPegadoCinta: [[]],
+    offset:FormGroup = this.fb.group({
         tinta1_1: [''],
         tinta1_2: [''],
         tinta1_3: [''],
@@ -119,6 +113,15 @@ export class FormFactoryService {
         tinta2_5: [''], 
         tinta2_6: [''], 
         barniz: [''],       
+    });   
+    prePrensaForm: FormGroup = this.fb.group({
+        pruebaColor:[[]],        
+        planosIndividuales: [[]],
+        planoFormacion:[[]],
+        marcarillaBarniz: [[]],
+        mascarillaBaseBlanca: [[]],
+        marcarillaPegado: [[]],
+        marcarillaPegadoCinta: [[]],       
         codigoBarras: [[]],
         
     });
@@ -129,7 +132,8 @@ export class FormFactoryService {
         logistica: this.logisticaForm,     
         disenioEstructural: this.disenioEstructuralForm,
         prePrensa: this.prePrensaForm,        
-        planeacion: this.planeacionForm,        
+        planeacion: this.planeacionForm,    
+        offset: this.offset,    
     })
 
     

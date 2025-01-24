@@ -41,6 +41,14 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   bitacoras = signal<{ cargando: boolean, value: Bitacora[] }>({ value: [], cargando: false });
 
 
+  estadoSeleccionado ='pendientes';
+    
+  opcionesView = [
+      { name: 'Pendientes', value: 'pendientes' },
+      { name: 'Cerrado', value: 'cerrado' },
+      { name: 'Cancelado', value: 'cancelado' }
+  ];
+
 
   ngOnInit(): void {
     this.autoFitColumns = false;
@@ -127,10 +135,12 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
 
 
   cargarSolicitudes(recargarEstados = false) {
-
+   
     if (this.verValidas) {
       const todas = this.puedeCambiarEstado(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
-      this.solicitudService.listar(todas).subscribe(({ solicitudes, estados }) => {
+      this.solicitudes.set([]);
+      const estado =this.estadoSeleccionado;
+      this.solicitudService.listar(todas,estado).subscribe(({ solicitudes, estados }) => {        
         this.solicitudes.set(solicitudes);
         if (recargarEstados) {
           this.estados.set(estados);
@@ -185,7 +195,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     return solicitud.customer == "1" && solicitud.disenioEstructural == "1"
       && solicitud.cotizacion == "1" && solicitud.planeacion == "1"
       && solicitud.prePrensa == "1" && solicitud.logistica == "1" && solicitud.produccion == "1"
-      && solicitud.calidad == "1";
+      && solicitud.calidad == "1" && solicitud.offset == "1";
 
   }
      //Esta regla es para que solo se pueda confirmar en producción y calidad si el usuario tiene permisos
@@ -196,7 +206,9 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
         && solicitud.cotizacion == "1"
         && solicitud.planeacion == "1"
         && solicitud.prePrensa == "1"
+        && solicitud.offset == "1"
         && solicitud.logistica == "1";
+
       ;
     }
     return true;
