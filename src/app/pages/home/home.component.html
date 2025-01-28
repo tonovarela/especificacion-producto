@@ -37,7 +37,11 @@
 
               </ng-template>
             </e-column>
-            <e-column field='codigo_suaje' headerText='Código de suaje' width='100' textAlign='Center'></e-column>
+            <e-column field='codigo_suaje' headerText='Código de suaje' width='80' textAlign='Center'>
+              <ng-template #template let-data>
+                <p class="text-[11px]  text-balance">{{data.codigo_suaje}}</p>
+              </ng-template>
+            </e-column>
             <e-column field='OP' headerText='OP' width='50' textAlign='Center'>
               <ng-template #template let-data>
                 <p class="text-[11px]  text-balance">{{data.OP}}</p>
