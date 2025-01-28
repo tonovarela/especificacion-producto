@@ -94,9 +94,11 @@ export class FormFactoryService {
         frente: [''],
         fondo: [''],
         altura: [''],
+        codigo_suaje:[''],
         tamanio_extendido: [''],
         tamanio_final: [''],
         ayudaVisual: [[]],
+
 
     });
     offset:FormGroup = this.fb.group({
