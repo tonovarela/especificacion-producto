@@ -79,7 +79,7 @@ export class FormFactoryService {
         preprensa: [''],
         metalizado: [''],
         corte: [''],
-        impresion:'',
+        
         barniz_uv: [''],
         traslape: [''],
         empalme: [''],
@@ -113,7 +113,11 @@ export class FormFactoryService {
         tinta2_3: [''],
         tinta2_4: [''],
         tinta2_5: [''], 
-        tinta2_6: [''], 
+        tinta2_6: [''],
+        impresion: [''], 
+        disenio_producto: [''],
+        acabados_automaticos: [''],
+        acabados_manuales: [''],
         barniz: [''],       
     });   
     prePrensaForm: FormGroup = this.fb.group({
