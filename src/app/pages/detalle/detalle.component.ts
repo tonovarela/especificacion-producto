@@ -44,9 +44,9 @@ export class DetalleComponent implements OnInit {
 
 
 
-puedeEditarAlgunaArea = computed<boolean>(() => {
-  return this.areasSeleccionadas().some(area => area.puedeEditar);
-}); 
+  puedeEditarAlgunaArea = computed<boolean>(() => {
+    return this.areasSeleccionadas().some(area => area.puedeEditar);
+  });
 
   ngOnInit(): void {
     const { formGeneral } = this.formService;
@@ -57,13 +57,13 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
       try {
         this.cargandoDatos.set(true);
         const { solicitud, ...rest } = await firstValueFrom(this.solicitudService.obtener(id, false));
-        this.solicitud = solicitud;       
+        this.solicitud = solicitud;
         this.formGeneral.patchValue({ ...rest });
         this.formGeneral.valueChanges.subscribe(() => this._actualizoInformacion.set(true));
-        
-        if (this.solicitud.id_estado=="2"){
+
+        if (this.solicitud.id_estado == "2") {
           this.usuario.areasPermitidas.forEach(area => this.formGeneral.get(area)?.enable());
-        }        
+        }
       } catch (error) {
         this.router.navigate(['/home']);
       }
@@ -72,12 +72,13 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
 
     this.catalogoAreas.set([
       { descripcion: 'Customer', id: 'customer' },
+      { descripcion: 'Acabados', id: 'acabados' },
       { descripcion: 'Preprensa  ', id: 'prePrensa' },
       { descripcion: 'Diseño estructural', id: 'disenioEstructural' },
       { descripcion: 'Cotizaciones ', id: 'cotizacion' },
       { descripcion: 'Planeacion', id: 'planeacion' },
       { descripcion: 'Logistica', id: 'logistica' },
-      {descripcion:'Offset', id:'offset'},
+      { descripcion: 'Offset', id: 'offset' },
     ]);
     const areas = this.catalogoAreas().map(area => {
       return { ...area, puedeEditar: this.usuario.areasPermitidas.includes(area.id) };
@@ -88,7 +89,7 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
     this.formGeneral.disable();
 
 
-    
+
 
 
 
@@ -109,7 +110,7 @@ puedeEditarAlgunaArea = computed<boolean>(() => {
     const { id_solicitud } = this.solicitud
     const propsSave = { id_solicitud, ...this.formGeneral.value };
     const id_usuario = this.usuario.id;
-        
+
     this.guardando.set(true);
     try {
       await firstValueFrom(this.solicitudService.guardar(id_usuario, propsSave));

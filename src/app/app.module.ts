@@ -24,6 +24,7 @@ import { DetalleComponent } from './pages/detalle/detalle.component';
 import { SynfusionModule } from './lib/synfusion.module';
 import { SkeletonComponent } from './components/shared/skeleton/skeleton.component';
 import { MessageService } from 'primeng/api';
+import { Seccion5_1Component } from './components/secciones/seccion5_1/seccion5_1.component';
 
 
 
@@ -45,6 +46,7 @@ import { MessageService } from 'primeng/api';
     Seccion4Component,
     Seccion4_1Component,
     Seccion5Component,
+    Seccion5_1Component,
     Seccion6Component,
     Seccion7Component,
     Seccion8Component,

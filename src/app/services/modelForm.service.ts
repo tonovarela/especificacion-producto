@@ -73,13 +73,29 @@ export class FormFactoryService {
         
     });
     
-    planeacionForm= this.fb.group({
-        disenio_estructural: [''],
-        
+
+acabadosform: FormGroup = this.fb.group({
+    disenio_estructural: [''],        
         preprensa: [''],
         metalizado: [''],
         corte: [''],
         
+        barniz_uv: [''],
+        traslape: [''],
+        empalme: [''],
+        suaje:  [''],
+        pegue_caja:  [''],
+        pegue_ventana:  [''],
+        acabados:  [''],
+        maquilas:  [''],
+});
+
+    planeacionForm= this.fb.group({
+        disenio_estructural: [''],        
+        preprensa: [''],
+        metalizado: [''],
+        corte: [''],
+        impresion: [''],        
         barniz_uv: [''],
         traslape: [''],
         empalme: [''],
@@ -140,6 +156,7 @@ export class FormFactoryService {
         prePrensa: this.prePrensaForm,        
         planeacion: this.planeacionForm,    
         offset: this.offset,    
+        acabados: this.acabadosform
     })
 
     

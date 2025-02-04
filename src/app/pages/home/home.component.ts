@@ -195,7 +195,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     return solicitud.customer == "1" && solicitud.disenioEstructural == "1"
       && solicitud.cotizacion == "1" && solicitud.planeacion == "1"
       && solicitud.prePrensa == "1" && solicitud.logistica == "1" && solicitud.produccion == "1"
-      && solicitud.calidad == "1" && solicitud.offset == "1";
+      && solicitud.calidad == "1" && solicitud.offset == "1"  && solicitud.acabados == "1";
 
   }
      //Esta regla es para que solo se pueda confirmar en producción y calidad si el usuario tiene permisos
@@ -207,6 +207,7 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
         && solicitud.planeacion == "1"
         && solicitud.prePrensa == "1"
         && solicitud.offset == "1"
+        && solicitud.acabados == "1"
         && solicitud.logistica == "1";
 
       ;

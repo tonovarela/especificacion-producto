@@ -37,7 +37,7 @@
 
               </ng-template>
             </e-column>
-            <e-column field='codigo_suaje' headerText='Código de suaje' width='80' textAlign='Center'>
+            <e-column field='codigo_suaje' headerText='Código de suaje' width='80'>
               <ng-template #template let-data>
                 <p class="text-[11px]  text-balance">{{data.codigo_suaje}}</p>
               </ng-template>
@@ -100,6 +100,13 @@
               <ng-template #template let-data>     
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('offset')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'offset',data)" [checked]="data.offset==1"
+                  class="form-checkbox h-5 w-5 text-blue-600">
+              </ng-template>
+            </e-column>
+            <e-column headerText='Acabados' allowFiltering="false" textAlign='Center' width='50'>
+              <ng-template #template let-data>     
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('acabados')  || !data.sePuedeEditar"
+                  (change)="cambiar($event,'acabados',data)" [checked]="data.acabados==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
