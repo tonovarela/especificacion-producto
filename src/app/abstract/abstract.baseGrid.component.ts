@@ -1,10 +1,24 @@
-import { Component, OnDestroy, ViewChild, inject } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
-import { PageSettingsModel, FilterSettingsModel, GridComponent } from '@syncfusion/ej2-angular-grids';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
+import {  Subscription } from 'rxjs';
+import { L10n } from '@syncfusion/ej2-base';
+import { PageSettingsModel, FilterSettingsModel, GridComponent, Column } from '@syncfusion/ej2-angular-grids';
 import { SynfusionModule } from '@app/lib/synfusion.module';
 
+L10n.load({
+  'en-US': {
+    grid: {
+      ChooseColumns: 'Mostrar / Ocultar ',
+      Columnchooser: 'Columnas',
+    },
+  },
 
+});
 
+interface ColumnsChosse {
+    uid: string;
+    visible: boolean;
+  }
+  
 
 
 @Component({
@@ -29,11 +43,34 @@ export abstract class AbstractBaseGridComponent implements OnDestroy {
     }
 
 
+     public begin(args: any) {    
+        if (args.requestType == "refresh") {      
+          this.refreshColumnsChoosen();
+        } 
+       
+      }
+    
+    
+      public complete(args: any) {
+        
+        if (args.requestType == "columnstate") {
+          {
+            const columns: Column[] = this.grid.getColumns();        
+            const columnsInChooser = columns
+              .filter((column: Column) => column.showInColumnChooser === true)
+              .map(({ uid, visible }: Column) => ({ uid, visible }));
+            localStorage.setItem('columnsInChooser', JSON.stringify(columnsInChooser));
+          }
+        }
+      }
+
+
     protected dataBound() {
 
-        if (!this.autoFitColumns) {
-            return;
-        }
+        
+        //console.log(this.grid.getColumns());
+        //this.grid.getColumnByField('nombre').visible=false;
+        //this.grid.refreshColumns();
         this.grid.resizeSettings = { mode: 'Auto' }
         this.grid.autoFitColumns();
         if (window.innerWidth < 2000) {
@@ -42,5 +79,20 @@ export abstract class AbstractBaseGridComponent implements OnDestroy {
             this.grid.resizeSettings = { mode: 'Auto' }
         }
     }
+
+
+    private refreshColumnsChoosen() {
+        if (localStorage.getItem('columnsInChooser')) {
+          const columnsInChooser = JSON.parse(localStorage.getItem('columnsInChooser')!);
+          columnsInChooser.forEach((column: ColumnsChosse) => {
+            const col=this.grid.getColumnByUid(column.uid);
+            if (col){
+              col.visible = column.visible;
+            }            
+            
+          });
+          this.grid.refreshHeader();      
+        }
+      }
 
 }

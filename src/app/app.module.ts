@@ -6,10 +6,8 @@ import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgOptimizedImage } from '@angular/common'
 
-
     
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -62,9 +60,7 @@ import { Seccion5_1Component } from './components/secciones/seccion5_1/seccion5_
     MainLayoutComponent,
     DetalleComponent,
     SkeletonComponent,
-    TimeLineComponent
-    
-    
+    TimeLineComponent    
   ],
   imports: [
     BrowserModule,    

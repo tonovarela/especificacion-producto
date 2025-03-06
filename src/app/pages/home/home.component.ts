@@ -1,14 +1,19 @@
-import { Component, inject, OnInit, signal, effect, EffectRef, OnDestroy, computed } from '@angular/core';
+import { Component, inject, OnInit, signal, computed, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
+
+import { environment } from "@env/environment.development";
+import { Column, ColumnChooserService, ToolbarItems, ToolbarService } from '@syncfusion/ej2-angular-grids';
+
+
 import { AbstractBaseGridComponent } from "@app/abstract/abstract.baseGrid.component";
 import { Bitacora, Estado, Solicitud } from "@app/model/solicitud.response";
 import { SolicitudService } from "@app/services/solicitud.service";
-
 import { UsuarioService } from "@app/services/usuario.service";
-import { environment } from "@env/environment.development";
 import { ConfirmationService, MessageService } from "primeng/api";
-import Swal from 'sweetalert2'
+
 import { firstValueFrom } from 'rxjs';
+
+import Swal from 'sweetalert2'
 
 
 
@@ -16,13 +21,15 @@ import { firstValueFrom } from 'rxjs';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [ConfirmationService, MessageService]
+  providers: [ConfirmationService, MessageService, ToolbarService, ColumnChooserService]
 })
 
 export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   private readonly URL = environment.apiUrl
+  @ViewChild("toolbarTemplate") toolbarTemplate: any;
   private solicitudService = inject(SolicitudService);
   private messageService = inject(MessageService);
+  public toolbarOptions: ToolbarItems[] = [];
 
   verValidas = true;
   private router = inject(Router);
@@ -41,19 +48,24 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   bitacoras = signal<{ cargando: boolean, value: Bitacora[] }>({ value: [], cargando: false });
 
 
-  estadoSeleccionado ='pendientes';
-    
+  estadoSeleccionado = 'pendientes';
+
   opcionesView = [
-      { name: 'Pendientes', value: 'pendientes' },
-      { name: 'Cerrado', value: 'cerrado' },
-      { name: 'Cancelado', value: 'cancelado' }
+    { name: 'Pendientes', value: 'pendientes' },
+    { name: 'Cerrado', value: 'cerrado' },
+    { name: 'Cancelado', value: 'cancelado' }
   ];
 
 
   ngOnInit(): void {
+    this.toolbarOptions = ['ColumnChooser'];
     this.autoFitColumns = false;
     this.cargarSolicitudes(true);
+
+
   }
+
+ 
 
 
 
@@ -135,12 +147,12 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
 
 
   cargarSolicitudes(recargarEstados = false) {
-   
+
     if (this.verValidas) {
       const todas = this.puedeCambiarEstado(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
       this.solicitudes.set([]);
-      const estado =this.estadoSeleccionado;
-      this.solicitudService.listar(todas,estado).subscribe(({ solicitudes, estados }) => {        
+      const estado = this.estadoSeleccionado;
+      this.solicitudService.listar(todas, estado).subscribe(({ solicitudes, estados }) => {
         this.solicitudes.set(solicitudes);
         if (recargarEstados) {
           this.estados.set(estados);
@@ -195,10 +207,10 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
     return solicitud.customer == "1" && solicitud.disenioEstructural == "1"
       && solicitud.cotizacion == "1" && solicitud.planeacion == "1"
       && solicitud.prePrensa == "1" && solicitud.logistica == "1" && solicitud.produccion == "1"
-      && solicitud.calidad == "1" && solicitud.offset == "1"  && solicitud.acabados == "1";
+      && solicitud.calidad == "1" && solicitud.offset == "1" && solicitud.acabados == "1";
 
   }
-     //Esta regla es para que solo se pueda confirmar en producción y calidad si el usuario tiene permisos
+  //Esta regla es para que solo se pueda confirmar en producción y calidad si el usuario tiene permisos
   private puedeConfirmarProduccionCalidad(solicitud: Solicitud) {
     if (this.puedeConfirmarArea('produccion') || this.puedeConfirmarArea('calidad')) {
       return solicitud.customer == "1"
@@ -222,10 +234,13 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
 
 
   verImpresion(solicitud: any) {
-    console.log(solicitud.id_solicitud);
+    
     window.open(`${this.URL}/impresion/${solicitud.id_solicitud}`, '_blank');
 
   }
+
+
+  
 
 
 }
