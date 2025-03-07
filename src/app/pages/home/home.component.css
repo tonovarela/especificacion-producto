@@ -49,3 +49,9 @@
         visibility: visible;
         z-index: 999999;
       }
+
+
+
+      ::ng-deep    .e-grid .e-altrow {
+        background-color: #4c49491b;
+    }
