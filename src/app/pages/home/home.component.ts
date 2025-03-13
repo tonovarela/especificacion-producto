@@ -51,9 +51,12 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
   estadoSeleccionado = 'pendientes';
 
   opcionesView = [
+    
     { name: 'Pendientes', value: 'pendientes' },
     { name: 'Cerrado', value: 'cerrado' },
-    { name: 'Cancelado', value: 'cancelado' }
+    { name: 'Cancelado', value: 'cancelado' },
+    { name: 'Todos', value: 'todos' },
+    
   ];
 
 
@@ -152,6 +155,9 @@ export class HomeComponent extends AbstractBaseGridComponent implements OnInit {
       const todas = this.puedeCambiarEstado(); //Traer todas las solicitudes si el usuario puede ver confirmaciones
       this.solicitudes.set([]);
       const estado = this.estadoSeleccionado;
+      if (estado==undefined){
+        return;
+      }      
       this.solicitudService.listar(todas, estado).subscribe(({ solicitudes, estados }) => {
         this.solicitudes.set(solicitudes);
         if (recargarEstados) {
