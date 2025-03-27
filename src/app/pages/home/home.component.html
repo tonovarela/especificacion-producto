@@ -39,11 +39,19 @@
                 </div>
               </ng-template>
             </e-column>
+
             <e-column field='fecha_registro' [allowFiltering]="false" headerText='Fecha de registro'  width='150' >
               <ng-template #template let-data>
                 <label class="text-[11px]  ">{{data.fecha_registro | date:'dd-MM-yyyy HH:mm'}}</label>
                 </ng-template>
-                </e-column>
+            </e-column>
+
+            <e-column field='fechaCierre' [allowFiltering]="false" headerText='Fecha de cierre'  width='150' >
+              <ng-template #template let-data>
+                <label class="text-[11px]  ">{{data.fechaCierre | date:'dd-MM-yyyy HH:mm'}}</label>
+                </ng-template>
+            </e-column>
+
             <e-column field='codigo_suaje' headerText='Código de suaje' width='200'>
               <ng-template #template let-data>
                 <p class="text-[11px]  ">{{data.codigo_suaje}}</p>
