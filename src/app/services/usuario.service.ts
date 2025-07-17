@@ -66,8 +66,12 @@ export class UsuarioService {
   }
 
   puedeCambiarEstado = computed(() => {
-    return this.StatusSesion().usuario?.areasPermitidas?.includes('confirmacion');
+    return this.StatusSesion().usuario?.areasPermitidas?.includes('confirmacion')  
   }); 
+
+  esPreprensa = computed(() => {
+    return this.StatusSesion().usuario?.areasPermitidas?.includes('prePrensa')  
+  });
 
   
 

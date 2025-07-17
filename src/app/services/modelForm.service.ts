@@ -91,6 +91,8 @@ acabadosform: FormGroup = this.fb.group({
 });
 
     planeacionForm= this.fb.group({
+        descripcion: [''],
+        codigo_cliente: [''],
         disenio_estructural: [''],        
         preprensa: [''],
         metalizado: [''],
@@ -145,6 +147,7 @@ acabadosform: FormGroup = this.fb.group({
         marcarillaPegado: [[]],
         marcarillaPegadoCinta: [[]],       
         codigoBarras: [[]],
+        
         
     });
    

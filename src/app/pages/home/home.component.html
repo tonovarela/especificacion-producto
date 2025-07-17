@@ -1,52 +1,47 @@
-<div class="w-full mx-auto bg-white  rounded-b-md px-5 pt-1">    
-  <div class="h-[94vh]   overflow-hidden    ">    
+<div class="w-full mx-auto bg-white  rounded-b-md px-5 pt-1">
+  <div class="h-[94vh]   overflow-hidden    ">
     <div class="divide-y divide-gray-200 ">
       <div class="text-base border mx-1 rounded-sm   " style="height: calc(100vh - 120px)">
-        <div class="relative" >
-              <div class="flex  px-0 justify-end border-1 rounded-t-md text-xs  text-gray-500 font-inter">                                                  
-                  <div>                  
-                    <p-selectButton ß
-                    [options]="opcionesView" 
-                    (onChange)="cargarSolicitudes()"
-                    [(ngModel)]="estadoSeleccionado"                  
-                    optionLabel="name" 
-                    optionValue="value">                
-                    <ng-template let-item >                  
-                        {{item.value}}                    
-                  </ng-template>
-                    </p-selectButton>                  
-                  </div>                                                            
-                
-              </div>
+        <div class="relative">
+          <div class="flex  px-0 justify-end border-1 rounded-t-md text-xs  text-gray-500 font-inter">
+            <div>
+              <p-selectButton ß [options]="opcionesView" (onChange)="cargarSolicitudes()"
+                [(ngModel)]="estadoSeleccionado" optionLabel="name" optionValue="value">
+                <ng-template let-item>
+                  {{item.value}}
+                </ng-template>
+              </p-selectButton>
             </div>
+
+          </div>
+        </div>
         <ejs-grid #grid [dataSource]='solicitudesView()' [filterSettings]="filterSettings " (dataBound)='dataBound()'
-        (actionBegin)='begin($event)' 
-        (actionComplete)='complete($event)'
-        [showColumnChooser]= 'true'
-        [toolbar]='toolbarOptions'
-        locale="en-US"
-          [allowExcelExport]='true' height="100%" allowReordering='true' [allowFiltering]=true allowPaging="true "
-          allowResizing="true" allowSorting="true" [pageSettings]='pageSettings'>
-          <e-columns>                  
-            <e-column field='nombre' width='150' >
+          (actionBegin)='begin($event)' (actionComplete)='complete($event)' [showColumnChooser]='true'
+          [toolbar]='toolbarOptions' locale="en-US" [allowExcelExport]='true' height="100%" allowReordering='true'
+          [allowFiltering]=true allowPaging="true " allowResizing="true" allowSorting="true"
+          [pageSettings]='pageSettings'>
+          <e-columns>
+
+            <e-column field='nombre' width='150'>
               <ng-template #template let-data>
                 <div class="flex justify-start space-x-5 text-[11px]">
                   <label (click)="irDetalle(data.id_solicitud)"
-                    class="cursor-pointer text-blue-500 capitalize hover:text-blue-700 ">{{data.nombre.length>45?data.nombre.substring(0, 44) + ' ...': data.nombre}}</label>
+                    class="cursor-pointer text-blue-500 capitalize hover:text-blue-700 ">{{data.nombre.length>45?data.nombre.substring(0,
+                    44) + ' ...': data.nombre}}</label>
                 </div>
               </ng-template>
             </e-column>
 
-            <e-column field='fecha_registro' [allowFiltering]="false" headerText='Fecha de registro'  width='150' >
+            <e-column field='fecha_registro' [allowFiltering]="false" headerText='Fecha de registro' width='150'>
               <ng-template #template let-data>
                 <label class="text-[11px]  ">{{data.fecha_registro | date:'dd-MM-yyyy HH:mm'}}</label>
-                </ng-template>
+              </ng-template>
             </e-column>
 
-            <e-column field='fechaCierre' [allowFiltering]="false" headerText='Fecha de cierre'  width='150' >
+            <e-column field='fechaCierre' [allowFiltering]="false" headerText='Fecha de cierre' width='150'>
               <ng-template #template let-data>
                 <label class="text-[11px]  ">{{data.fechaCierre | date:'dd-MM-yyyy HH:mm'}}</label>
-                </ng-template>
+              </ng-template>
             </e-column>
 
             <e-column field='codigo_suaje' headerText='Código de suaje' width='200'>
@@ -54,74 +49,103 @@
                 <p class="text-[11px]  ">{{data.codigo_suaje}}</p>
               </ng-template>
             </e-column>
+
             <e-column field='OP' headerText='OP' width='50' textAlign='Center'>
               <ng-template #template let-data>
                 <p class="text-[11px]  text-balance">{{data.OP}}</p>
               </ng-template>
             </e-column>
-             <e-column field='cliente' width='150'>
+
+            <e-column field='cliente' width='150'>
               <ng-template #template let-data>
-                <p class="text-[11px]  ">{{data.cliente.length > 30 ? data.cliente.substring(0, 29) + ' ...' : data.cliente}}</p>
-                </ng-template>
+                <p class="text-[11px]  ">{{data.cliente.length > 30 ? data.cliente.substring(0, 29) + ' ...' :
+                  data.cliente}}</p>
+              </ng-template>
 
             </e-column>
-           
-                 
-              <e-column field='descripcionEstado' headerText='Estatus' allowFiltering="true" width='120' textAlign='Center' >
-                <ng-template #template let-data>    
-                  
-                  @if (puedeCambiarEstado()){
-                  <select [ngModel]="data.id_estado"                    
-                  (change)="actualizarEstado($event,data)"
+
+
+            <e-column field='descripcionEstado' headerText='Estatus' allowFiltering="true" width='120'
+              textAlign='Center'>
+              <ng-template #template let-data>
+                                
+                @if (puedeCambiarEstado()){
+                <select [ngModel]="data.id_estado" (change)="actualizarEstado($event,data)"
                   class="form-select font-inter mt-1 block w-full px-2  py-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    @for (estado of  estados();track estado.id_estado)
-                    { 
-                      @if(!data.sepuedeCerrar && estado.id_estado=='4'){
-                        <option [value]="estado.id_estado"  disabled >Cerrado</option>                                           
-                      }@else {
-                        <option  [value]="estado.id_estado" >{{estado.nombre}}</option>                                           
-                      }
-                    }                                      
-                  </select>  
-                }@else{
-                  {{data.descripcionEstado}}
-                }                                                             
-                </ng-template>
-              </e-column>
-                       
+                  @for (estado of estados();track estado.id_estado)
+                  {
+                  @if(!data.sepuedeCerrar && estado.id_estado=='4'){
+                  <option [value]="estado.id_estado" disabled>Cerrado</option>
+                  }@else {
+                  <option [value]="estado.id_estado">{{estado.nombre}}</option>
+                  }
+                  }
+                </select>
+                }@else{                
+                  @if (puedeConfirmarArea("prePrensa") ){                    
+                    @switch (data.id_estado) {
+                    @case ('4') {
+                    <h1>{{data.descripcionEstado}}</h1>
+                    }
+                    @case ('3') {
+                    <h1>{{data.descripcionEstado}}</h1>
+                    }
+                    @case ('2') {
+                      <h1>{{data.descripcionEstado}}</h1>
+    }
+                    @case ('1') {
+                      <select [ngModel]="data.id_estado" (change)="actualizarEstado($event,data)"
+                      class="form-select font-inter mt-1 block w-full px-2  py-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <option value="1">PENDIENTE</option>
+                      <option value="2">EN PROCESO</option>                  
+                    </select>  
+                    }
+                    @default {
+                      <h1>{{data.descripcionEstado}}</h1>
+                    }
+                    }
+                  }
+                }
+                
+
+              </ng-template>
+            </e-column>
+
             <e-column headerText='Customer' allowFiltering="false" textAlign='Center' width='80'>
-              <ng-template #template let-data>                
-                <input type="checkbox"
-               
-                 [disabled]="!puedeConfirmarArea('customer') || !data.sePuedeEditar"
+              <ng-template #template let-data>
+                <input type="checkbox" [disabled]="!puedeConfirmarArea('customer') || !data.sePuedeEditar"
                   (change)="cambiar($event,'customer',data)" [checked]="data.customer==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
-            
+
             <e-column headerText='Preprensa' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
-     
+
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('prePrensa')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'prePrensa',data)" [checked]="data.prePrensa==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
 
               </ng-template>
             </e-column>
+<!-- 
             <e-column headerText='Offset' allowFiltering="false" textAlign='Center' width='100'>
-              <ng-template #template let-data>     
+              <ng-template #template let-data>
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('offset')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'offset',data)" [checked]="data.offset==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
-            </e-column>
-            <e-column headerText='Acabados' allowFiltering="false" textAlign='Center' width='100'>
-              <ng-template #template let-data>     
+            </e-column> -->
+
+            <!-- <e-column headerText='Acabados' allowFiltering="false" textAlign='Center' width='100'>
+              <ng-template #template let-data>
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('acabados')  || !data.sePuedeEditar"
                   (change)="cambiar($event,'acabados',data)" [checked]="data.acabados==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
-            </e-column>
+            </e-column> -->
+
+
             <e-column headerText='Estructural' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
 
@@ -130,6 +154,7 @@
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
+
             <e-column headerText='Cotizaciones' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('cotizacion')  || !data.sePuedeEditar"
@@ -137,6 +162,7 @@
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
+
             <e-column headerText='Planeacion' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('planeacion')  || !data.sePuedeEditar"
@@ -144,6 +170,8 @@
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
+
+
             <e-column headerText='Logistica' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
                 <input type="checkbox" [disabled]="!puedeConfirmarArea('logistica')  || !data.sePuedeEditar"
@@ -151,6 +179,7 @@
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
+            <!--             
             <e-column headerText='Produccion' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
                 <input type="checkbox"                 
@@ -160,18 +189,17 @@
                   (change)="cambiar($event,'produccion',data)" [checked]="data.produccion==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
-            </e-column>
+            </e-column> -->
             <e-column headerText='Calidad' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
-                <input type="checkbox"
-                [pTooltip]="!data.puedeConfirmaProduccionCalidad ?avisoTooltip:''" 
-                tooltipPosition="bottom"                 
-                 [disabled]="!puedeConfirmarArea('calidad')  || !data.sePuedeEditar || !data.puedeConfirmaProduccionCalidad"
+                <input type="checkbox" [pTooltip]="!data.puedeConfirmaProduccionCalidad ?avisoTooltip:''"
+                  tooltipPosition="bottom"
+                  [disabled]="!puedeConfirmarArea('calidad')  || !data.sePuedeEditar || !data.puedeConfirmaProduccionCalidad"
                   (change)="cambiar($event,'calidad',data)" [checked]="data.calidad==1"
                   class="form-checkbox h-5 w-5 text-blue-600">
               </ng-template>
             </e-column>
-            <e-column headerText='Bitacora' width='100' textAlign='Center' >
+            <e-column headerText='Bitacora' width='100' textAlign='Center'>
               <ng-template #template let-data>
                 <div class="flex justify-center">
                   <svg (click)="mostrarBitacora(data.id_solicitud)" viewBox="0 -0.5 25 25" fill="none"
@@ -190,7 +218,7 @@
                 </div>
               </ng-template>
             </e-column>
-            <e-column headerText='impresion' allowFiltering="false" textAlign='Center' width='100'  >
+            <e-column headerText='impresion' allowFiltering="false" textAlign='Center' width='100'>
               <ng-template #template let-data>
                 <div class="flex justify-center w-full hover:cursor-pointer" (click)="verImpresion(data)">
                   <svg
@@ -272,8 +300,6 @@
         Solo se puede confirmar si se han habilitado todas las secciones
       </p>
     </div>
-</ng-template>
- 
+  </ng-template>
+
 </div>
-
-
