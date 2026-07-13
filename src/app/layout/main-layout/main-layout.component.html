@@ -2,7 +2,12 @@
   <nav class=" bg-gradient-to-r from-blue-500 to-indigo-500 border-gray-200  text-white">
     <div class="max-w-full flex flex-wrap items-center justify-between mx-auto p-2 ">
       <label class="flex items-center space-x-3 ">
-        <img src="https://servicios.litoprocess.com/colaboradores/assets/_images/logoLito.svg" class="h-12"  />
+        @if(isDebug()){
+          <img src="https://servicios.litoprocess.com/static/assets/img/lito-dark.png" class="h-8"  />
+        }@else{
+          <img src="/static/assets/img/lito-dark.png" class="h-8"  />
+        }
+        
         <span class="self-center hidden  whitespace-nowrap sm:flex text-sm sm:text-xl">Especificación de producto</span>
       </label>
       <div class="relative flex items-center md:order-2 space-x-2  rtl:space-x-reverse">

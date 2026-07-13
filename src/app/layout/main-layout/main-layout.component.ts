@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { UsuarioService } from '@app/services/usuario.service';
+import { environment } from '@env/environment.development';
 
 
 
@@ -10,6 +11,7 @@ import { UsuarioService } from '@app/services/usuario.service';
 })
 export class MainLayoutComponent  {
   private usuarioService  = inject(UsuarioService);
+  isDebug= computed(() => !environment.production);
   usuario = computed(() =>     {
   const usuario = this.usuarioService.StatusSesion().usuario ?? { nombre: '', id:"-1",personal: null ,areasPermitidas:[]}; 
     return {...usuario,personal: usuario?.personal ?? 'XXXX'} 
